@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+  font-family: Roboto, sans-serif;
+}
+
+#root, .App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

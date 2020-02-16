@@ -1,0 +1,13 @@
+body {
+  font-size: 16px;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input[aria-invalid="true"] {
+  background: Pink;
+}

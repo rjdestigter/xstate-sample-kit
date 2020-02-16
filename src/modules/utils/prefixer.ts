@@ -1,0 +1,1 @@
+export default (prefix = '', separator = '.') => <T extends string>(value: T): T => prefix ? `${prefix}.${value}` as T : value
