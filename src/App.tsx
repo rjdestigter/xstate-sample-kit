@@ -1,4 +1,5 @@
 import "./App.css";
+import "@material/theme/dist/mdc.theme.css";
 
 import React from "react";
 
@@ -129,6 +130,8 @@ const Form = () => {
   const isNotInProgress = !current.matches("status.inProgress");
   const usernameIsInvalid = current.matches("password.valid.invalid");
   const passwordIsInvalid = current.matches("password.valid.invalid");
+  const isSubmitting = current.matches("status.submitting");
+
   const canNotSubmit =
     isNotInProgress || usernameIsInvalid || passwordIsInvalid;
 
@@ -147,19 +150,37 @@ const Form = () => {
         {passwordRenderProp(current)}
       </FromInputControlMachine>
       <br />
-      <Button
-        raised
-        disabled={canNotSubmit}
-        onClick={() => {
-          send(
-            loginConfig.api.status.eventCreators.submit(() =>
-              fetchUser({ username: "foobar", password: "Hello?" })
-            )
-          );
-        }}
-      >
-        {current.matches("status.inProgress") ? "Login" : "...authenticating"}
-      </Button>
+      <div>
+        <Button
+          type="button"
+          id="btnSubmit"
+          raised
+          disabled={canNotSubmit}
+          onClick={() => {
+            send(
+              loginConfig.api.status.eventCreators.submit(() =>
+                fetchUser({ username: "foobar", password: "Hello?" })
+              )
+            );
+          }}
+        >
+          {current.matches("status.inProgress") ? "Login" : "...authenticating"}
+        </Button>
+        <Button
+          id="btnReset"
+          type="button"
+          theme="secondary"
+          onClick={() => {
+            send([
+              loginConfig.api.status.eventCreators.reset(),
+              usernameConfig.api.eventCreators.reset(),
+              passwordConfig.api.eventCreators.reset()
+            ]);
+          }}
+        >
+          {isSubmitting ? "Cancel" : "Reset"}
+        </Button>
+      </div>
     </form>
   );
 
@@ -169,9 +190,44 @@ const Form = () => {
       pipe(
         either,
         foldEither(
-          constant(<div className="fail">Something went terribly wrong!</div>),
+          constant(
+            <>
+              <div className="fail">Something went terribly wrong!</div>
+              <br />
+              <Button
+                id="btnReset"
+                raised
+                onClick={() => {
+                  send([
+                    loginConfig.api.status.eventCreators.reset(),
+                    usernameConfig.api.eventCreators.reset(),
+                    passwordConfig.api.eventCreators.reset()
+                  ]);
+                }}
+              >
+                Try again
+              </Button>
+            </>
+          ),
           user => {
-            return <div id="welcome">Welcome {getter("username")(user)}</div>;
+            return (
+              <>
+                <div id="welcome">Welcome {getter("username")(user)}</div>
+                <Button
+                  id="btnReset"
+                  raised
+                  onClick={() => {
+                    send([
+                      loginConfig.api.status.eventCreators.reset(),
+                      usernameConfig.api.eventCreators.reset(),
+                      passwordConfig.api.eventCreators.reset()
+                    ]);
+                  }}
+                >
+                  Logout
+                </Button>
+              </>
+            );
           }
         )
       )

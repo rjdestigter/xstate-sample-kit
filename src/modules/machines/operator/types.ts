@@ -4,34 +4,31 @@ import { Either } from "fp-ts/lib/Either";
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,
-  DoneInvokeEvent
+  DoneInvokeEvent,
+  ErrorPlatformEvent
 } from "xstate";
 
 import { ComposableMachineConfig } from "../../xstate";
 
 export const StateTypeInProgress = "inProgress" as const;
 export const StateTypeSubmitting = "submitting" as const;
-export const StateTypeSucceeded = "succeeded" as const;
-export const StateTypeFailed = "failed" as const;
+export const StateTypeDone = "done" as const;
 
 export const StateType = {
   InProgress: StateTypeInProgress,
   Submitting: StateTypeSubmitting,
-  Succeeded: StateTypeSucceeded,
-  Failed: StateTypeFailed,
+  Done: StateTypeDone,
 };
 
 export const EventTypeSubmit: "SUBMIT" = "SUBMIT";
-export const EventTypeSucceed: "SUCCEED" = "SUCCEED";
-export const EventTypeFail: "FAIL" = "FAIL";
+export const EventTypeReset: "RESET" = "RESET";
 
 /**
  * Dictionary of input control state event types.
  */
 export const EventType = {
   Submit: EventTypeSubmit,
-  Succeed: EventTypeSucceed,
-  Fail: EventTypeFail,
+  Reset: EventTypeReset,
 };
 
 /**
@@ -39,9 +36,9 @@ export const EventType = {
  */
 export type Event<L, R> =
   | { type: typeof EventType.Submit, promiser: () => Promise<Either<L, R>> }
-  | { type: typeof EventType.Succeed }
-  | { type: typeof EventType.Fail, error?: L | undefined }
+  | { type: typeof EventType.Reset }
   | DoneInvokeEvent<Either<L, R>>
+  | ErrorPlatformEvent
 /**
  * Possible states for the input control machine.
  *
@@ -50,8 +47,6 @@ export type Event<L, R> =
 export type State<L, R, I extends string> = 
   | { value: typeof StateType.InProgress, context: Context<L, R, I>  }
   | { value: typeof StateType.Submitting, context: Context<L, R, I>  }
-  | { value: typeof StateType.Succeeded, context: Context<L, R, I>  }
-  | { value: typeof StateType.Failed, context: Context<L, R, I>  }
 
 /**
  * Context state for input-control machines.
@@ -65,8 +60,7 @@ export type Context<L, R, I extends string> = {
 export interface Api<L, R, I extends string> {
   eventCreators: {
     submit: (promiser: () => Promise<Either<L, R>>) => Extract<Event<L, R>, { type: typeof EventType.Submit }>
-    succeed: () => Extract<Event<L, R>, { type: typeof EventType.Succeed }>
-    fail: (error?: L) => Extract<Event<L, R>, { type: typeof EventType.Fail }>;
+    reset: () => Extract<Event<L, R>, { type: typeof EventType.Reset }>;
   };
   selector: (context: Context<L, R, I>) => Context<L, R, I>[I]
 }

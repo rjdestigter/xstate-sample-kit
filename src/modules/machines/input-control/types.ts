@@ -35,6 +35,7 @@ export const StateType = {
 export const EventTypeChange: "CHANGE" = "CHANGE";
 export const EventTypeFocus: "FOCUS" = "FOCUS";
 export const EventTypeBlur: "BLUR" = "BLUR";
+export const EventTypeReset: "RESET" = "RESET";
 
 /**
  * Dictionary of input control state event types.
@@ -42,7 +43,8 @@ export const EventTypeBlur: "BLUR" = "BLUR";
 export const EventType = {
   Change: EventTypeChange,
   Focus: EventTypeFocus,
-  Blur: EventTypeBlur
+  Blur: EventTypeBlur,
+  Reset: EventTypeReset
 };
 
 /**
@@ -55,7 +57,8 @@ export type Event<T> =
       isRobot?: boolean;
     }
   | { type: typeof EventType.Focus }
-  | { type: typeof EventType.Blur };
+  | { type: typeof EventType.Blur }
+  | { type: typeof EventType.Reset };
 
 /**
  * Possible states for the input control machine.
@@ -121,6 +124,7 @@ export interface StateSchema<T, I extends string> extends XStateStateSchema<Cont
 export interface Api<T, I extends string> {
   eventCreators: {
     change: (value: T) => Event<T>;
+    reset: () => Event<T>;
     focus: () => Event<T>;
     blur: () => Event<T>;
   };

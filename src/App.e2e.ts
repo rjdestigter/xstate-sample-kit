@@ -37,10 +37,17 @@ const mockResponse = (doFail = false) => ({
 
 let failApi = false;
 
-const onRequest = async (interceptedRequest: Request) => {
+/**
+ * Event handler for intercepting network requests during tests.
+ * 
+ * @param interceptedRequest Request object
+ */
+const onRequest = async (interceptedRequest: Request): Promise<void> => {
   if (/jsonplaceholder/.test(interceptedRequest.url())) {
     const doFail = /fail=true/.test(interceptedRequest.frame()!.url()!)
     await interceptedRequest.respond(mockResponse(doFail));
+  } else if (/googleapis/.test(interceptedRequest.url())) {
+    interceptedRequest.abort()
   } else {
     interceptedRequest.continue();
   }
@@ -64,22 +71,33 @@ describe("Login", () => {
       username: "",
       password: ""
     },
+    on: {
+      
+    },
     states: {
       inProgress: {
+        type: "parallel",
         meta: {
           test: async (page: Page) => {
             await page.waitFor('input[placeholder="Username"]');
             await page.waitFor('input[placeholder="Password"]');
-            await page.waitFor("button");
+            await page.waitFor("button#btnSubmit");
+            await page.waitFor("button#btnReset");
           }
         },
         on: {
           SUBMIT: {
             target: "submitting",
             cond: ctx => !!(ctx.username && ctx.password)
+          },
+          RESET: {
+            target: 'inProgress',
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
           }
         },
-        type: "parallel",
         states: {
           username: {
             meta: {
@@ -116,7 +134,8 @@ describe("Login", () => {
       submitting: {
         meta: {
           test: async (page: Page) => {
-            await page.waitFor("button[disabled");
+            await page.waitFor("button#btnSubmit[disabled");
+            await page.waitFor("button#btnReset");
 
             const usernameInputEl = await page.waitFor(
               'input[placeholder="Username"]'
@@ -140,7 +159,7 @@ describe("Login", () => {
 
             expect(passwordIsDisabled).toBe(true);
 
-            const buttonEl = await page.$("button");
+            const buttonEl = await page.$("button#btnSubmit");
 
             const buttonText = await page.evaluate(
               (button: HTMLButtonElement) => button.textContent,
@@ -148,15 +167,30 @@ describe("Login", () => {
             );
 
             expect(buttonText).toMatch(/authenticating/);
+
+            const btnResetEl = await page.$("button#btnReset");
+
+            const btnResetText = await page.evaluate(
+              (button: HTMLButtonElement) => button.textContent,
+              btnResetEl
+            );
+
+            expect(btnResetText).toMatch(/Cancel/);
           }
         },
         on: {
           BAD: "failure",
-          OK: "success"
+          OK: "success",
+          RESET: {
+            target: 'inProgress',
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
+          }
         }
       },
       failure: {
-        type: "final",
         meta: {
           test: async (page: Page) => {
             await page.waitFor("div.fail");
@@ -166,6 +200,15 @@ describe("Login", () => {
               divEl
             );
             expect(text).toMatch(/Something went terribly wrong/);
+          }
+        },
+        on: {
+          RESET: {
+            target: 'inProgress',
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
           }
         }
       },
@@ -181,7 +224,15 @@ describe("Login", () => {
             expect(text).toMatch(/Tester/);
           }
         },
-        type: "final"
+        on: {
+          RESET: {
+            target: 'inProgress',
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
+          }
+        }
       }
     }
   });
@@ -215,7 +266,7 @@ describe("Login", () => {
     },
     SUBMIT: {
       exec: async (page: Page) => {
-        await page.click("button");
+        await page.click("button#btnSubmit");
       }
     },
     OK: {
@@ -223,10 +274,18 @@ describe("Login", () => {
     },
     BAD: {
       exec: async () => true
+    },
+    RESET: {
+      exec: async (page: Page) => {
+        page.waitFor('button#btnReset')
+        page.click('#btnReset')
+      }
     }
   });
 
-  const testPlans = toggleModel.getShortestPathPlans({
+  const testPlans = toggleModel
+  
+  .getSimplePathPlans({
     // filter: state => state.matches()
   });
 

@@ -10,16 +10,11 @@ import {
   Config
 } from "./types";
 
-import {
-  assign,
-  createMachine as createStateMachine,
-  send
-} from "xstate";
+import { assign, createMachine as createStateMachine, send } from "xstate";
 
 import { fromNullable, Option, none } from "fp-ts/lib/Option";
 
 import { prefixer } from "../../utils";
-import { log } from "xstate/lib/actions";
 
 /**
  * Raw configuration for input control state machines
@@ -37,6 +32,9 @@ export const configuration = <I extends string>(options: { id: I }) => {
         on: {
           [prefix(EventType.Change)]: {
             actions: prefix("assignChange")
+          },
+          [prefix(EventType.Reset)]: {
+            actions: prefix("assignInitialValue")
           }
         }
       },
@@ -47,11 +45,15 @@ export const configuration = <I extends string>(options: { id: I }) => {
             on: {
               [prefix(EventType.Change)]: {
                 target: StateType.Dirty,
-                cond: "isHuman"
+                cond: prefix("isHuman"),
               }
             }
           },
-          [StateType.Dirty]: { entry: log((ctx, event, meta) => ({ctx, event, meta})) as any, type: "final" as const }
+          [StateType.Dirty]: {
+            on: {
+              [prefix(EventType.Reset)]: StateType.Pristine
+            }
+          }
         }
       },
       [StateType.Touched]: {
@@ -60,24 +62,33 @@ export const configuration = <I extends string>(options: { id: I }) => {
           [StateType.Untouched]: {
             on: {
               [prefix(EventType.Focus)]: {
-                target: StateType.Touching,
-              },
+                target: StateType.Touching
+              }
             }
           },
           [StateType.Touching]: {
             on: {
+              // [prefix(EventType.Reset)]: StateType.Untouched,
               [prefix(EventType.Blur)]: {
                 target: StateType.Touched,
-              },
+              }
             }
           },
-          [StateType.Touched]: { type: "final" as const }
+          [StateType.Touched]: {
+            on: {
+              [prefix(EventType.Reset)]: StateType.Untouched
+            }
+          }
         }
       },
       [StateType.Valid]: {
         initial: StateType.Invalid,
         states: {
           [StateType.Invalid]: {
+            '': {
+              target: StateType.Valid,
+              cond: prefix("isValid")
+            },
             on: {
               [prefix(EventType.Change)]: {
                 target: StateType.Valid,
@@ -90,7 +101,8 @@ export const configuration = <I extends string>(options: { id: I }) => {
               [prefix(EventType.Change)]: {
                 target: StateType.Invalid,
                 cond: prefix("isNotValid")
-              }
+              },
+              [prefix(EventType.Reset)]: StateType.Invalid
             }
           }
         }
@@ -105,7 +117,7 @@ export const configuration = <I extends string>(options: { id: I }) => {
           },
           [StateType.Blurred]: {
             on: {
-              [prefix(EventType.Focus)]: StateType.Focused
+              [prefix(EventType.Focus)]: StateType.Focused,
             }
           }
         }
@@ -131,9 +143,10 @@ export function configure<T, I extends string>(
   type ChangeEvent = Extract<Event<T>, { type: typeof EventType.Change }>;
   type FocusEvent = Extract<Event<T>, { type: typeof EventType.Focus }>;
   type BlurEvent = Extract<Event<T>, { type: typeof EventType.Blur }>;
+  type ResetEvent = Extract<Event<T>, { type: typeof EventType.Reset }>;
 
   const { id, isValid, initialValue } = params;
-
+  
   const prefix = prefixer(id);
 
   const api: Api<T, I> = {
@@ -141,6 +154,9 @@ export function configure<T, I extends string>(
       change: (value: T): ChangeEvent => ({
         type: prefix(EventType.Change),
         value
+      }),
+      reset: (): ResetEvent => ({
+        type: prefix(EventType.Reset),
       }),
       focus: (): FocusEvent => ({ type: prefix(EventType.Focus) }),
       blur: (): BlurEvent => ({ type: prefix(EventType.Blur) })
@@ -163,7 +179,6 @@ export function configure<T, I extends string>(
 
   const assignInitialValue = send<Context<T, I>, Event<T>>(
     (ctx, e): ChangeEvent => {
-
       return {
         type: prefix(EventType.Change),
         value: initialValue,
@@ -178,9 +193,7 @@ export function configure<T, I extends string>(
       [prefix("assignChange")]: assignChange
     },
     guards: {
-      isHuman: (_, e) => {
-        return isChangeEvent(e) ? !e.isRobot : false
-      },
+      [prefix('isHuman')]: (_, e) => isChangeEvent(e) ? !e.isRobot : false,
       [prefix("isValid")]: (ctx: Context<T, I>, e: Event<T>) =>
         isValid(isChangeEvent(e) ? fromNullable(e.value) : api.selector(ctx)),
       [prefix(`isNotValid`)]: (ctx: Context<T, I>, e: Event<T>) =>

@@ -20,11 +20,13 @@ export const fetchLogin = ({ username, password}: Params) => fetch('https://json
 export type FetchedUser = Either<t.Errors | Error, User>
 
 export const fetchUser = async (params: Params): Promise<FetchedUser> => {
+  // throw 123;
   try {
     const response = await fetchLogin(params);
     const json = await response.json()
     // delete json.username;
     await delay(2000)
+
     return User.decode(json)
   } catch (error) {
     return left(error)
