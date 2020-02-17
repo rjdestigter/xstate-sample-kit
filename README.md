@@ -1,3 +1,54 @@
+# xstate-sample-kit
+
+## Project Goals
+This is a _work-in-progress_ repository. The goal of this project will be to demonstrate architecture of front-end web applications:
+- Using a variety of technologies that I have come to appreciate
+  - XState (xstate, @xstate/test, @xstate/react)
+  - ReactJS (react, react-dom)
+  - fp-ts, io-ts
+  - i18next, i18next-react
+  - material-components-web, rmwc
+  - jest, jest-puppeteer, puppeteer, @testing-library
+  - storybook
+  - typedoc
+
+- Exemplify a folder and file structure that promotes a functional and modular approach resulting in a  maintainable code base.
+
+- Show examples of how concepts taken from category theory that are applied to functional programming can be be used in web developement.
+
+## Getting Started
+
+### Commands
+
+#### Install dependences
+
+`npm install`
+
+#### Development
+
+`npm start`
+
+#### Testing
+
+##### Unit tests
+
+`npm test`
+
+##### End-to-end tests
+
+`npm run e2e`
+
+##### Storybook
+
+`tbd`
+
+##### Type Documentation
+
+`tbd`
+
+<hr />
+
+## Original _create-react-app_ README.md content
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
