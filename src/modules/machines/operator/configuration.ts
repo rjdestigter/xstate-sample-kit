@@ -21,9 +21,6 @@ import {
 
 import { prefixer } from "../../utils";
 import { Either, left, right } from "fp-ts/lib/Either";
-import { identity, flow } from "fp-ts/lib/function";
-import { pipe } from "fp-ts/lib/pipeable";
-import { getter } from "../../fp";
 import { isDoneInvokeEvent, isErrorPlatformEvent } from "../../xstate";
 
 /**

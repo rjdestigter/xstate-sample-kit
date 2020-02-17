@@ -5,7 +5,6 @@ import usernameLabel from "../../labels/usernameLabel";
 
 import { PropsOf } from '../../../types'
 
-
 type InputProps = PropsOf<typeof Input>;
 
 export interface PropsUsername {
@@ -27,6 +26,7 @@ export const UsernameInput = (props: PropsUsername) => (
     <div>{usernameLabel}</div>
     <div>
       <Input
+        data-test="input-username"
         value={props.value}
         placeholder="Username"
         required
@@ -37,9 +37,10 @@ export const UsernameInput = (props: PropsUsername) => (
         onBlur={props.onBlur}
         style={styles.block}
         helpText={{
-          children: props.invalid ? <span>{"A password is required!"}</span> : "",
+          children: props.invalid ? <span>{"A username is required!"}</span> : "",
           validationMsg: true,
         }}
+        withLeadingIcon={'person'}
       />
     </div>
   </>

@@ -1,26 +1,19 @@
 import * as t from 'io-ts'
 import { left, Either } from 'fp-ts/lib/Either'
+
 import delay from '../../delay'
+
+import { User } from '../../users/types'
 
 export const URL = 'https://jsonplaceholder.typicode.com/users/1'
 
-const User = t.type({
-  id: t.number,
-  name: t.string,
-  username: t.string,
-  email: t.string,
-})
-
-export type User = t.TypeOf<typeof User>
-
 export type Params = { username: string, password: string}
 
-export const fetchLogin = ({ username, password}: Params) => fetch('https://jsonplaceholder.typicode.com/users/1')
+export const fetchLogin = (_params: Params) => fetch('https://jsonplaceholder.typicode.com/users/1')
 
 export type FetchedUser = Either<t.Errors | Error, User>
 
 export const fetchUser = async (params: Params): Promise<FetchedUser> => {
-  // throw 123;
   try {
     const response = await fetchLogin(params);
     const json = await response.json()

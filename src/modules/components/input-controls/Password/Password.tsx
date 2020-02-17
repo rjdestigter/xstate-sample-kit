@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Input from "../Input";
 import passwordLabel from "../../labels/passwordLabel";
-import { PropsOf } from '../../../types'
+import { PropsOf } from "../../../types";
 
 type InputProps = PropsOf<typeof Input>;
 
@@ -14,17 +14,19 @@ export interface PropsPassword {
   style?: React.CSSProperties;
   disabled: boolean;
   invalid: boolean;
+  focused: boolean;
 }
 
 const styles = {
-  block: { display: 'block' }
-}
+  block: { display: "block" }
+};
 
 export const PasswordInput = (props: PropsPassword) => (
   <>
     <div>{passwordLabel}</div>
     <div>
       <Input
+        data-test="input-password"
         value={props.value}
         placeholder="Password"
         type="password"
@@ -36,9 +38,14 @@ export const PasswordInput = (props: PropsPassword) => (
         onBlur={props.onBlur}
         style={Object.assign({}, props.style, styles.block)}
         helpText={{
-          children: props.invalid ? <span>{"A password is required!"}</span> : "",
-          validationMsg: true,
+          children: props.invalid ? (
+            <span>{"A password is required!"}</span>
+          ) : (
+            ""
+          ),
+          validationMsg: true
         }}
+        withLeadingIcon={props.focused ? "lock_open" : "lock"}
       />
     </div>
   </>

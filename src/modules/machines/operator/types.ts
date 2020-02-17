@@ -4,6 +4,7 @@ import { Either } from "fp-ts/lib/Either";
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,
+  StateSchema as XStateStateSchema,
   DoneInvokeEvent,
   ErrorPlatformEvent
 } from "xstate";
@@ -57,6 +58,15 @@ export type Context<L, R, I extends string> = {
   [P in I]: Option<Either<L, R>>;
 };
 
+export interface StateSchema<L, R, I extends string> extends XStateStateSchema<Context<L, R, I>> {
+  context: {},
+  states: {
+    [StateType.InProgress]: {},
+    [StateType.Submitting]: {},
+    [StateType.Done]: {}
+  }
+}
+
 export interface Api<L, R, I extends string> {
   eventCreators: {
     submit: (promiser: () => Promise<Either<L, R>>) => Extract<Event<L, R>, { type: typeof EventType.Submit }>
@@ -71,14 +81,14 @@ export type MachineOptions<L, R, I extends string> = Partial<
 
 export type MachineConfig<L, R, I extends string> = XStateMachineConfig<
   Context<L, R, I>,
-  any,
+  StateSchema<L, R, I>,
   Event<L, R>
 >;
 
 export type Config<L, R, I extends string> = ComposableMachineConfig<
   Api<L, R, I>,
   Context<L, R, I>,
-  any,
+  StateSchema<L, R, I>,
   Event<L, R>,
   I
 >;

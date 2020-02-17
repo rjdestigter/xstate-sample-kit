@@ -121,6 +121,14 @@ export interface StateSchema<T, I extends string> extends XStateStateSchema<Cont
   };
 }
 
+export interface EventCreators<E> {
+  reset: () => E
+}
+export interface Operable<I extends string, T, E> {
+  eventCreators: EventCreators<E>,
+  selector: (context: Context<T, I>) => Context<T, I>[I];
+}
+
 export interface Api<T, I extends string> {
   eventCreators: {
     change: (value: T) => Event<T>;
