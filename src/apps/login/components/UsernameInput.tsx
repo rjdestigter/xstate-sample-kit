@@ -21,6 +21,7 @@ const usernameRenderProp = <T, E extends EventObject>(current: State<T, E>) => (
   <Username
     {...props}
     disabled={current.matches("status.submitting")}
+    focused={current.matches("username.focused.focused")}
     invalid={
       current.matches("username.touched.touched") &&
       current.matches("username.valid.invalid")

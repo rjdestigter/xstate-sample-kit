@@ -6,22 +6,23 @@ import LoginButton from "./LoginButton";
 import UsernameInput from "./UsernameInput";
 import PasswordInput from "./PasswordInput";
 import ResetButton from "./ResetButton";
+import Content from "../../../modules/components/Content";
 
-import LinearProgress from "../../../modules/components/LinearProgress";
 import LoginForm from "../../../modules/components/LoginForm";
 
 import { fetchUser } from "../../../modules/apis/login-api";
 
-import { fold as foldOption } from "fp-ts/lib/Option";
+import * as O from "fp-ts/lib/Option";
+import * as E from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import { constant } from "fp-ts/lib/function";
-import { fold as foldEither } from "fp-ts/lib/Either";
 
 import { useServiceLogger } from "../../../modules/xstate";
 
 import { getter, foldString } from "../../../modules/fp";
 
 import { machine as loginMachine, api } from "../../../modules/machines/login";
+import { isApiFailure, isDecodeFailure } from "../../../modules/apis/q";
 
 const LoginApp = () => {
   const [current, send, service] = useMachine(loginMachine);
@@ -39,8 +40,8 @@ const LoginApp = () => {
 
   const loggedIn = pipe(
     api.status.selector(current.context),
-    foldOption(constant(false), either =>
-      pipe(either, foldEither(constant(false), constant(true)))
+    O.fold(constant(false), either =>
+      pipe(either, E.fold(constant(false), constant(true)))
     )
   );
 
@@ -67,70 +68,68 @@ const LoginApp = () => {
   );
 
   const form = (
-    <>
-      <LinearProgress progress={isSubmitting ? undefined : 0} />
-      <div style={{
-       flex: '1 1 auto',
-       display: 'flex',
-       flexDirection: 'column',
-       justifyContent: 'center',
-       alignItems: 'center'
-      }}>
-        <LoginForm
-          usernameInput={
-            <UsernameInput
-              send={send}
-              current={current}
-              context={current.context}
-            />
-          }
-          passwordInput={
-            <PasswordInput
-              send={send}
-              current={current}
-              context={current.context}
-            />
-          }
-          loginButton={
-            <LoginButton
-              disabled={canNotSubmit}
-              onClick={() => {
-                send(
-                  api.status.eventCreators.submit(() =>
-                    fetchUser({
-                      username: foldString(current.context.username),
-                      password: foldString(current.context.password)
-                    })
-                  )
-                );
-              }}
-            />
-          }
-          resetButton={resetButton}
-        />
-      </div>
-    </>
+    <Content loading={isSubmitting}>
+      <LoginForm
+        usernameInput={
+          <UsernameInput
+            send={send}
+            current={current}
+            context={current.context}
+          />
+        }
+        passwordInput={
+          <PasswordInput
+            send={send}
+            current={current}
+            context={current.context}
+          />
+        }
+        loginButton={
+          <LoginButton
+            disabled={canNotSubmit}
+            onClick={() => {
+              send(
+                api.status.eventCreators.submit(() =>
+                  fetchUser({
+                    username: foldString(current.context.username),
+                    password: foldString(current.context.password)
+                  })
+                )
+              );
+            }}
+          />
+        }
+        resetButton={resetButton}
+      />
+    </Content>
   );
 
   return pipe(
     api.status.selector(current.context),
-    foldOption(constant(form), either =>
+    O.fold(constant(form), either =>
       pipe(
         either,
-        foldEither(
-          constant(
-            <>
-              <div className="fail">Something went terribly wrong!</div>
-              <br />
-              {resetButton}
-            </>
-          ),
+        E.fold(
+          failure => {
+            const failureMessage = isApiFailure(failure)
+              ? `The server responded with code ${failure.error.code}: ${failure.error.error}`
+              : isDecodeFailure(failure)
+              ? `The server has responded with an unknown response.`
+              : `The following error has occurred: ${failure.error}`
+            return (
+              <Content>
+                <div className="fail">{failureMessage}</div>
+                <br />
+                {resetButton}
+              </Content>
+            );
+          },
           user => {
             return (
-              <>
+              <Content>
                 <div id="welcome">Welcome {getter("username")(user)}</div>
                 {resetButton}
-              </>
+              </Content>
             );
           }
         )

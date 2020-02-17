@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { Icon } from '@rmwc/icon'
+
 import Input from "../Input";
 import passwordLabel from "../../labels/passwordLabel";
 import { PropsOf } from "../../../types";
@@ -45,7 +47,7 @@ export const PasswordInput = (props: PropsPassword) => (
           ),
           validationMsg: true
         }}
-        withLeadingIcon={props.focused ? "lock_open" : "lock"}
+        withLeadingIcon={<Icon icon={props.focused ? "lock_open" : "lock"} theme={props.focused ? 'primary': '' as any} />}
       />
     </div>
   </>

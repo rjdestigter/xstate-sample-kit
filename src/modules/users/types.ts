@@ -5,6 +5,6 @@ export const User = t.type({
   name: t.string,
   username: t.string,
   email: t.string,
-})
+}, 'User')
 
 export type User = t.TypeOf<typeof User>

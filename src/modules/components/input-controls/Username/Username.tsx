@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { Icon } from '@rmwc/icon'
+
 import Input from "../Input";
 import usernameLabel from "../../labels/usernameLabel";
 
@@ -14,7 +16,8 @@ export interface PropsUsername {
   onBlur: InputProps["onBlur"];
   style?: React.CSSProperties;
   disabled: boolean;
-  invalid?: boolean;
+  invalid: boolean;
+  focused: boolean;
 }
 
 const styles = {
@@ -40,7 +43,7 @@ export const UsernameInput = (props: PropsUsername) => (
           children: props.invalid ? <span>{"A username is required!"}</span> : "",
           validationMsg: true,
         }}
-        withLeadingIcon={'person'}
+        withLeadingIcon={<Icon icon={'person'} theme={props.focused ? 'primary' : '' as any} />}
       />
     </div>
   </>

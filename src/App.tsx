@@ -1,5 +1,5 @@
-import "./App.css";
-import "@material/theme/dist/mdc.theme.css";
+import "./App.scss";
+// import "@material/theme/dist/mdc.theme.css";
 
 import React from "react";
 

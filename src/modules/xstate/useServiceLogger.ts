@@ -22,6 +22,7 @@ export default <
       }
 
       console.log(JSON.stringify(nextState.value, null, 2))
+      console.log(JSON.stringify(nextState.context, null, 2))
       console.log(nextState);
 
       if (name) {
