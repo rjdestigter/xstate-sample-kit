@@ -47,7 +47,7 @@ export const PasswordInput = (props: PropsPassword) => (
           ),
           validationMsg: true
         }}
-        withLeadingIcon={<Icon icon={props.focused ? "lock_open" : "lock"} theme={props.focused ? 'primary': '' as any} />}
+        icon={<Icon icon={props.focused ? "lock_open" : "lock"} theme={props.focused ? 'primary': '' as any} />}
       />
     </div>
   </>

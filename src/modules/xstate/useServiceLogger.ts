@@ -33,4 +33,4 @@ export default <
         subscription.unsubscribe();
       };
     });
-  }, [service]);
+  }, [service, name]);

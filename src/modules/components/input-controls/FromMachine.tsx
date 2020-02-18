@@ -1,4 +1,3 @@
-import * as React from "react";
 
 import { identity, constant, flow } from "fp-ts/lib/function";
 import { pipe } from "fp-ts/lib/pipeable";
@@ -25,9 +24,7 @@ export type PropsFromMachine<
   children: (inputProps: ProvidedInputProps) => JSX.Element;
 };
 
-const getEventValue = getter2("currentTarget", "value");
-
-const bind = <T extends any[]>(f: (...t: T) => any) => (...t: T) => () => {
+  const bind = <T extends any[]>(f: (...t: T) => any) => (...t: T) => () => {
   f(...t);
 };
 

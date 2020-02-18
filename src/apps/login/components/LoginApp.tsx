@@ -16,9 +16,8 @@ import LoginForm from "./LoginForm";
 // Modules
 import { fetchUser } from "../../../modules/apis/login-api";
 import { useServiceLogger } from "../../../modules/xstate";
-import { getter, foldString } from "../../../modules/fp";
+import { foldString } from "../../../modules/fp";
 import { machine as loginMachine, api } from "../../../modules/machines/login";
-import { format } from "../../../modules/utils";
 
 // Text
 import text from "./text.json";
@@ -85,7 +84,12 @@ const LoginApp = () => {
       pipe(
         either,
         E.fold(
-          failure => <FailureMessage failure={failure} />,
+          failure => (
+            <>
+              <FailureMessage failure={failure} />
+              {resetButton}
+            </>
+          ),
 
           user => {
             return (

@@ -4,7 +4,6 @@ import { pipe } from "fp-ts/es6/pipeable";
 import { randomInt } from "fp-ts/lib/Random";
 
 import { constant, identity } from "fp-ts/es6/function";
-import { create } from "domain";
 
 export const URL = "https://jsonplaceholder.typicode.com/users/1";
 

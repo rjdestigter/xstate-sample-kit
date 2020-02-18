@@ -1,6 +1,6 @@
 import { Option, fold as foldOption } from "fp-ts/lib/Option";
 import { pipe } from "fp-ts/lib/pipeable";
-import { identity, constant, flip } from "fp-ts/lib/function";
+import { identity, constant } from "fp-ts/lib/function";
 
 export type Getter<K extends string> = <
   T,
@@ -28,7 +28,7 @@ export const foldMaybe = <T>(maybe: Option<T>) => (base: T) => pipe(
   foldOption(constant(base), identity)
 )
 
-export const foldValue = <T>(base: T) => <U>(maybe: Option<T>) => pipe(
+export const foldValue = <T>(base: T) => (maybe: Option<T>) => pipe(
   maybe,
   foldOption(constant(base), identity)
 )

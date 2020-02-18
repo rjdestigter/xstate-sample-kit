@@ -43,7 +43,7 @@ export const UsernameInput = (props: PropsUsername) => (
           children: props.invalid ? <span>{"A username is required!"}</span> : "",
           validationMsg: true,
         }}
-        withLeadingIcon={<Icon icon={'person'} theme={props.focused ? 'primary' : '' as any} />}
+        icon={<Icon icon={'person'} theme={props.focused ? 'primary' : '' as any} />}
       />
     </div>
   </>

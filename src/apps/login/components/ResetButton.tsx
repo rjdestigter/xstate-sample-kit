@@ -1,15 +1,11 @@
 import * as React from "react";
 
-import { State } from "xstate";
-
+// Components
 import Button from "../../../modules/components/input-controls/Button";
 
+// Modules
 import { PropsOf } from "../../../modules/types";
-
-import {
-  Context as InputControlContext,
-  Event as InputControlEvent
-} from "../../../modules/machines/input-control";
+import { Event as InputControlEvent } from "../../../modules/machines/input-control";
 
 import { api } from "../../../modules/machines/login";
 
@@ -21,7 +17,6 @@ export interface PropsResetButton
 
 const ResetButton = (props: PropsResetButton) => (
   <Button
-    {...props}
     data-test="btn-reset"
     type="button"
     theme="secondary"

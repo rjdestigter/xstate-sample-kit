@@ -1,3 +1,8 @@
+// Libs
+import { assign } from "xstate";
+import * as O from "fp-ts/lib/Option";
+import * as E from "fp-ts/lib/Either";
+
 import {
   StateType,
   EventType,
@@ -9,18 +14,7 @@ import {
   Config
 } from "./types";
 
-import { assign, State } from "xstate";
-
-import {
-  some,
-  Option,
-  fromNullable,
-  map as mapOption,
-  none
-} from "fp-ts/lib/Option";
-
 import { prefixer } from "../../utils";
-import { Either, left, right } from "fp-ts/lib/Either";
 import { isDoneInvokeEvent, isErrorPlatformEvent } from "../../xstate";
 
 /**
@@ -65,7 +59,7 @@ export const configuration = <L, R, I extends string>(options: { id: I }) => {
 
 export type ConfigureParams<L, R, I extends string> = {
   id: I;
-  initialValue?: Either<L, R>;
+  initialValue?: E.Either<L, R>;
 };
 
 /**
@@ -85,13 +79,13 @@ export function configure<L, R, I extends string>(
 
   const api: Api<L, R, I> = {
     eventCreators: {
-      submit: (promiser: () => Promise<Either<L, R>>): SubmitEvent => ({
+      submit: (promiser: () => Promise<E.Either<L, R>>): SubmitEvent => ({
         type: prefix(EventType.Submit),
         promiser
       }),
       reset: (): ResetEvent => ({ type: prefix(EventType.Reset) })
     },
-    selector: (ctx: Context<L, R, I>) => ctx[id] ?? none
+    selector: (ctx: Context<L, R, I>) => ctx[id] ?? O.none
   };
 
   const isEvent = <E extends Event<L, R>["type"]>(eventType: E) => (
@@ -105,19 +99,9 @@ export function configure<L, R, I extends string>(
 
   const assignInitial = assign<Context<L, R, I>, Event<L, R>>(ctx => {
     return {
-      [id]: none
+      [id]: O.none
     } as any;
   });
-
-  // const assignError = assign<Context<L, R, I>, Event<L, R>>((ctx, e) => {
-  //   const value: Option<Either<L, R>> = isFailEvent(e)
-  //     ? pipe(fromNullable(e.error), mapOption(left))
-  //     : ctx[id];
-
-  //   return {
-  //     [id]: value
-  //   } as any;
-  // });
 
   const c = <K extends string, V>(key: K, value: V): { [P in K]: V } =>
     ({ [key]: value } as any);
@@ -125,10 +109,10 @@ export function configure<L, R, I extends string>(
   const assignDone = assign<Context<L, R, I>, Event<L, R>>(
     (ctx, e): Partial<Context<L, R, I>> => {
       if (isErrorPlatformEvent(e)) {
-        return c(id, some(left<L, R>(e.data)) as any)
+        return c(id, O.some(E.left<L, R>(e.data)) as any)
       }
 
-      return (isDoneInvokeEvent(e) ? c(id, some(e.data)) : ctx) as {};
+      return (isDoneInvokeEvent(e) ? c(id, O.some(e.data)) : ctx) as {};
     }
   );
 

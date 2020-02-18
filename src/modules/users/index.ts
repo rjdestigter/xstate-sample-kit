@@ -1,5 +1,3 @@
-import { User } from './types'
-
 import { getter } from '../fp'
 
 export * from './types'
