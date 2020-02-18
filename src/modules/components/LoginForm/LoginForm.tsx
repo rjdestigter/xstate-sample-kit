@@ -13,7 +13,8 @@ export interface PropsLoginForm {
 }
 
 const LoginForm = (props: PropsLoginForm) => {
-  const [t] = useTranslation();
+  const [t, i18n] = useTranslation();
+
   return (
   <form>
       <Typography use={"headline3"}>{`[${t(text.titleOfShow)}]`}</Typography>

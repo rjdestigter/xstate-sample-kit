@@ -1,6 +1,6 @@
 import React from "react";
 
-import Content from "../../../modules/components/Content";
+import Content from "../../../modules/components/Content/Content";
 import CLoginForm from "../../../modules/components/LoginForm";
 
 import LoginButton from "./LoginButton";
@@ -22,7 +22,6 @@ export interface PropsLoginForm {
 
 const LoginForm = (props: PropsLoginForm) => {
   return (
-    <Content loading={props.isSubmitting}>
       <CLoginForm
         usernameInput={
           <UsernameInput
@@ -46,7 +45,6 @@ const LoginForm = (props: PropsLoginForm) => {
         }
         resetButton={props.resetButton}
       />
-    </Content>
   );
 };
 

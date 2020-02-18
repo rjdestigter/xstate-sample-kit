@@ -1,6 +1,8 @@
+import classes from './Content.module.scss'
+
 import * as React from "react";
 
-import LinearProgress from "./LinearProgress";
+import LinearProgress from "../LinearProgress";
 
 const styles: React.CSSProperties = {
   flex: "1 1 auto",
@@ -12,7 +14,7 @@ const styles: React.CSSProperties = {
 
 const Content = (props: { children: React.ReactNode; loading?: boolean }) => (
   <>
-    <div style={styles}>{props.children}</div>
+    <div className={classes.content} style={styles}>{props.children}</div>
     <LinearProgress progress={props.loading ? undefined : 0} />
   </>
 );

@@ -4,7 +4,6 @@
   "Logout": "Logout",
   "Cancel": "Cancel",
   "Try again": "Try again",
-  "Welcome %username": "Welcome %0",
   "The server responded with code %code": "The server responded with %0: %1",
   "The server has responded with an unknown response.": "The server has responded with an unknown response.",
   "The following error has occurred": "The following error has occurred: %0"

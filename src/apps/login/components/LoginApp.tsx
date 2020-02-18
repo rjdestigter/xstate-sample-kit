@@ -7,7 +7,7 @@ import { pipe } from "fp-ts/lib/pipeable";
 import { constant } from "fp-ts/lib/function";
 
 // Components
-import Content from "../../../modules/components/Content";
+import Content from "../../../modules/components/Content/Content";
 import WelcomeMessage from "../../../modules/components/WelcomeMessage";
 import ResetButton from "./ResetButton";
 import FailureMessage from "./FailureMessage";

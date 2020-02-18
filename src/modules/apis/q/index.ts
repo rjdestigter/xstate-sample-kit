@@ -80,16 +80,20 @@ export const q = <T>(
     }
 
     return pipe(
+      // Try to decode the incoming JSON with the given type decoder
       decoder.decode(json),
+      // Map failure of the decoding process:
       E.mapLeft(
         (decodeError): Failure =>
           pipe(
             pipe(
+              // First try to decode the json as an ApiFailure
               ApiFailure.decode(json),
               E.map(
                 createApiFailure,
               )
             ),
+            // But if that fails keep the initial decoding failure
             E.fold(constant(createDecodeFailure(decodeError)), identity)
           )
       )

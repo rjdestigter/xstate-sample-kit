@@ -1,6 +1,8 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
+import { Button } from '../modules/components/input-controls/Button';
+
+// import '../mdc.scss'
 
 export default {
   title: 'Button',

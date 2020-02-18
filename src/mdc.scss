@@ -1,0 +1,22 @@
+
+$mdc-theme-primary: #ffd230; // baseline purple, 500 tone
+$mdc-theme-secondary: #27f5ff;
+$mdc-theme-background: rgb(17, 3, 34); // White
+$mdc-theme-surface: $mdc-theme-background; // White
+$mdc-theme-error: #ff7070;
+
+// Theme
+@import "@material/theme/mdc-theme.scss";
+
+// TextField
+@import '@material/textfield/mdc-text-field.scss';
+@import '@material/floating-label/mdc-floating-label.scss';
+@import '@material/notched-outline/mdc-notched-outline.scss';
+@import '@material/line-ripple/mdc-line-ripple.scss';
+
+// Button
+@import "@material/button/mdc-button.scss";
+
+// Linear Progress
+@import '@material/linear-progress/mdc-linear-progress.scss';
+

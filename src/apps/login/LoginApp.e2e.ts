@@ -4,12 +4,11 @@ import { createModel } from "@xstate/test";
 import { Page, Request } from "puppeteer";
 
 // Text
-import loginAppText from "./apps/login/components/text.json";
+import loginAppText from "./components/text.json";
 
 // Modules
-import delay from "./modules/delay";
-import { format } from "./modules/utils";
-import { request } from "http";
+import delay from "../../modules/delay";
+import { format } from "../../modules/utils";
 
 type ExtractContext<T> = T extends StateNode<infer TContext, any, any, any>
   ? TContext
@@ -61,7 +60,7 @@ const mockResponse = (failWith = "") => {
 const onRequest = async (interceptedRequest: Request): Promise<void> => {
   await delay(1000);
 
-  const frameUrl = interceptedRequest.frame()?.url() || ""
+  const frameUrl = interceptedRequest.frame()?.url() || "";
   const url = interceptedRequest.url();
 
   if (/jsonplaceholder/.test(url)) {
