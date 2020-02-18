@@ -31,6 +31,8 @@ const bind = <T extends any[]>(f: (...t: T) => any) => (...t: T) => () => {
   f(...t);
 };
 
+const getEventTargetValue = getter2('currentTarget', 'value')
+
 const FromMachine = <I extends string, TContext extends Context<string, I>>(
   props: PropsFromMachine<I, TContext>
 ) => {
@@ -42,7 +44,7 @@ const FromMachine = <I extends string, TContext extends Context<string, I>>(
   const inputProps: ProvidedInputProps = {
     value,
     onChange: flow(
-      (event: React.FormEvent<HTMLInputElement>) => event.currentTarget.value,
+      getEventTargetValue,
       props.api.eventCreators.change,
       props.send
     ),

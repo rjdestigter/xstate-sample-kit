@@ -8,12 +8,12 @@ import {
 
 import Password from "../../../modules/components/input-controls/Password";
 
+import { api } from '../../../modules/machines/password'
+
 import FromInputControlMachine, {
   ProvidedInputProps
 } from "../../../modules/components/input-controls/FromMachine";
 
-
-import { api } from "../../../modules/machines/login";
 
 const passwordRenderProp = <T, E extends EventObject>(current: State<T, E>) => (
   props: ProvidedInputProps
@@ -49,7 +49,7 @@ const PasswordInput = <
   <FromInputControlMachine
     send={props.send}
     context={props.current.context}
-    api={api.password}
+    api={api}
   >
     {passwordRenderProp(props.current)}
   </FromInputControlMachine>

@@ -1,38 +1,57 @@
+// Libs
 import { Machine, StateNode, assign } from "xstate";
 import { createModel } from "@xstate/test";
 import { Page, Request } from "puppeteer";
 
-type ExtractContext<T> = T extends StateNode<infer C, any, any, any>
-  ? C
+// Text
+import loginAppText from "./apps/login/components/text.json";
+
+// Modules
+import delay from "./modules/delay";
+import { format } from "./modules/utils";
+import { request } from "http";
+
+type ExtractContext<T> = T extends StateNode<infer TContext, any, any, any>
+  ? TContext
   : never;
 
-const mockResponse = (doFail = false) => ({
-  status: doFail ? 500 : 200,
-  contentType: "application/json",
-  body: JSON.stringify({
-    id: 1,
-    name: "Leanne Graham",
-    [doFail ? "missingUsername" : "username"]: "Tester",
-    email: "Sincere@april.biz",
-    address: {
-      street: "Kulas Light",
-      suite: "Apt. 556",
-      city: "Gwenborough",
-      zipcode: "92998-3874",
-      geo: {
-        lat: "-37.3159",
-        lng: "81.1496"
+const mockResponse = (failWith = "") => {
+  if (failWith === "api") {
+    return {
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ code: 13, error: "Oops!" })
+    };
+  }
+
+  return {
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      id: 1,
+      name: "Leanne Graham",
+      [failWith === "decode" ? "missingUsername" : "username"]: "Tester",
+      email: "Sincere@april.biz",
+      address: {
+        street: "Kulas Light",
+        suite: "Apt. 556",
+        city: "Gwenborough",
+        zipcode: "92998-3874",
+        geo: {
+          lat: "-37.3159",
+          lng: "81.1496"
+        }
+      },
+      phone: "1-770-736-8031 x56442",
+      website: "hildegard.org",
+      company: {
+        name: "RomaguerCrona",
+        catchPhrase: "Multi-layered client-server neural-net",
+        bs: "harness real-time e-markets"
       }
-    },
-    phone: "1-770-736-8031 x56442",
-    website: "hildegard.org",
-    company: {
-      name: "RomaguerCrona",
-      catchPhrase: "Multi-layered client-server neural-net",
-      bs: "harness real-time e-markets"
-    }
-  })
-});
+    })
+  };
+};
 
 /**
  * Event handler for intercepting network requests during tests.
@@ -40,10 +59,20 @@ const mockResponse = (doFail = false) => ({
  * @param interceptedRequest Request object
  */
 const onRequest = async (interceptedRequest: Request): Promise<void> => {
-  if (/jsonplaceholder/.test(interceptedRequest.url())) {
-    const doFail = /fail=true/.test(interceptedRequest.frame()!.url()!);
-    await interceptedRequest.respond(mockResponse(doFail));
-  } else if (/googleapis/.test(interceptedRequest.url())) {
+  await delay(1000);
+
+  const frameUrl = interceptedRequest.frame()?.url() || ""
+  const url = interceptedRequest.url();
+
+  if (/jsonplaceholder/.test(url)) {
+    const [, failWith = ""] = frameUrl.match(/failWith=(.+)/) || [];
+
+    if (failWith === "error") {
+      return interceptedRequest.abort();
+    }
+
+    await interceptedRequest.respond(mockResponse(failWith));
+  } else if (/googleapis/.test(url)) {
     interceptedRequest.abort();
   } else {
     interceptedRequest.continue();
@@ -97,7 +126,7 @@ describe("Login", () => {
           username: {
             meta: {
               test: async (page: Page) => {
-                return true // await page.waitFor('input[data-test="input-username"]');
+                return true; // await page.waitFor('input[data-test="input-username"]');
               }
             },
             on: {
@@ -112,7 +141,7 @@ describe("Login", () => {
           password: {
             meta: {
               test: async (page: Page) => {
-                return true // await page.waitFor('input[data-test="input-password"]');
+                return true; // await page.waitFor('input[data-test="input-password"]');
               }
             },
             on: {
@@ -129,7 +158,7 @@ describe("Login", () => {
       submitting: {
         meta: {
           test: async (page: Page) => {
-            await page.waitFor('button[data-test="btn-login"][disabled');
+            await page.waitFor('button[data-test="btn-login"][disabled]');
             await page.waitFor('button[data-test="btn-reset"]');
 
             const usernameInputEl = await page.waitFor(
@@ -154,15 +183,6 @@ describe("Login", () => {
 
             expect(passwordIsDisabled).toBe(true);
 
-            // const buttonEl = await page.$("button[data-test=\"btn-login\"]");
-
-            // const buttonText = await page.evaluate(
-            //   (button: HTMLButtonElement) => button.textContent,
-            //   buttonEl
-            // );
-
-            // expect(buttonText).toMatch(/authenticating/);
-
             const btnResetEl = await page.$('button[data-test="btn-reset"]');
 
             const btnResetText = await page.evaluate(
@@ -174,7 +194,9 @@ describe("Login", () => {
           }
         },
         on: {
-          BAD: "failure",
+          BAD_API: "apiFailure",
+          BAD_DECODE: "decodeFailure",
+          BAD_ERROR: "errorFailure",
           OK: "success",
           RESET: {
             target: "inProgress",
@@ -185,16 +207,96 @@ describe("Login", () => {
           }
         }
       },
-      failure: {
+      apiFailure: {
         meta: {
           test: async (page: Page) => {
-            await page.waitFor("div.fail");
-            const divEl = await page.$("div.fail");
-            const text = await page.evaluate(
-              (el: HTMLDivElement) => el.textContent,
-              divEl
+            await page.waitFor('[data-test="FailureMessage"]');
+            const failureMessageEl = await page.$(
+              '[data-test="FailureMessage"]'
             );
-            expect(text).toMatch(/Something went terribly wrong/);
+
+            expect(failureMessageEl).toBeTruthy();
+
+            if (failureMessageEl) {
+              const text = await page.evaluate(
+                el => el.textContent,
+                failureMessageEl
+              );
+              expect(text).toEqual(
+                format(
+                  loginAppText["The server responded with code %code"],
+                  13,
+                  "Oops!"
+                )
+              );
+            }
+          }
+        },
+        on: {
+          RESET: {
+            target: "inProgress",
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
+          }
+        }
+      },
+      errorFailure: {
+        meta: {
+          test: async (page: Page) => {
+            await page.waitFor('[data-test="FailureMessage"]');
+            const failureMessageEl = await page.$(
+              '[data-test="FailureMessage"]'
+            );
+
+            expect(failureMessageEl).toBeTruthy();
+
+            if (failureMessageEl) {
+              const text = await page.evaluate(
+                el => el.textContent,
+                failureMessageEl
+              );
+              expect(text).toEqual(
+                format(
+                  loginAppText["The following error has occurred"],
+                  "TypeError: Failed to fetch"
+                )
+              );
+            }
+          }
+        },
+        on: {
+          RESET: {
+            target: "inProgress",
+            actions: assign<{
+              username: string;
+              password: string;
+            }>({ username: "", password: "" })
+          }
+        }
+      },
+      decodeFailure: {
+        meta: {
+          test: async (page: Page) => {
+            await page.waitFor('[data-test="FailureMessage"]');
+            const failureMessageEl = await page.$(
+              '[data-test="FailureMessage"]'
+            );
+
+            expect(failureMessageEl).toBeTruthy();
+
+            if (failureMessageEl) {
+              const text = await page.evaluate(
+                el => el.textContent,
+                failureMessageEl
+              );
+              expect(text).toEqual(
+                loginAppText[
+                  "The server has responded with an unknown response."
+                ]
+              );
+            }
           }
         },
         on: {
@@ -257,7 +359,13 @@ describe("Login", () => {
     OK: {
       exec: async () => true
     },
-    BAD: {
+    BAD_API: {
+      exec: async () => true
+    },
+    BAD_DECODE: {
+      exec: async () => true
+    },
+    BAD_ERROR: {
       exec: async () => true
     },
     RESET: {
@@ -267,7 +375,11 @@ describe("Login", () => {
     }
   });
 
-  const testPlans = toggleModel.getShortestPathPlans({});
+  const testPlans = toggleModel
+    .getShortestPathPlans({
+      // filter: state => state.matches('bad')
+    })
+    .reverse();
 
   testPlans.forEach(plan => {
     describe(plan.description, () => {
@@ -275,12 +387,18 @@ describe("Login", () => {
         it(
           path.description,
           async () => {
-            await page.goto(
-              "http://localhost:7000?fail=" + /BAD/.test(path.description)
-            );
+            const failWith = /BAD_API/.test(path.description)
+              ? "api"
+              : /BAD_DECODE/.test(path.description)
+              ? "decode"
+              : /BAD_ERROR/.test(path.description)
+              ? "error"
+              : "";
+
+            await page.goto(`http://localhost:7000?failWith=${failWith}`);
             await path.test(page);
           },
-          5000
+          60000
         );
       });
     });

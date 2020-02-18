@@ -1,29 +1,29 @@
+// Libs
 import React from "react";
-
 import { useMachine } from "@xstate/react";
-
-import LoginButton from "./LoginButton";
-import UsernameInput from "./UsernameInput";
-import PasswordInput from "./PasswordInput";
-import ResetButton from "./ResetButton";
-import Content from "../../../modules/components/Content";
-
-import LoginForm from "../../../modules/components/LoginForm";
-
-import { fetchUser } from "../../../modules/apis/login-api";
-
 import * as O from "fp-ts/lib/Option";
 import * as E from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import { constant } from "fp-ts/lib/function";
 
+// Components
+import Content from "../../../modules/components/Content";
+import WelcomeMessage from "../../../modules/components/WelcomeMessage";
+import ResetButton from "./ResetButton";
+import FailureMessage from "./FailureMessage";
+import LoginForm from "./LoginForm";
+
+// Modules
+import { fetchUser } from "../../../modules/apis/login-api";
 import { useServiceLogger } from "../../../modules/xstate";
-
 import { getter, foldString } from "../../../modules/fp";
-
 import { machine as loginMachine, api } from "../../../modules/machines/login";
-import { isApiFailure, isDecodeFailure } from "../../../modules/apis/q";
+import { format } from "../../../modules/utils";
 
+// Text
+import text from "./text.json";
+
+// Exports
 const LoginApp = () => {
   const [current, send, service] = useMachine(loginMachine);
 
@@ -46,96 +46,61 @@ const LoginApp = () => {
   );
 
   const resetText = isInProgress
-    ? "Reset"
+    ? text["Reset"]
     : isSubmitting
-    ? "Cancel"
+    ? text["Cancel"]
     : loggedIn
-    ? "Logout"
-    : "Try again";
+    ? text["Logout"]
+    : text["Try again"];
 
-  const resetButton = (
-    <ResetButton
-      onClick={() => {
-        send([
-          api.status.eventCreators.reset(),
-          api.username.eventCreators.reset(),
-          api.password.eventCreators.reset()
-        ]);
-      }}
-    >
-      {resetText}
-    </ResetButton>
-  );
+  const resetButton = <ResetButton send={send}>{resetText}</ResetButton>;
 
   const form = (
-    <Content loading={isSubmitting}>
-      <LoginForm
-        usernameInput={
-          <UsernameInput
-            send={send}
-            current={current}
-            context={current.context}
-          />
-        }
-        passwordInput={
-          <PasswordInput
-            send={send}
-            current={current}
-            context={current.context}
-          />
-        }
-        loginButton={
-          <LoginButton
-            disabled={canNotSubmit}
-            onClick={() => {
-              send(
-                api.status.eventCreators.submit(() =>
-                  fetchUser({
-                    username: foldString(current.context.username),
-                    password: foldString(current.context.password)
-                  })
-                )
-              );
-            }}
-          />
-        }
-        resetButton={resetButton}
-      />
-    </Content>
+    <LoginForm
+      send={send}
+      current={current}
+      isInProgress={isInProgress}
+      isNotInProgress={isNotInProgress}
+      usernameIsInvalid={usernameIsInvalid}
+      passwordIsInvalid={passwordIsInvalid}
+      isSubmitting={isSubmitting}
+      canNotSubmit={canNotSubmit}
+      onLogin={() => {
+        send(
+          api.status.eventCreators.submit(() =>
+            fetchUser({
+              username: foldString(current.context.username),
+              password: foldString(current.context.password)
+            })
+          )
+        );
+      }}
+      resetButton={resetButton}
+    />
   );
 
-  return pipe(
+  const content = pipe(
     api.status.selector(current.context),
     O.fold(constant(form), either =>
       pipe(
         either,
         E.fold(
-          failure => {
-            const failureMessage = isApiFailure(failure)
-              ? `The server responded with code ${failure.error.code}: ${failure.error.error}`
-              : isDecodeFailure(failure)
-              ? `The server has responded with an unknown response.`
-              : `The following error has occurred: ${failure.error}`
-            return (
-              <Content>
-                <div className="fail">{failureMessage}</div>
-                <br />
-                {resetButton}
-              </Content>
-            );
-          },
+          failure => <FailureMessage failure={failure} />,
+
           user => {
             return (
-              <Content>
-                <div id="welcome">Welcome {getter("username")(user)}</div>
+              <>
+                <WelcomeMessage user={user} />
                 {resetButton}
-              </Content>
+              </>
             );
           }
         )
       )
     )
   );
+
+  return <Content loading={isSubmitting}>{content}</Content>;
 };
 
 export default LoginApp;

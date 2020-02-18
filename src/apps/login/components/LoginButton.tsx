@@ -3,6 +3,8 @@ import * as React from "react";
 import Button from "../../../modules/components/input-controls/Button";
 import { PropsOf } from "../../../modules/types";
 
+import text from './text.json'
+
 export interface PropsLoginButton extends PropsOf<typeof Button> {
   disabled: boolean;
   onClick: () => void;
@@ -17,7 +19,7 @@ const LoginButton = (props: PropsLoginButton) => (
     disabled={props.disabled}
     onClick={props.onClick}
   >
-    {"Login"}
+    {text.Login}
   </Button>
 );
 

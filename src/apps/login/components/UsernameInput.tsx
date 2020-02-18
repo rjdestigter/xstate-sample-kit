@@ -13,7 +13,8 @@ import FromInputControlMachine, {
 } from "../../../modules/components/input-controls/FromMachine";
 
 
-import { api } from "../../../modules/machines/login";
+import { api } from "../../../modules/machines/username";
+
 
 const usernameRenderProp = <T, E extends EventObject>(current: State<T, E>) => (
   props: ProvidedInputProps
@@ -49,7 +50,7 @@ const UsernameInput = <
   <FromInputControlMachine
     send={props.send}
     context={props.current.context}
-    api={api.username}
+    api={api}
   >
     {usernameRenderProp(props.current)}
   </FromInputControlMachine>

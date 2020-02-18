@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:e2e": "cross-env PORT=7000 react-scripts start",
+    "start:e2e": "cross-env PORT=7000 E2E=on react-scripts start",
     "craco:start": "craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
