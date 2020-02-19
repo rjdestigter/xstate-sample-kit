@@ -28,12 +28,12 @@ const isFailureReason = <R extends Failure["reason"]>(reason: R) => (
 ): failure is Extract<Failure, { reason: R }> => failure.reason === reason;
 
 const createFailure = <R extends Failure["reason"]>(reason: R) => (
-  error: Extract<Failure, { reason: R }>['error']
-): Failure => ({ reason, error }) as any
+  error: Extract<Failure, { reason: R }>["error"]
+): Failure => ({ reason, error } as any);
 
-export const createApiFailure = createFailure('api')
-export const createDecodeFailure = createFailure('decode')
-export const createErrorFailure = createFailure('error')
+export const createApiFailure = createFailure("api");
+export const createDecodeFailure = createFailure("decode");
+export const createErrorFailure = createFailure("error");
 
 export const isApiFailure = isFailureReason("api");
 export const isDecodeFailure = isFailureReason("decode");
@@ -86,13 +86,9 @@ export const q = <T>(
       E.mapLeft(
         (decodeError): Failure =>
           pipe(
-            pipe(
-              // First try to decode the json as an ApiFailure
-              ApiFailure.decode(json),
-              E.map(
-                createApiFailure,
-              )
-            ),
+            ApiFailure.decode(json),
+            // First try to decode the json as an ApiFailure
+            E.map(createApiFailure),
             // But if that fails keep the initial decoding failure
             E.fold(constant(createDecodeFailure(decodeError)), identity)
           )

@@ -1,6 +1,11 @@
-import { Option, fold as foldOption } from "fp-ts/lib/Option";
-import { pipe } from "fp-ts/lib/pipeable";
-import { identity, constant } from "fp-ts/lib/function";
+import { Option, fold as foldOption } from "fp-ts/es6/Option";
+import { pipe } from "fp-ts/es6/pipeable";
+import { identity, constant } from "fp-ts/es6/function";
+import * as Eq from 'fp-ts/es6/Eq'
+
+const foo: Eq.Eq<{ name: string }> = {
+  equals: (a, b) => a.name === b.name
+}
 
 export type Getter<K extends string> = <
   T,
