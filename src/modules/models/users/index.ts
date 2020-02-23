@@ -1,4 +1,4 @@
-import { getter } from '../fp'
+import { getter } from '../../fp'
 
 export * from './types'
 

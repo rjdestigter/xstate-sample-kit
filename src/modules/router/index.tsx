@@ -11,7 +11,7 @@ import { machine, Event} from './machine'
 import Link from './components/Link'
 import Redirect from './components/Redirect'
 import { Provider } from '../SendContext'
-import * as O from "fp-ts/es6/Option";
+import * as O from "fp-ts/lib/Option";
 
 // Comonents
 const Users = () => {
@@ -69,7 +69,7 @@ const UserDetail = (props: { id: number }) => {
     return () => {
       didCancel = true;
     };
-  });
+  }, [props.id]);
 
   if (user === null) {
     return <Redirect to={"notFound"} />;
@@ -143,7 +143,7 @@ const routes = [
   /users/,
 ]
 
-const gotoEventFromUrl = (rawUrl: string): Event => {
+const makeGotoEventFromUrl = (rawUrl: string): Event => {
   const url = rawUrl.replace(/^\/|\/$/, '')
 
   const { event } = routes.reduce(
@@ -188,7 +188,7 @@ export default () => {
 
   React.useEffect(
     () => {
-      const event = gotoEventFromUrl(history.location.pathname)
+      const event = makeGotoEventFromUrl(history.location.pathname)
       send(event)
       setReady(true)
     },
@@ -201,7 +201,7 @@ export default () => {
 
   return (
     <Provider value={context}>
-    <div style={{background: 'White', padding: 20, margin: 20}}>
+    <div style={{padding: 20}}>
       <Route state={routerState} />
       <hr />
       <Link to={"home"}>Home</Link>

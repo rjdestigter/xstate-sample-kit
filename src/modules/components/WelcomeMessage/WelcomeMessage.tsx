@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { User, getUsername } from "../../users";
+import { User, getUsername } from "../../models/users";
 
 import { format } from "../../utils";
 

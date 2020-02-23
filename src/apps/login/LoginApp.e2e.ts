@@ -7,7 +7,7 @@ import { Page, Request } from "puppeteer";
 import loginAppText from "./components/text.json";
 
 // Modules
-import delay from "../../modules/delay";
+import delay from "../../modules/utils/delay";
 import { format } from "../../modules/utils";
 
 type ExtractContext<T> = T extends StateNode<infer TContext, any, any, any>

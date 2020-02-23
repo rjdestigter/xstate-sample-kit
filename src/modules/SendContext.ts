@@ -1,6 +1,6 @@
 import { Interpreter } from 'xstate'
 import { createContext } from 'react'
-import { Option, none } from 'fp-ts/es6/Option'
+import { Option, none } from 'fp-ts/lib/Option'
 
 export type Send = Option<Interpreter<any, any, any, any>['send']>
 

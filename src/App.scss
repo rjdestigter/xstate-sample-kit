@@ -34,5 +34,9 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  a { 
+    color: $mdc-theme-secondary;
+  }
 }
 

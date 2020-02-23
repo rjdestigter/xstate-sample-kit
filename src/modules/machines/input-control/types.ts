@@ -1,14 +1,9 @@
-import { Option } from "fp-ts/lib/Option";
-
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,
   StateSchema as XStateStateSchema
 } from "xstate";
 
-import { ComposableMachineConfig } from "../../xstate";
-
-export const StateTypeEdit = "edit" as const;
 export const StateTypePristine = "pristine" as const;
 export const StateTypeDirty = "dirty" as const;
 export const StateTypeTouched = "touched" as const;
@@ -20,7 +15,6 @@ export const StateTypeValid = "valid" as const;
 export const StateTypeInvalid = "invalid" as const;
 
 export const StateType = {
-  Edit: StateTypeEdit,
   Pristine: StateTypePristine,
   Dirty: StateTypeDirty,
   Touched: StateTypeTouched,
@@ -53,21 +47,27 @@ export const EventType = {
 export type Event<T> =
   | {
       type: typeof EventType.Change;
-      value?: T | null | undefined;
+      value?: T | undefined;
       isRobot?: boolean;
     }
   | { type: typeof EventType.Focus }
   | { type: typeof EventType.Blur }
   | { type: typeof EventType.Reset };
 
+
+  export type ChangeEvent<T> = Extract<Event<T>, { type: typeof EventType.Change }>;
+  export type FocusEvent<T> = Extract<Event<T>, { type: typeof EventType.Focus }>;
+  export type BlurEvent<T> = Extract<Event<T>, { type: typeof EventType.Blur }>;
+  export type ResetEvent<T> = Extract<Event<T>, { type: typeof EventType.Reset }>;
+
 /**
  * Possible states for the input control machine.
  *
  * @typeparam T See [[Context.value]]
  */
-export interface State<T, I extends string> {
+export interface State<T> {
   /** The input contorl state's context type */
-  context: Context<T, I>;
+  context: any;
   /** The input contorl state's value */
   value: {
     [StateType.Pristine]: typeof StateType.Dirty | typeof StateType.Pristine;
@@ -80,19 +80,9 @@ export interface State<T, I extends string> {
   };
 }
 
-/**
- * Context state for input-control machines.
- *
- * @typeparam T Type of the data the input control outputs. Defaults to `string`
- */
-export type Context<T, I extends string> = {
-  [P in I]: Option<T>;
-};
-
-export interface StateSchema<T, I extends string> extends XStateStateSchema<Context<T, I>> {
+export interface StateSchema<T> extends XStateStateSchema<any> {
   context: {};
   states: {
-    [StateType.Edit]: {};
     [StateType.Pristine]: {
       states: {
         [StateType.Pristine]: {};
@@ -124,34 +114,12 @@ export interface StateSchema<T, I extends string> extends XStateStateSchema<Cont
 export interface EventCreators<E> {
   reset: () => E
 }
-export interface Operable<I extends string, T, E> {
-  eventCreators: EventCreators<E>,
-  selector: (context: Context<T, I>) => Context<T, I>[I];
-}
 
-export interface Api<T, I extends string> {
-  eventCreators: {
-    change: (value: T) => Event<T>;
-    reset: () => Event<T>;
-    focus: () => Event<T>;
-    blur: () => Event<T>;
-  };
-  selector: (context: Context<T, I>) => Context<T, I>[I];
-}
-
-export type MachineOptions<T, I extends string> = Partial<
-  XStateMachineOptions<Context<T, I>, Event<T>>
+export type MachineOptions<T> = Partial<
+  XStateMachineOptions<any, Event<T>>
 >;
 
 export type MachineConfig<
   T,
-  I extends string,
-> = XStateMachineConfig<Context<T, I>, StateSchema<T, I>, Event<T>>;
+> = XStateMachineConfig<any, StateSchema<T>, Event<T>>;
 
-export type Config<T, I extends string> = ComposableMachineConfig<
-  Api<T, I>,
-  Context<T, I>,
-  StateSchema<T, I>,
-  Event<T>,
-  I
->;

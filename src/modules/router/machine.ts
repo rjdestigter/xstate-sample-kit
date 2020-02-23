@@ -43,7 +43,7 @@ export const guards = {
 
 export const actions = {
   setUserId: assign<Context, Event>({ userId: (_, e) => e.userId }),
-  clearUserId: assign<Context, Event>({ userId: (_, _e) => undefined }),
+  clearUserId: assign<Context, Event>({ userId: (_, __) => undefined }),
 }
 
 export const machine = createMachine<Context, Event>(

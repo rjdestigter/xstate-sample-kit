@@ -1,142 +1,45 @@
-// Libs
-import { assign } from "xstate";
-import * as O from "fp-ts/lib/Option";
-import * as E from "fp-ts/lib/Either";
+import { createMachine as createXStateMachine } from "xstate";
 
-import {
-  StateType,
-  EventType,
-  Event,
-  Context,
-  Api,
-  MachineOptions,
-  MachineConfig,
-  Config
-} from "./types";
-
-import { prefixer } from "../../utils";
-import { isDoneInvokeEvent, isErrorPlatformEvent } from "../../xstate";
+import { StateType, EventType, Event } from "./types";
 
 /**
  * Raw configuration for input control state machines
  */
-export const configuration = <L, R, I extends string>(options: { id: I }) => {
-  const { id } = options;
-
-  const prefix = prefixer(id);
-
-  return {
-    initial: StateType.InProgress,
-    on: {
-      [prefix(EventType.Reset)]: {
-        target: `${id}.${StateType.InProgress}`,
-        actions: prefix("assignInitial")
-      }
-    },
-    states: {
-      [StateType.InProgress]: {
-        entry: prefix("assignInitial"),
-        on: {
-          [prefix(EventType.Submit)]: {
-            target: StateType.Submitting
-          }
+export const configuration = {
+  initial: StateType.InProgress,
+  on: {
+    [EventType.Reset]: {
+      target: StateType.InProgress
+    }
+  },
+  states: {
+    [StateType.InProgress]: {
+      on: {
+        [EventType.Submit]: {
+          target: StateType.Submitting
         }
-      },
-      [StateType.Submitting]: {
-        invoke: {
-          id: prefix("submitOperation"),
-          src: prefix("submitOperation"),
-          onDone: StateType.Done,
-          onError:  StateType.Done
-        },
-      },
-      [StateType.Done]: {
-        entry: prefix("assignDone")
-      },
-    }
-  };
-};
-
-export type ConfigureParams<L, R, I extends string> = {
-  id: I;
-  initialValue?: E.Either<L, R>;
-};
-
-/**
- * Create configuration for a input control state machine.
- * @param param0
- */
-
-export function configure<L, R, I extends string>(
-  params: ConfigureParams<L, R, I>
-): Config<L, R, I> {
-  type SubmitEvent = Extract<Event<L, R>, { type: typeof EventType.Submit }>;
-  type ResetEvent = Extract<Event<L, R>, { type: typeof EventType.Reset }>;
-
-  const { id } = params;
-
-  const prefix = prefixer(id);
-
-  const api: Api<L, R, I> = {
-    eventCreators: {
-      submit: (promiser: () => Promise<E.Either<L, R>>): SubmitEvent => ({
-        type: prefix(EventType.Submit),
-        promiser
-      }),
-      reset: (): ResetEvent => ({ type: prefix(EventType.Reset) })
-    },
-    selector: (ctx: Context<L, R, I>) => ctx[id] ?? O.none
-  };
-
-  const isEvent = <E extends Event<L, R>["type"]>(eventType: E) => (
-    event: Event<L, R>
-  ): event is Extract<Event<L, R>, { type: E }> =>
-    event.type === prefix(eventType);
-
-  const isSubmitEvent = isEvent(EventType.Submit);
-
-  const config: MachineConfig<L, R, I> = configuration({ id });
-
-  const assignInitial = assign<Context<L, R, I>, Event<L, R>>(ctx => {
-    return {
-      [id]: O.none
-    } as any;
-  });
-
-  const c = <K extends string, V>(key: K, value: V): { [P in K]: V } =>
-    ({ [key]: value } as any);
-
-  const assignDone = assign<Context<L, R, I>, Event<L, R>>(
-    (ctx, e): Partial<Context<L, R, I>> => {
-      if (isErrorPlatformEvent(e)) {
-        return c(id, O.some(E.left<L, R>(e.data)) as any)
       }
-
-      return (isDoneInvokeEvent(e) ? c(id, O.some(e.data)) : ctx) as {};
-    }
-  );
-
-  const options: MachineOptions<L, R, I> = {
-    services: {
-      [prefix("submitOperation")]: ((_ctx: Context<L, R, I>, e: Event<L, R>) =>
-        isSubmitEvent(e)
-          ? e.promiser()
-          : Promise.reject("submitService invoked by non-submit event!")) as any
     },
-    actions: {
-      [prefix("assignInitial")]: assignInitial,
-      [prefix("assignDone")]: assignDone,
-      // [prefix("assignError")]: assignError
+    [StateType.Submitting]: {
+      invoke: {
+        id: "submitOperation",
+        src: "submitOperation",
+        onDone: StateType.Done,
+        onError: StateType.Done
+      }
     },
-    guards: {
-      // [prefix("canSubmit")]: params.canSubmit,
-    }
-  };
+    [StateType.Done]: {}
+  }
+};
 
-  return {
-    id,
-    config,
-    options,
-    api
-  };
-}
+export const services = {
+  submitOperation: (_: any, evt: Event<any, any>) =>
+    evt.type === EventType.Submit
+      ? evt.promiser()
+      : Promise.reject("submitService invoked by non-submit event!")
+};
+
+export const createMachine = <L, R>() =>
+  createXStateMachine<any, Event<L, R>>(configuration, {
+    services: services as any
+  });
