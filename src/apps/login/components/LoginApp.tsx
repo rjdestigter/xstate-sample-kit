@@ -17,28 +17,50 @@ import LoginForm from "./LoginForm";
 import { fetchUser } from "../../../modules/apis/login-api";
 import { useServiceLogger } from "../../../modules/xstate";
 import { foldString } from "../../../modules/fp";
-import { machine as loginMachine, api } from "../../../modules/machines/login";
+// import { machine as loginMachine, api } from "../../../modules/machines/login";
+
+import configuration, {
+  createMachine, EventType
+} from "../../../modules/machines/operator";
 
 // Text
 import text from "./text.json";
+import { User } from "../../../modules/models/users";
+import { Failure } from "../../../modules/apis/q";
+
+import { isValid$ as usernameIsValid$ } from "./UsernameInput";
+import { isValid$ as passwordIsValid$ } from "./PasswordInput";
+import { merge, map, startWith } from "rxjs/operators";
+import { combineLatest } from "rxjs";
+import { useObservableState } from "observable-hooks";
+
+import { loginOperation$, anonymousUser$ } from '../../../modules/streams/authentication'
+
+const isValid$ = combineLatest(usernameIsValid$, passwordIsValid$).pipe(
+  map(([a, b]) => a && b),
+);
+
+const machine = createMachine<Failure, User>();
 
 // Exports
 const LoginApp = () => {
-  const [current, send, service] = useMachine(loginMachine);
-
+  // Hooks
+  const [operatorState, send, service] = useMachine(machine);
+  const isValid = useObservableState(isValid$, false)
+  const loginOperation = useObservableState(loginOperation$, O.none)
+ 
   useServiceLogger(service, "login");
 
-  const isInProgress = current.matches("status.inProgress");
+  // Derived information
+  const isInProgress = operatorState.matches("inProgress");
   const isNotInProgress = !isInProgress;
-  const usernameIsInvalid = current.matches("password.valid.invalid");
-  const passwordIsInvalid = current.matches("password.valid.invalid");
-  const isSubmitting = current.matches("status.submitting");
+  const isSubmitting = operatorState.matches("submitting");
 
   const canNotSubmit =
-    isNotInProgress || usernameIsInvalid || passwordIsInvalid;
+    isNotInProgress || !isValid
 
   const loggedIn = pipe(
-    api.status.selector(current.context),
+    loginOperation,
     O.fold(constant(false), either =>
       pipe(either, E.fold(constant(false), constant(true)))
     )
@@ -52,34 +74,36 @@ const LoginApp = () => {
     ? text["Logout"]
     : text["Try again"];
 
-  const resetButton = <ResetButton send={send}>{resetText}</ResetButton>;
+  const reset = () => {
+    send({ type: EventType.Reset})
+    anonymousUser$.next({ username: "", password: ""})
+    loginOperation$.next(O.none)
+  }
+
+  const resetButton = <ResetButton onClick={reset}>{resetText}</ResetButton>;
 
   const form = (
     <LoginForm
-      send={send}
-      current={current}
-      isInProgress={isInProgress}
-      isNotInProgress={isNotInProgress}
-      usernameIsInvalid={usernameIsInvalid}
-      passwordIsInvalid={passwordIsInvalid}
       isSubmitting={isSubmitting}
       canNotSubmit={canNotSubmit}
       onLogin={() => {
-        send(
-          api.status.eventCreators.submit(() =>
-            fetchUser({
-              username: foldString(current.context.username),
-              password: foldString(current.context.password)
-            })
-          )
-        );
+        send({
+          type: EventType.Submit,
+          promiser: async () => {
+            const response = await fetchUser(anonymousUser$.getValue())
+
+            loginOperation$.next(O.some(response))
+
+            return response
+          }
+        });
       }}
       resetButton={resetButton}
     />
   );
 
   const content = pipe(
-    api.status.selector(current.context),
+    loginOperation,
     O.fold(constant(form), either =>
       pipe(
         either,

@@ -1,7 +1,5 @@
 import { DoneInvokeEvent, ErrorPlatformEvent } from "xstate";
 
-export * from "./composable";
-export { default as mergeOptions } from "./mergeOptions";
 export { default as withContext } from "./withContext";
 export { default as useServiceLogger } from "./useServiceLogger";
 

@@ -1,4 +1,4 @@
-import { User } from "../../users/types";
+import { User } from "../../models/users/types";
 
 import q from '../q'
 

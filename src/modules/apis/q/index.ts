@@ -1,9 +1,9 @@
 import * as t from "io-ts";
-import * as E from "fp-ts/es6/Either";
-import { pipe } from "fp-ts/es6/pipeable";
+import * as E from "fp-ts/lib/Either";
+import { pipe } from "fp-ts/lib/pipeable";
 import { randomInt } from "fp-ts/lib/Random";
 
-import { constant, identity } from "fp-ts/es6/function";
+import { constant, identity } from "fp-ts/lib/function";
 
 export const URL = "https://jsonplaceholder.typicode.com/users/1";
 

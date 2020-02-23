@@ -1,6 +1,5 @@
 import React from "react";
 
-import Content from "../../../modules/components/Content/Content";
 import CLoginForm from "../../../modules/components/LoginForm";
 
 import LoginButton from "./LoginButton";
@@ -8,43 +7,22 @@ import UsernameInput from "./UsernameInput";
 import PasswordInput from "./PasswordInput";
 
 export interface PropsLoginForm {
-  send: any;
-  current: any;
-  onLogin: () => void;
-  resetButton: React.ReactNode;
-  isInProgress: boolean;
-  isNotInProgress: boolean;
-  usernameIsInvalid: boolean;
-  passwordIsInvalid: boolean;
   isSubmitting: boolean;
   canNotSubmit: boolean;
+  onLogin: () => void;
+  resetButton: React.ReactNode;
 }
 
 const LoginForm = (props: PropsLoginForm) => {
   return (
-      <CLoginForm
-        usernameInput={
-          <UsernameInput
-            send={props.send}
-            current={props.current}
-            context={props.current.context}
-          />
-        }
-        passwordInput={
-          <PasswordInput
-            send={props.send}
-            current={props.current}
-            context={props.current.context}
-          />
-        }
-        loginButton={
-          <LoginButton
-            disabled={props.canNotSubmit}
-            onClick={props.onLogin}
-          />
-        }
-        resetButton={props.resetButton}
-      />
+    <CLoginForm
+      usernameInput={<UsernameInput disabled={props.isSubmitting} />}
+      passwordInput={<PasswordInput disabled={props.isSubmitting} />}
+      loginButton={
+        <LoginButton disabled={props.canNotSubmit} onClick={props.onLogin} />
+      }
+      resetButton={props.resetButton}
+    />
   );
 };
 

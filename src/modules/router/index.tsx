@@ -11,7 +11,7 @@ import { machine, Event} from './machine'
 import Link from './components/Link'
 import Redirect from './components/Redirect'
 import { Provider } from '../SendContext'
-import * as O from "fp-ts/es6/Option";
+import * as O from "fp-ts/lib/Option";
 
 // Comonents
 const Users = () => {

@@ -8,7 +8,6 @@ import usernameLabel from "../../labels/usernameLabel";
 import { PropsOf } from '../../../types'
 
 type InputProps = PropsOf<typeof Input>;
-
 export interface PropsUsername {
   value: string;
   onChange: InputProps["onChange"];

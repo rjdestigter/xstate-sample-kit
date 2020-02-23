@@ -1,58 +1,82 @@
 import * as React from "react";
-import { State, EventObject } from "xstate";
 
-import {
-  Context as InputControlContext,
-  Event as InputControlEvent
+import { useObservableState } from "observable-hooks";
+
+import PasswordInput, {
+  PropsPassword
+} from "../../../modules/components/input-controls/Password";
+
+import createMachine, {
+  EventType
 } from "../../../modules/machines/input-control";
 
-import Password from "../../../modules/components/input-controls/Password";
+import {
+  anonymousUser$,
+  initialAnonymousUser
+} from "../../../modules/streams/authentication";
+import { useMachine } from "@xstate/react";
+import { getter2 } from "../../../modules/fp";
+import { pipe } from "fp-ts/lib/pipeable";
+import * as R from "fp-ts/lib/Reader";
+import { Interpreter } from "xstate";
+import { BehaviorSubject } from "rxjs";
 
-import { api } from '../../../modules/machines/password'
+const machine = createMachine<string>({
+  isValid: password => (password ? !!password.trim() : false)
+});
 
-import FromInputControlMachine, {
-  ProvidedInputProps
-} from "../../../modules/components/input-controls/FromMachine";
+type Event = React.FormEvent<HTMLInputElement>;
 
+const identity = (event: Event) => event;
 
-const passwordRenderProp = <T, E extends EventObject>(current: State<T, E>) => (
-  props: ProvidedInputProps
-) => (
-  <Password
-    {...props}
-    focused={current.matches('password.focused.focused')}
-    disabled={current.matches("status.submitting")}
-    invalid={
-      current.matches("password.touched.touched") &&
-      current.matches("password.valid.invalid")
-    }
-  />
-);
+const getEventValue = R.map<Event, string>(getter2("currentTarget", "value"));
 
-export type PropsPasswordInput<
-  TContext extends InputControlContext<string, "password">,
-  TEvent extends EventObject,
-  TState extends State<TContext, any, any, any>
-> = {
-  send: (evt: InputControlEvent<string>) => void;
-  context: TContext;
-  current: TState;
+const streamPassword = (username: string) =>
+  R.chain<Event, string, string>(password => () => {
+    anonymousUser$.next({
+      password,
+      username
+    });
+
+    return password;
+  });
+
+const dispatchChangeEvent = (send: Interpreter<any, any, any, any>["send"]) =>
+  R.map(value => {
+    send({ type: EventType.Change, value });
+  });
+
+export const isValid$ = new BehaviorSubject(false)
+
+const Password = (
+  props: Omit<PropsPassword, "value" | "onChange" | "onFocus" | "onBlur" | "invalid" | "focused">
+) => {
+  const [state, send] = useMachine(machine);
+
+  const { password, username } = useObservableState(
+    anonymousUser$,
+    initialAnonymousUser
+  );
+
+  const onChange = pipe(
+    identity,
+    getEventValue,
+    streamPassword(username),
+    dispatchChangeEvent(send),
+    R.chain(_ => () => isValid$.next(state.matches('valid.valid')))
+  );
+
+  return (
+    <PasswordInput
+      {...props}
+      value={password}
+      invalid={state.matches('touched.touched') && state.matches("valid.invalid")}
+      focused={state.matches("focused.focused")}
+      onChange={onChange}
+      onFocus={() => send({ type: EventType.Focus })}
+      onBlur={() => send({ type: EventType.Blur })}
+    />
+  );
 };
 
-const PasswordInput = <
-  TContext extends InputControlContext<string, "password">,
-  TEvent extends EventObject,
-  TState extends State<TContext, any, any, any>
->(
-  props: PropsPasswordInput<TContext, TEvent, TState>
-) => (
-  <FromInputControlMachine
-    send={props.send}
-    context={props.current.context}
-    api={api}
-  >
-    {passwordRenderProp(props.current)}
-  </FromInputControlMachine>
-);
-
-export default PasswordInput
+export default Password;

@@ -1,240 +1,114 @@
-import {
-  StateType,
-  EventType,
-  Event,
-  Context,
-  State,
-  Api,
-  MachineOptions,
-  MachineConfig,
-  Config
-} from "./types";
+import { createMachine as createXStateMachine } from "xstate";
 
-import { assign, createMachine as createStateMachine, send } from "xstate";
-
-import { fromNullable, Option, none } from "fp-ts/lib/Option";
-
-import { prefixer } from "../../utils";
+import { StateType, EventType, Event, ChangeEvent } from "./types";
 
 /**
  * Raw configuration for input control state machines
  */
-export const configuration = <I extends string>(options: { id: I }) => {
-  const { id } = options;
-
-  const prefix = prefixer(id);
-
-  return {
-    type: "parallel" as "parallel",
-    states: {
-      [StateType.Edit]: {
-        entry: prefix("assignInitialValue"),
-        on: {
-          [prefix(EventType.Change)]: {
-            actions: prefix("assignChange")
-          },
-          [prefix(EventType.Reset)]: {
-            actions: prefix("assignInitialValue")
-          }
-        }
-      },
-      [StateType.Pristine]: {
-        initial: StateType.Pristine,
-        states: {
-          [StateType.Pristine]: {
-            on: {
-              [prefix(EventType.Change)]: {
-                target: StateType.Dirty,
-                cond: prefix("isHuman"),
-              }
-            }
-          },
-          [StateType.Dirty]: {
-            on: {
-              [prefix(EventType.Reset)]: StateType.Pristine
+export const configuration = {
+  type: "parallel" as "parallel",
+  states: {
+    [StateType.Pristine]: {
+      initial: StateType.Pristine,
+      states: {
+        [StateType.Pristine]: {
+          on: {
+            [EventType.Change]: {
+              target: StateType.Dirty,
+              cond: "isHuman"
             }
           }
-        }
-      },
-      [StateType.Touched]: {
-        initial: StateType.Untouched,
-        states: {
-          [StateType.Untouched]: {
-            on: {
-              [prefix(EventType.Focus)]: {
-                target: StateType.Touching
-              }
-            }
-          },
-          [StateType.Touching]: {
-            on: {
-              // [prefix(EventType.Reset)]: StateType.Untouched,
-              [prefix(EventType.Blur)]: {
-                target: StateType.Touched,
-              }
-            }
-          },
-          [StateType.Touched]: {
-            on: {
-              [prefix(EventType.Reset)]: StateType.Untouched
-            }
+        },
+        [StateType.Dirty]: {
+          on: {
+            [EventType.Reset]: StateType.Pristine
           }
         }
-      },
-      [StateType.Valid]: {
-        initial: StateType.Invalid,
-        states: {
-          [StateType.Invalid]: {
-            '': {
+      }
+    },
+    [StateType.Touched]: {
+      initial: StateType.Untouched,
+      states: {
+        [StateType.Untouched]: {
+          on: {
+            [EventType.Focus]: {
+              target: StateType.Touching
+            }
+          }
+        },
+        [StateType.Touching]: {
+          on: {
+            // [EventType.Reset]: StateType.Untouched,
+            [EventType.Blur]: {
+              target: StateType.Touched
+            }
+          }
+        },
+        [StateType.Touched]: {
+          on: {
+            [EventType.Reset]: StateType.Untouched
+          }
+        }
+      }
+    },
+    [StateType.Valid]: {
+      initial: StateType.Invalid,
+      states: {
+        [StateType.Invalid]: {
+          "": {
+            target: StateType.Valid,
+            cond: "isValid"
+          },
+          on: {
+            [EventType.Change]: {
               target: StateType.Valid,
-              cond: prefix("isValid")
-            },
-            on: {
-              [prefix(EventType.Change)]: {
-                target: StateType.Valid,
-                cond: prefix("isValid")
-              }
-            }
-          },
-          [StateType.Valid]: {
-            on: {
-              [prefix(EventType.Change)]: {
-                target: StateType.Invalid,
-                cond: prefix("isNotValid")
-              },
-              [prefix(EventType.Reset)]: StateType.Invalid
+              cond: "isValid"
             }
           }
+        },
+        [StateType.Valid]: {
+          on: {
+            [EventType.Change]: {
+              target: StateType.Invalid,
+              cond: "isNotValid"
+            },
+            [EventType.Reset]: StateType.Invalid
+          }
         }
-      },
-      [StateType.Focused]: {
-        initial: StateType.Blurred,
-        states: {
-          [StateType.Focused]: {
-            on: {
-              [prefix(EventType.Blur)]: StateType.Blurred
-            }
-          },
-          [StateType.Blurred]: {
-            on: {
-              [prefix(EventType.Focus)]: StateType.Focused,
-            }
+      }
+    },
+    [StateType.Focused]: {
+      initial: StateType.Blurred,
+      states: {
+        [StateType.Focused]: {
+          on: {
+            [EventType.Blur]: StateType.Blurred
+          }
+        },
+        [StateType.Blurred]: {
+          on: {
+            [EventType.Focus]: StateType.Focused
           }
         }
       }
     }
-  };
+  }
 };
 
-export type ConfigureParams<T, I extends string> = {
-  id: I;
-  isValid: (value: Option<T>) => boolean;
-  initialValue?: T;
-};
+const isChangeEvent = <T>(event: Event<T>): event is ChangeEvent<T> =>
+  event.type === EventType.Change;
 
-/**
- * Create configuration for a input control state machine.
- * @param param0
- */
-
-export function configure<T, I extends string>(
-  params: ConfigureParams<T, I>
-): Config<T, I> {
-  type ChangeEvent = Extract<Event<T>, { type: typeof EventType.Change }>;
-  type FocusEvent = Extract<Event<T>, { type: typeof EventType.Focus }>;
-  type BlurEvent = Extract<Event<T>, { type: typeof EventType.Blur }>;
-  type ResetEvent = Extract<Event<T>, { type: typeof EventType.Reset }>;
-
-  const { id, isValid, initialValue } = params;
-  
-  const prefix = prefixer(id);
-
-  const api: Api<T, I> = {
-    eventCreators: {
-      change: (value: T): ChangeEvent => ({
-        type: prefix(EventType.Change),
-        value
-      }),
-      reset: (): ResetEvent => ({
-        type: prefix(EventType.Reset),
-      }),
-      focus: (): FocusEvent => ({ type: prefix(EventType.Focus) }),
-      blur: (): BlurEvent => ({ type: prefix(EventType.Blur) })
-    },
-    selector: (ctx: Context<T, I>) => ctx[id] ?? none
-  };
-
-  const isChangeEvent = (event: Event<T>): event is ChangeEvent =>
-    event.type === prefix(EventType.Change);
-
-  const config: MachineConfig<T, I> = configuration({ id });
-
-  const assignChange = assign<Context<T, I>, Event<T>>((ctx, e) => {
-    const value = isChangeEvent(e) ? fromNullable(e.value) : ctx[id];
-
-    return {
-      [id]: value
-    } as any;
-  });
-
-  const assignInitialValue = send<Context<T, I>, Event<T>>(
-    (ctx, e): ChangeEvent => {
-      return {
-        type: prefix(EventType.Change),
-        value: initialValue,
-        isRobot: true
-      };
-    }
-  );
-
-  const options: MachineOptions<T, I> = {
-    actions: {
-      [prefix("assignInitialValue")]: assignInitialValue,
-      [prefix("assignChange")]: assignChange
-    },
-    guards: {
-      [prefix('isHuman')]: (_, e) => isChangeEvent(e) ? !e.isRobot : false,
-      [prefix("isValid")]: (ctx: Context<T, I>, e: Event<T>) =>
-        isValid(isChangeEvent(e) ? fromNullable(e.value) : api.selector(ctx)),
-      [prefix(`isNotValid`)]: (ctx: Context<T, I>, e: Event<T>) =>
-        !isValid(isChangeEvent(e) ? fromNullable(e.value) : api.selector(ctx))
-    }
-  };
-
-  return {
-    id,
-    config,
-    options,
-    api
-  };
-}
-
-/**
- * Create a [[Machine]] for controlling inputs.
- *
- * @typeparam T The type the machine outputs. Defaults to `string`
- * @param initialValue The initial value of the machine
- * @returns A state machine for controlling inputs.
- */
-export const createMachine = <T, I extends string>({
-  id,
-  initialValue,
-  isValid = (_: Option<T>) => true
+export const createMachine = <T>({
+  isValid = () => true
 }: {
-  id: I;
-  initialValue?: T;
-  isValid?: (value: Option<T>) => boolean;
-}) => {
-  const { config, options, api } = configure({ id, isValid, initialValue });
-
-  return Object.assign(
-    createStateMachine<Context<T, I>, Event<T>, State<T, I>>(
-      {
-        id,
-        ...config
-      },
-      options
-    ),
-    { api }
-  );
-};
+  isValid?: (value?: T) => boolean;
+} = {}) =>
+  createXStateMachine<any, Event<T>>(configuration, {
+    guards: {
+      isHuman: (_, e) => (isChangeEvent(e) ? !e.isRobot : false),
+      isValid: (_: any, e: Event<T>) =>
+        isChangeEvent(e) ? isValid(e.value) : true,
+      isNotValid: (_: any, e: Event<T>) =>
+        isChangeEvent(e) ? !isValid(e.value) : false
+    }
+  });
