@@ -2,7 +2,7 @@
   "name": "xstate-sample-architecture",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/rjdestigter/xstate-sample-kit",
+  "homepage": "https://rjdestigter.github.io/xstate-sample-kit",
   "dependencies": {
     "@craco/craco": "^5.6.3",
     "@rmwc/button": "^5.7.2",
