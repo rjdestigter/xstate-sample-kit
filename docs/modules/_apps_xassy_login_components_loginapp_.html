@@ -97,7 +97,7 @@
 					<div class="tsd-signature tsd-kind-icon">can<wbr>Reset$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = combineLatest(usernameIsValid$, passwordIsValid$).pipe(map(([a, b]) &#x3D;&gt; a || b),)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L45">src/apps/xassy-login/components/LoginApp.tsx:45</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L45">src/apps/xassy-login/components/LoginApp.tsx:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -107,7 +107,7 @@
 					<div class="tsd-signature tsd-kind-icon">i<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L49">src/apps/xassy-login/components/LoginApp.tsx:49</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L49">src/apps/xassy-login/components/LoginApp.tsx:49</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -117,7 +117,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Valid$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = combineLatest(usernameIsValid$, passwordIsValid$).pipe(map(([a, b]) &#x3D;&gt; a &amp;&amp; b),)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L41">src/apps/xassy-login/components/LoginApp.tsx:41</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L41">src/apps/xassy-login/components/LoginApp.tsx:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -127,7 +127,7 @@
 					<div class="tsd-signature tsd-kind-icon">machine<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">StateNode</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ErrorPlatformEvent</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>promiser<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Either</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><a href="_modules_machines_operator_types_.html#eventtype.submit" class="tsd-signature-type">Submit</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><a href="_modules_machines_input_control_types_.html#eventtype.reset" class="tsd-signature-type">Reset</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><a href="_modules_machines_operator_types_.html#eventtype.valid" class="tsd-signature-type">Valid</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><a href="_modules_machines_operator_types_.html#eventtype.invalid" class="tsd-signature-type">InValid</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DoneInvokeEvent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Left</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><a href="q.html#apifailure-1" class="tsd-signature-type">ApiFailure</a><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="q.html#reasonapi" class="tsd-signature-type">ReasonApi</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Errors</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="q.html#reasondecode" class="tsd-signature-type">ReasonDecode</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="q.html#reasonerror" class="tsd-signature-type">ReasonError</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Right</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = createMachine&lt;Failure, User&gt;(config &#x3D;&gt; {return {...config,states: {...config.states,[StateType.Done]: {entry:  &#x27;assignDone&#x27;}},context: {reset$Ref: null},entry: assign({reset$Ref: () &#x3D;&gt; spawn(reset$.pipe(mapTo({ type: EventType.Reset}))),isValid$Ref: () &#x3D;&gt; spawn(isValid$.pipe(map(isValid &#x3D;&gt; ({ type: isValid ? EventType.Valid : EventType.InValid}))))})}}).withConfig({actions: {assignDone: (_, evt) &#x3D;&gt; isDoneInvokeEvent(evt) &amp;&amp; loginOperation$.next(O.some(evt.data))}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L51">src/apps/xassy-login/components/LoginApp.tsx:51</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L51">src/apps/xassy-login/components/LoginApp.tsx:51</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -137,7 +137,7 @@
 					<div class="tsd-signature tsd-kind-icon">p<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L74">src/apps/xassy-login/components/LoginApp.tsx:74</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L74">src/apps/xassy-login/components/LoginApp.tsx:74</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/apps/xassy-login/components/LoginApp.tsx#L77">src/apps/xassy-login/components/LoginApp.tsx:77</a></li>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/9074c24/src/apps/xassy-login/components/LoginApp.tsx#L77">src/apps/xassy-login/components/LoginApp.tsx:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
