@@ -1,0 +1,1494 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>utils | xstate-sample-architecture</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">xstate-sample-architecture</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="utils.html">utils</a>
+				</li>
+			</ul>
+			<h1>External module utils</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#utilities" id="utilities" style="color: inherit; text-decoration: none;">
+							<h3>Utilities</h3>
+						</a>
+					</div>
+					<a href="#assertion" id="assertion" style="color: inherit; text-decoration: none;">
+						<h4>Assertion</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#istruthy">isTruthy</a></li>
+						<li><a href="utils.html#isnotnull">isNotNull</a></li>
+						<li><a href="utils.html#emailpattern">emailPattern</a></li>
+						<li><a href="utils.html#isemail">isEmail</a></li>
+					</ul>
+					<a href="#getters" id="getters" style="color: inherit; text-decoration: none;">
+						<h4>Getters</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#getter">Getter</a></li>
+						<li><a href="utils.html#getter-1">getter</a></li>
+						<li><a href="utils.html#getter2">getter2</a></li>
+						<li><a href="utils.html#geteventcurrenttargetvalue">getEventCurrentTargetValue</a></li>
+						<li><a href="utils.html#dot">dot</a></li>
+						<li><a href="utils.html#dot2">dot2</a></li>
+					</ul>
+					<a href="#functions" id="functions" style="color: inherit; text-decoration: none;">
+						<h4>Functions</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#forward">forward</a></li>
+						<li><a href="utils.html#returnsecond">returnSecond</a></li>
+						<li><a href="utils.html#voidfn">voidFn</a></li>
+						<li><a href="utils.html#returnlast">returnLast</a></li>
+					</ul>
+					<a href="#strings" id="strings" style="color: inherit; text-decoration: none;">
+						<h4>Strings</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#trim">trim</a></li>
+					</ul>
+					<a href="#booleans" id="booleans" style="color: inherit; text-decoration: none;">
+						<h4>Booleans</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#negate">negate</a></li>
+					</ul>
+					<a href="#objects" id="objects" style="color: inherit; text-decoration: none;">
+						<h4>Objects</h4>
+					</a>
+					<p><a href="utils.html#picker">Picker</a>
+					<a href="utils.html#pick">pick</a></p>
+					<a href="#other" id="other" style="color: inherit; text-decoration: none;">
+						<h4>Other</h4>
+					</a>
+					<ul>
+						<li><a href="utils.html#delay">delay</a></li>
+						<li><a href="utils.html#prefixer">prefixer</a></li>
+						<li><a href="utils.html#format">format</a></li>
+					</ul>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>References</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#getter" class="tsd-kind-icon">Getter</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#picker" class="tsd-kind-icon">Picker</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#delay" class="tsd-kind-icon">delay</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#dot" class="tsd-kind-icon">dot</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#dot2" class="tsd-kind-icon">dot2</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#emailpattern" class="tsd-kind-icon">email<wbr>Pattern</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#forward" class="tsd-kind-icon">forward</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#geteventcurrenttargetvalue" class="tsd-kind-icon">get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#getter-1" class="tsd-kind-icon">getter</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#getter2" class="tsd-kind-icon">getter2</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#isemail" class="tsd-kind-icon">is<wbr>Email</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#isnotnull" class="tsd-kind-icon">is<wbr>Not<wbr>Null</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#istruthy" class="tsd-kind-icon">is<wbr>Truthy</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#negate" class="tsd-kind-icon">negate</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#pick" class="tsd-kind-icon">pick</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#prefixer" class="tsd-kind-icon">prefixer</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#returnlast" class="tsd-kind-icon">return<wbr>Last</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#returnsecond" class="tsd-kind-icon">return<wbr>Second</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#trim" class="tsd-kind-icon">trim</a></li>
+								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="utils.html#voidfn" class="tsd-kind-icon">void<wbr>Fn</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#getter-2" class="tsd-kind-icon">Getter</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#picker-1" class="tsd-kind-icon">Picker</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="utils.html#dot-1" class="tsd-kind-icon">dot</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="utils.html#dot2-1" class="tsd-kind-icon">dot2</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="utils.html#emailpattern-1" class="tsd-kind-icon">email<wbr>Pattern</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="utils.html#foldstring" class="tsd-kind-icon">fold<wbr>String</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="utils.html#geteventcurrenttargetvalue-1" class="tsd-kind-icon">get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="utils.html#delay-1" class="tsd-kind-icon">delay</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#foldmaybe" class="tsd-kind-icon">fold<wbr>Maybe</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#foldvalue" class="tsd-kind-icon">fold<wbr>Value</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="utils.html#format" class="tsd-kind-icon">format</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#forward-1" class="tsd-kind-icon">forward</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#getter-3" class="tsd-kind-icon">getter</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#getter2-1" class="tsd-kind-icon">getter2</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="utils.html#isemail-1" class="tsd-kind-icon">is<wbr>Email</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#isnotnull-1" class="tsd-kind-icon">is<wbr>Not<wbr>Null</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#istruthy-1" class="tsd-kind-icon">is<wbr>Truthy</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#negate-1" class="tsd-kind-icon">negate</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#pick-1" class="tsd-kind-icon">pick</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#returnlast-1" class="tsd-kind-icon">return<wbr>Last</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="utils.html#returnsecond-1" class="tsd-kind-icon">return<wbr>Second</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="utils.html#trim-1" class="tsd-kind-icon">trim</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="utils.html#voidfn-1" class="tsd-kind-icon">void<wbr>Fn</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>References</h2>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="getter" class="tsd-anchor"></a>
+					<h3>Getter</h3>
+					Re-exports <a href="utils.html#getter-2">Getter</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="picker" class="tsd-anchor"></a>
+					<h3>Picker</h3>
+					Re-exports <a href="utils.html#picker-1">Picker</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="delay" class="tsd-anchor"></a>
+					<h3>delay</h3>
+					Re-exports <a href="utils.html#delay-1">delay</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="dot" class="tsd-anchor"></a>
+					<h3>dot</h3>
+					Re-exports <a href="utils.html#dot-1">dot</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="dot2" class="tsd-anchor"></a>
+					<h3>dot2</h3>
+					Re-exports <a href="utils.html#dot2-1">dot2</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="emailpattern" class="tsd-anchor"></a>
+					<h3>email<wbr>Pattern</h3>
+					Re-exports <a href="utils.html#emailpattern-1">emailPattern</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="forward" class="tsd-anchor"></a>
+					<h3>forward</h3>
+					Re-exports <a href="utils.html#forward-1">forward</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="geteventcurrenttargetvalue" class="tsd-anchor"></a>
+					<h3>get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</h3>
+					Re-exports <a href="utils.html#geteventcurrenttargetvalue-1">getEventCurrentTargetValue</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="getter-1" class="tsd-anchor"></a>
+					<h3>getter</h3>
+					Re-exports <a href="utils.html#getter-3">getter</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="getter2" class="tsd-anchor"></a>
+					<h3>getter2</h3>
+					Re-exports <a href="utils.html#getter2-1">getter2</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="isemail" class="tsd-anchor"></a>
+					<h3>is<wbr>Email</h3>
+					Re-exports <a href="utils.html#isemail-1">isEmail</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="isnotnull" class="tsd-anchor"></a>
+					<h3>is<wbr>Not<wbr>Null</h3>
+					Re-exports <a href="utils.html#isnotnull-1">isNotNull</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="istruthy" class="tsd-anchor"></a>
+					<h3>is<wbr>Truthy</h3>
+					Re-exports <a href="utils.html#istruthy-1">isTruthy</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="negate" class="tsd-anchor"></a>
+					<h3>negate</h3>
+					Re-exports <a href="utils.html#negate-1">negate</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="pick" class="tsd-anchor"></a>
+					<h3>pick</h3>
+					Re-exports <a href="utils.html#pick-1">pick</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="prefixer" class="tsd-anchor"></a>
+					<h3>prefixer</h3>
+					Re-exports prefixer
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="returnlast" class="tsd-anchor"></a>
+					<h3>return<wbr>Last</h3>
+					Re-exports <a href="utils.html#returnlast-1">returnLast</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="returnsecond" class="tsd-anchor"></a>
+					<h3>return<wbr>Second</h3>
+					Re-exports <a href="utils.html#returnsecond-1">returnSecond</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="trim" class="tsd-anchor"></a>
+					<h3>trim</h3>
+					Re-exports <a href="utils.html#trim-1">trim</a>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
+					<a name="voidfn" class="tsd-anchor"></a>
+					<h3>void<wbr>Fn</h3>
+					Re-exports <a href="utils.html#voidfn-1">voidFn</a>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="getter-2" class="tsd-anchor"></a>
+					<h3>Getter</h3>
+					<div class="tsd-signature tsd-kind-icon">Getter&lt;TKey&gt;<span class="tsd-signature-symbol">:</span> &lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L14">src/modules/utils/getters.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type that describes a function that returns
+							the value of on object&#39;s property given</p>
+						</div>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The key or property name the function should read and return from a given object.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>TValue</h4>
+												<div class="tsd-comment tsd-typography">
+													<p>The value type</p>
+												</div>
+											</li>
+											<li>
+												<h4>TObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
+												<div class="tsd-comment tsd-typography">
+													<p>The object type</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>o: <span class="tsd-signature-type">TObject</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="picker-1" class="tsd-anchor"></a>
+					<h3>Picker</h3>
+					<div class="tsd-signature tsd-kind-icon">Picker&lt;K&gt;<span class="tsd-signature-symbol">:</span> &lt;O&gt;<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">O</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">O</span><span class="tsd-signature-symbol">, </span><a href="types.html#neededuniontype" class="tsd-signature-type">NeededUnionType</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/objects.ts#L22">src/modules/utils/objects.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Return type of the <a href="utils.html#pick">pick</a>. A function that takes object O
+							and picks keys  K from it.</p>
+						</div>
+						<ul>
+							<li>Example:</li>
+						</ul>
+						<pre><code class="language-ts"><span class="hljs-keyword">const</span> { a, b } = pick(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>)({ a: <span class="hljs-number">12</span>, b: <span class="hljs-literal">true</span>, c: <span class="hljs-string">"hello"</span>})
+</code></pre>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>List of keys of object O</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;O&gt;<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">O</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">O</span><span class="tsd-signature-symbol">, </span><a href="types.html#neededuniontype" class="tsd-signature-type">NeededUnionType</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>O<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
+												<div class="tsd-comment tsd-typography">
+													<p>The object to pick keys K from.</p>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">O</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">O</span><span class="tsd-signature-symbol">, </span><a href="types.html#neededuniontype" class="tsd-signature-type">NeededUnionType</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="dot-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> dot</h3>
+					<div class="tsd-signature tsd-kind-icon">dot<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">getter</span><span class="tsd-signature-symbol"> = getter</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L42">src/modules/utils/getters.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="dot2-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> dot2</h3>
+					<div class="tsd-signature tsd-kind-icon">dot2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">getter2</span><span class="tsd-signature-symbol"> = getter2</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L44">src/modules/utils/getters.ts:44</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="emailpattern-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> email<wbr>Pattern</h3>
+					<div class="tsd-signature tsd-kind-icon">email<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/assert.ts#L49">src/modules/utils/assert.ts:49</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Regular expression for testing e-mail addresses</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="foldstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> fold<wbr>String</h3>
+					<div class="tsd-signature tsd-kind-icon">fold<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = foldValue(&quot;&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/fp.ts#L31">src/modules/utils/fp.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd></dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="geteventcurrenttargetvalue-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Event<wbr>Current<wbr>Target<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = getter2(&quot;currentTarget&quot;, &quot;value&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L40">src/modules/utils/getters.ts:40</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="delay-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> delay</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">delay<span class="tsd-signature-symbol">(</span>milliseconds<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/delay.ts#L16">src/modules/utils/delay.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">delay</span> :: number -&gt; <span class="hljs-type">Promise</span> ()</code></pre>
+								</div>
+								<p>Creates a promise that resolves after n milliseconds. Defaults to 1s.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> milliseconds: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1000</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="foldmaybe" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> fold<wbr>Maybe</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">fold<wbr>Maybe&lt;T&gt;<span class="tsd-signature-symbol">(</span>maybe<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Option</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/fp.ts#L13">src/modules/utils/fp.ts:13</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>maybe: <span class="tsd-signature-type">Option</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="foldvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> fold<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">fold<wbr>Value&lt;T&gt;<span class="tsd-signature-symbol">(</span>base<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/fp.ts#L22">src/modules/utils/fp.ts:22</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>base: <span class="tsd-signature-type">T</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="format" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> format</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">format<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/index.ts#L67">src/modules/utils/index.ts:67</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>format</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="forward-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> forward</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">forward&lt;T&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/functions.ts#L27">src/modules/utils/functions.ts:27</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">forward</span> :: (a -&gt; b) -&gt; a -&gt; a</code></pre>
+								</div>
+								<p>Transforms a function with a signature of <code>a -&gt; b</code> into an
+								identity function of <code>a</code></p>
+								<p>Example:</p>
+								<pre><code class="language-ts"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> dispatch = <span class="hljs-function">(<span class="hljs-params">event: Event</span>) =&gt;</span> <span class="hljs-built_in">void</span>
+
+<span class="hljs-keyword">const</span> eventIdentity = forward(dispatch)
+
+<span class="hljs-keyword">const</span> event: Event = eventIdentity(<span class="hljs-keyword">new</span> Event())</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>f: <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The function</p>
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>value: <span class="tsd-signature-type">T</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="getter-3" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> getter</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">getter&lt;K&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="utils.html#getter" class="tsd-signature-type">Getter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L27">src/modules/utils/getters.ts:27</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>key: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="utils.html#getter" class="tsd-signature-type">Getter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="getter2-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> getter2</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">getter2&lt;K1, K2&gt;<span class="tsd-signature-symbol">(</span>k1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K1</span>, k2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/getters.ts#L34">src/modules/utils/getters.ts:34</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h4>
+								</li>
+								<li>
+									<h4>K2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>k1: <span class="tsd-signature-type">K1</span></h5>
+								</li>
+								<li>
+									<h5>k2: <span class="tsd-signature-type">K2</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="isemail-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Email</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Email<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/assert.ts#L60">src/modules/utils/assert.ts:60</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">isEmail</span> :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">Bool</span></code></pre>
+								</div>
+								<p>Tests a string agains <a href="utils.html#emailpattern">emailPattern</a> to see if it is a valid e-mail address.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> email: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="isnotnull-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Not<wbr>Null</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Not<wbr>Null&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">value</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/assert.ts#L44">src/modules/utils/assert.ts:44</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">isNotNull</span> :: a -&gt; boolean</code></pre>
+								</div>
+								<p>Type guard. Checks if a nullable value is null or not.</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The type of the value</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The nullable value to be checked.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">value</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">T</span></h4>
+							<p>Asserts that the value is not of type <code>null</code></p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="istruthy-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Truthy</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Truthy&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">T</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">value</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/assert.ts#L17">src/modules/utils/assert.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code><span class="hljs-function"><span class="hljs-title">isTruthy</span> :: a -&gt;</span> <span class="hljs-keyword">boolean</span></code></pre>
+								</div>
+								<p>Chcecks if a value is truthy. For numberic values
+								<code>Infinite</code> and <code>NaN</code> are considered non-truthy.</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The type of the value.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <a href="" class="tsd-signature-type">T</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The value to be checked.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">value</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="negate-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> negate</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">negate&lt;T&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/booleans.ts#L25">src/modules/utils/booleans.ts:25</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">negate</span> :: (a -&gt; b) -&gt; a -&gt; <span class="hljs-type">Bool</span></code></pre>
+								</div>
+								<p>Transforms a function from <code>a -&gt; b</code> to <code>a -&gt; boolean</code> by casting
+								it&#39;s result.</p>
+								<p>Example:</p>
+								<pre><code class="language-ts"><span class="hljs-keyword">const</span> trim = <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> value.trim();
+
+<span class="hljs-keyword">const</span> isEmpty = negate(trim)
+</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The function argument</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>f: <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The function of which the result is negated.</p>
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <span class="tsd-signature-type">T</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>value: <span class="tsd-signature-type">T</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="pick-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> pick</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">pick&lt;K&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>keys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="utils.html#picker" class="tsd-signature-type">Picker</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/objects.ts#L41">src/modules/utils/objects.ts:41</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Pick a set of key/values from an object.</p>
+								</div>
+								<p>Example:</p>
+								<pre><code class="language-ts"><span class="hljs-keyword">const</span> { a, b } = pick(<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>)({ a: <span class="hljs-number">12</span>, b: <span class="hljs-literal">true</span>, c: <span class="hljs-string">"hello"</span>})</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>List of keys of object O</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>keys: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>List of keys to be picked.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="utils.html#picker" class="tsd-signature-type">Picker</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p><code>pick</code> is curried. It returns a function that takes the object to pick from.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="returnlast-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> return<wbr>Last</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">return<wbr>Last&lt;A, B&gt;<span class="tsd-signature-symbol">(</span>f1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span>, f2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">B</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">B</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/functions.ts#L105">src/modules/utils/functions.ts:105</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">returnLast</span> :: (a -&gt; b) -&gt; (a -&gt; c) -&gt; a -&gt; c</code></pre>
+								</div>
+								<p>Takes 2 functions that both accept the same argument and
+									executes both but only returns the value of the second
+								function.</p>
+								<p>Example:</p>
+								<pre><code class="language-ts">
+<span class="hljs-keyword">import</span> { identity } <span class="hljs-keyword">from</span> <span class="hljs-string">'fp-ts/lib/functions'</span>
+
+<span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> update: <span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>
+
+<span class="hljs-keyword">const</span> updateAndReturn = returnLast(update, identity)</code></pre>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>A</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The type of the incoming value passed to both f1 and f2.</p>
+									</div>
+								</li>
+								<li>
+									<h4>B</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The return type of the second function.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>f1: <span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The first function that is called.</p>
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>a: <span class="tsd-signature-type">A</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>f2: <span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">B</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The second function whos return value is returned.</p>
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">B</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>a: <span class="tsd-signature-type">A</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">B</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">B</span></h4>
+							<p>A function that takes argument <code>A</code> and returns the result of the second function.</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">B</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>a: <span class="tsd-signature-type">A</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">B</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="returnsecond-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> return<wbr>Second</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">return<wbr>Second&lt;T&gt;<span class="tsd-signature-symbol">(</span>_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, <span class="tsd-signature-symbol">...</span>rest<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/functions.ts#L66">src/modules/utils/functions.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">returnSecond</span> :: a -&gt; b -&gt; b</code></pre>
+								</div>
+								<p>Returns the second argument given.</p>
+								<p>Example:</p>
+								<pre><code class="language-ts"><span class="hljs-keyword">import</span> { flow } <span class="hljs-keyword">from</span> <span class="hljs-string">'fp-ts/lib/functions'</span>
+
+<span class="hljs-keyword">const</span> double: <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">any</span>, b: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">number</span> = flow(
+  returnSecond,
+  <span class="hljs-function">(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>) =&gt;</span> n * <span class="hljs-number">2</span>
+)
+
+<span class="hljs-keyword">const</span> result = double(<span class="hljs-string">"Anything here"</span>, <span class="hljs-number">10</span>) <span class="hljs-comment">// 20</span>
+
+<span class="hljs-keyword">const</span> promiseThatRejects = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-number">13</span>&gt;(
+  flow(returnSecond, <span class="hljs-function"><span class="hljs-params">reject</span> =&gt;</span> reject())
+)
+</code></pre>
+								<p>As you can see, <code>returnSecond</code> is especially helpful in combination with
+								<code>fp-ts</code>&#39; <code>flow</code> function.</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>The type of the second argument.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Anything, first argument is ignored</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>t: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Second argument that is also returned.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>rest: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<p>The second argument.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="trim-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> trim</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">trim<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/strings.ts#L9">src/modules/utils/strings.ts:9</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes the leading and trailing white space and line terminator characters from a string.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="voidfn-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> void<wbr>Fn</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">void<wbr>Fn<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/96a4e5b/src/modules/utils/functions.ts#L77">src/modules/utils/functions.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<pre><code class="language-hs"><span class="hljs-title">voidFn</span> :: ()</code></pre>
+								</div>
+								<p>A void function. A lazy volue of nothing!
+								It takes nothing. It does nothing. It&#39;s useless.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="utils.html">utils</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#getter" class="tsd-kind-icon">Getter</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#picker" class="tsd-kind-icon">Picker</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#delay" class="tsd-kind-icon">delay</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#dot" class="tsd-kind-icon">dot</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#dot2" class="tsd-kind-icon">dot2</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#emailpattern" class="tsd-kind-icon">email<wbr>Pattern</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#forward" class="tsd-kind-icon">forward</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#geteventcurrenttargetvalue" class="tsd-kind-icon">get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#getter-1" class="tsd-kind-icon">getter</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#getter2" class="tsd-kind-icon">getter2</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#isemail" class="tsd-kind-icon">is<wbr>Email</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#isnotnull" class="tsd-kind-icon">is<wbr>Not<wbr>Null</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#istruthy" class="tsd-kind-icon">is<wbr>Truthy</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#negate" class="tsd-kind-icon">negate</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#pick" class="tsd-kind-icon">pick</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#prefixer" class="tsd-kind-icon">prefixer</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#returnlast" class="tsd-kind-icon">return<wbr>Last</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#returnsecond" class="tsd-kind-icon">return<wbr>Second</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#trim" class="tsd-kind-icon">trim</a>
+					</li>
+					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
+						<a href="utils.html#voidfn" class="tsd-kind-icon">void<wbr>Fn</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#getter-2" class="tsd-kind-icon">Getter</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#picker-1" class="tsd-kind-icon">Picker</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="utils.html#dot-1" class="tsd-kind-icon">dot</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="utils.html#dot2-1" class="tsd-kind-icon">dot2</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="utils.html#emailpattern-1" class="tsd-kind-icon">email<wbr>Pattern</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="utils.html#foldstring" class="tsd-kind-icon">fold<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="utils.html#geteventcurrenttargetvalue-1" class="tsd-kind-icon">get<wbr>Event<wbr>Current<wbr>Target<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="utils.html#delay-1" class="tsd-kind-icon">delay</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#foldmaybe" class="tsd-kind-icon">fold<wbr>Maybe</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#foldvalue" class="tsd-kind-icon">fold<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="utils.html#format" class="tsd-kind-icon">format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#forward-1" class="tsd-kind-icon">forward</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#getter-3" class="tsd-kind-icon">getter</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#getter2-1" class="tsd-kind-icon">getter2</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="utils.html#isemail-1" class="tsd-kind-icon">is<wbr>Email</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#isnotnull-1" class="tsd-kind-icon">is<wbr>Not<wbr>Null</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#istruthy-1" class="tsd-kind-icon">is<wbr>Truthy</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#negate-1" class="tsd-kind-icon">negate</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#pick-1" class="tsd-kind-icon">pick</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#returnlast-1" class="tsd-kind-icon">return<wbr>Last</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="utils.html#returnsecond-1" class="tsd-kind-icon">return<wbr>Second</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="utils.html#trim-1" class="tsd-kind-icon">trim</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="utils.html#voidfn-1" class="tsd-kind-icon">void<wbr>Fn</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
