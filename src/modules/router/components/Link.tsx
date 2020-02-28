@@ -1,32 +1,46 @@
+/**
+ * @packageDocumentation
+ * @module router
+ */
 import * as React from "react";
-import { Context } from "../machine";
-import { Consumer, Send } from "../../SendContext";
-import { pipe } from "fp-ts/lib/pipeable";
-import * as O from "fp-ts/lib/Option";
-import { constant, identity } from "fp-ts/lib/function";
+import { SendContext, StateMachineContext } from "../../components/SendContext";
 
-export const linkWithSend = (props: PropsLink) => (send: Send) => {
-  const onClick = pipe(
-    send,
-    O.map(f => f.bind(null, { type: "GOTO", route: props.to, ...props.params }, undefined)),
-    O.fold(constant(undefined), identity)
-  );
 
-  return (
-    <a href="#" onClick={onClick}>
-      {props.children}
-    </a>
-  );
-};
-
+/**
+ * React props type for the  [[Link]] component.
+ */
 export interface PropsLink {
+  /** Path or url to link to */
   to: string;
-  params?: Context;
-  children: React.ReactNode;
+  /** Object, additional data dispatched with the [[GOTO]] event when the user clicks the link. */
+  params?: any;
+  /** Link text or label */
+  children: (renderProps: { onClick: () => void }) => JSX.Element;
 }
 
-const Link = (props: PropsLink) => (
-  <Consumer>{linkWithSend(props)}</Consumer>
-);
+/**
+ * React component for rendering links that dispatch routing events
+ * to the router's state machine.
+ * 
+ * Example:
+ * 
+ * ```tsx
+ * const menu = (
+ *  <nav>
+ *    <Link disabled>{t('Contact us)}</Link>
+ *  </nav>
+ * )
+ * ```
+ * 
+ * @param props See [[PropsLink]] and any props accepted by the Atomic UI Library's `a-link` web component.
+ */
+const Link = (props: PropsLink) => {
+  const context = React.useContext(SendContext);
+  const onClick = context.send.bind(null, { type: "GOTO", route: props.to, ...props.params }, undefined)
+
+  return props.children({onClick})
+
+  // return linkWithSend(props)(context)
+}
 
 export default Link

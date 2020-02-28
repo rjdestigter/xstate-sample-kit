@@ -1,4 +1,4 @@
-import { createMachine as createXStateMachine } from "xstate";
+import { createMachine as createXStateMachine, MachineConfig } from "xstate";
 
 import { StateType, EventType, Event } from "./types";
 
@@ -6,6 +6,7 @@ import { StateType, EventType, Event } from "./types";
  * Raw configuration for input control state machines
  */
 export const configuration = {
+  id: 'operator',
   initial: StateType.InProgress,
   on: {
     [EventType.Reset]: {
@@ -14,9 +15,20 @@ export const configuration = {
   },
   states: {
     [StateType.InProgress]: {
-      on: {
-        [EventType.Submit]: {
-          target: StateType.Submitting
+      initial: StateType.InValid,
+      states: {
+        [StateType.Valid]: {
+          on: {
+            [EventType.InValid]: StateType.InValid,
+            [EventType.Submit]: {
+              target: `#operator.${StateType.Submitting}`
+            }
+          }
+        },
+        [StateType.InValid]: {
+          on: {
+            [EventType.Valid]: StateType.Valid
+          }
         }
       }
     },
@@ -32,14 +44,25 @@ export const configuration = {
   }
 };
 
+const isEvent = <E extends Event<any, any>["type"]>(eventType: E) => <L, R>(
+  event: Event<L, R>
+): event is Extract<Event<L, R>, { type: E }> => event.type === eventType;
+
+export const isSubmitEvent = isEvent(EventType.Submit);
+
 export const services = {
   submitOperation: (_: any, evt: Event<any, any>) =>
-    evt.type === EventType.Submit
+    isSubmitEvent(evt)
       ? evt.promiser()
       : Promise.reject("submitService invoked by non-submit event!")
 };
 
-export const createMachine = <L, R>() =>
-  createXStateMachine<any, Event<L, R>>(configuration, {
-    services: services as any
-  });
+export const createMachine = <L, R>(
+  withConfig?: (c: typeof configuration) => MachineConfig<any, any, Event<L, R>>
+) =>
+  createXStateMachine<any, Event<L, R>>(
+    withConfig ? withConfig(configuration) : configuration,
+    {
+      services: services as any
+    }
+  );

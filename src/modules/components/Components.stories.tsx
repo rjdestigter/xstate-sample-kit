@@ -1,27 +1,22 @@
 import * as React from "react";
 
-import FailureMessageC from "./FailureMessage";
+import Button from "../../modules/components/input-controls/Button";
+import Input from "../../modules/components/input-controls/Input";
 import LoginFormC from './LoginForm'
 
 import '../../App.scss'
-
-export const FailureMessage = () => (
-  <FailureMessageC
-    failure={{ reason: "api", error: { code: 404, error: "Not Found" } }}
-    api="Not Found"
-  />
-);
+import { action } from "@storybook/addon-actions";
 
 export const LoginForm = () => (
   <LoginFormC 
-    loginButton={<button>Login</button>}
-    passwordInput={<input />}
-    usernameInput={<input />}
-    resetButton={<button>reset</button>}
+    loginButton={<Button onClick={action('Logging in...')}>Login</Button>}
+    passwordInput={<Input onChange={action('Change')} />}
+    usernameInput={<Input onChange={action('Change')} />}
+    resetButton={<Button onClick={action('Resetting...')}>Reset</Button>}
   />
 )
 
 export default {
-  title: "Components",
-  component: FailureMessage
+  title: "Modules/Components/LoginForm",
+  component: LoginForm
 };

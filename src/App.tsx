@@ -2,10 +2,8 @@ import "./App.scss";
 
 import React, { Suspense } from "react";
 
-import LoginApp from "./apps/login";
+import XASSY from './apps/xassy'
 import { useTranslation } from "react-i18next";
-
-import Router from './modules/router'
 
 const NL = () => {
   const [, i18n] = useTranslation();
@@ -17,17 +15,14 @@ const NL = () => {
     }, 2500);
   }, [i18n]);
 
-  return null;
+  return null
 };
 
 const App: React.FC = () => {
   return (
     <Suspense fallback="...">
-      {/* <React.StrictMode> */}
-        <LoginApp />
+        <XASSY />
         <NL />
-      {/* </React.StrictMode> */}
-        <Router />
     </Suspense>
   );
 };

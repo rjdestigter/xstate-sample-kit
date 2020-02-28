@@ -1,0 +1,25 @@
+.form-field {
+  margin-bottom: 1.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  flex: 1 1 auto;
+}
+
+.form-fields-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5em;
+
+  .form-field {
+    margin-right: 0;
+  }
+}
+
+.form-fields-centered {
+  justify-content: center;
+  text-align: center;
+  
+  .form-field {
+    flex: initial;
+  }
+}

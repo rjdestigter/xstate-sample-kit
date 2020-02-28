@@ -11,11 +11,10 @@ export interface PropsLoginButton extends PropsOf<typeof Button> {
 }
 
 const LoginButton = (props: PropsLoginButton) => (
-  <Button
+  <Button  
     {...props}
-    type="button"
-    data-test="btn-login"
     raised
+    data-test="btn-login"
     disabled={props.disabled}
     onClick={props.onClick}
   >

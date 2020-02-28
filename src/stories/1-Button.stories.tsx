@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { Button } from '../modules/components/input-controls/Button';
+import Button from '../modules/components/input-controls/Button';
 
 // import '../mdc.scss'
 
@@ -10,6 +10,7 @@ export default {
 };
 
 export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
+
 
 export const Emoji = () => (
   <Button onClick={action('clicked')}>

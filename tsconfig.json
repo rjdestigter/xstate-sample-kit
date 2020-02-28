@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,12 +19,19 @@
     "noEmit": true,
     "jsx": "react",
     "experimentalDecorators": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "baseUrl": "."
   },
-  "include": ["src", "atomic-ui.d.ts"],
+  "include": [
+    "src",
+  ],
   "typedocOptions": {
-    "inputFiles": ["./src/modules"],
+    "inputFiles": [
+      "./src/apps",
+      "./src/modules"
+    ],
     "mode": "modules",
-    "out": "doc",
+    "out": "docs",
+    "ignoreCompilerErrors": true
   }
 }

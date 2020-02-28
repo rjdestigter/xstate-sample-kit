@@ -1,9 +1,12 @@
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,
-  StateSchema as XStateStateSchema
+  StateSchema as XStateStateSchema,
+  State as XState,
+  Typestate
 } from "xstate";
 
+export const StateTypeEdit= "edit" as const;
 export const StateTypePristine = "pristine" as const;
 export const StateTypeDirty = "dirty" as const;
 export const StateTypeTouched = "touched" as const;
@@ -15,6 +18,7 @@ export const StateTypeValid = "valid" as const;
 export const StateTypeInvalid = "invalid" as const;
 
 export const StateType = {
+  Edit: StateTypeEdit,
   Pristine: StateTypePristine,
   Dirty: StateTypeDirty,
   Touched: StateTypeTouched,
@@ -56,18 +60,21 @@ export type Event<T> =
 
 
   export type ChangeEvent<T> = Extract<Event<T>, { type: typeof EventType.Change }>;
-  export type FocusEvent<T> = Extract<Event<T>, { type: typeof EventType.Focus }>;
-  export type BlurEvent<T> = Extract<Event<T>, { type: typeof EventType.Blur }>;
-  export type ResetEvent<T> = Extract<Event<T>, { type: typeof EventType.Reset }>;
+  export type FocusEvent= Extract<Event<any>, { type: typeof EventType.Focus }>;
+  export type BlurEvent= Extract<Event<any>, { type: typeof EventType.Blur }>;
+  export type ResetEvent= Extract<Event<any>, { type: typeof EventType.Reset }>;
+
+
+export type Context<T> = { value?: T | undefined }
 
 /**
  * Possible states for the input control machine.
  *
  * @typeparam T See [[Context.value]]
  */
-export interface State<T> {
+export interface TypeState<T> {
   /** The input contorl state's context type */
-  context: any;
+  context: Context<T>;
   /** The input contorl state's value */
   value: {
     [StateType.Pristine]: typeof StateType.Dirty | typeof StateType.Pristine;
@@ -80,7 +87,7 @@ export interface State<T> {
   };
 }
 
-export interface StateSchema<T> extends XStateStateSchema<any> {
+export interface StateSchema<T> extends XStateStateSchema<Context<T>> {
   context: {};
   states: {
     [StateType.Pristine]: {
@@ -116,10 +123,11 @@ export interface EventCreators<E> {
 }
 
 export type MachineOptions<T> = Partial<
-  XStateMachineOptions<any, Event<T>>
+  XStateMachineOptions<Context<T>, Event<T>>
 >;
 
 export type MachineConfig<
   T,
-> = XStateMachineConfig<any, StateSchema<T>, Event<T>>;
+> = XStateMachineConfig<Context<T>, StateSchema<T>, Event<T>>;
 
+export type State<T> = XState<Context<T>, Event<T>, StateSchema<T>, TypeState<T>>
