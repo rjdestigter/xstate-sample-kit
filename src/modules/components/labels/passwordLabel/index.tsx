@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Typography from '../../Typography'
 import text from './text.json'
+import { Typography } from '@rmwc/typography'
 
-export default <Typography use="headline6">{text.passwordLabel}</Typography>
+export default <Typography use={'subtitle2'}>{text.passwordLabel}</Typography>

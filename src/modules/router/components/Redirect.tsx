@@ -1,31 +1,42 @@
+/**
+ * @packageDocumentation
+ * @module router
+ */
 import * as React from "react";
 
-import { pipe } from "fp-ts/lib/pipeable";
-import * as O from "fp-ts/lib/Option";
-import { constant, identity } from "fp-ts/lib/function";
+import { SendContext, StateMachineContext } from "../../components/SendContext";
 
-import { Consumer, Send } from "../../SendContext";
-
-export const redirectWithSend = (props: PropsRedirect) => (send: Send) => {
+/**
+ * Render prop function used by [[Redirect]]
+ * @internal
+ */
+export const RedirectWithSend = (props: PropsRedirect & Pick<StateMachineContext, 'send'>) => {
   React.useEffect(() => {
-    const redirect = pipe(
-      send,
-      O.map(f => () => {f({ type: "GOTO", route: props.to })}),
-      O.fold(constant(() => {}), identity)
-    );
-
-    redirect()
-  }, [props.to]);
+    console.warn(`Redirecting to: ${props.to}`)
+    props.send({ type: "GOTO", route: `${props.to}` });
+  }, [props.to, props.send]);
 
   return null;
 };
 
+/**
+ * React prop types for the [[Redirect]] component.
+ */
 export interface PropsRedirect {
+  /** Path or url to redirect to */
   to: string;
 }
 
-const Redirect = (props: PropsRedirect) => (
-  <Consumer>{redirectWithSend(props)}</Consumer>
-);
+/**
+ * Transitions the router's state machine to a given path or url.
+ * @param props See [[PropsRedirect]]
+ */
+const Redirect = (props: PropsRedirect) => {
+  const { send } = React.useContext(SendContext);
 
-export default Redirect
+  return (
+    <RedirectWithSend {...props} send={send} />
+  );
+}
+
+export default Redirect;

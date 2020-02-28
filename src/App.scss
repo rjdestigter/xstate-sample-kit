@@ -1,42 +1,140 @@
-
-$mdc-theme-primary: #ffd230; // baseline purple, 500 tone
-$mdc-theme-secondary: #27f5ff;
-$mdc-theme-background: rgb(17, 3, 34); // White
+$mdc-theme-primary: Cyan;; // baseline purple, 500 tone
+$mdc-theme-secondary: Magenta;
+$mdc-theme-background: #000; // White
 $mdc-theme-surface: $mdc-theme-background; // White
-$mdc-theme-error: #ff7070;
+$mdc-theme-error: #ff5e5e;
 
 // Theme
 @import "@material/theme/mdc-theme.scss";
 
 // TextField
-@import '@material/textfield/mdc-text-field.scss';
-@import '@material/floating-label/mdc-floating-label.scss';
-@import '@material/notched-outline/mdc-notched-outline.scss';
-@import '@material/line-ripple/mdc-line-ripple.scss';
+@import "@material/textfield/mdc-text-field.scss";
+@import "@material/floating-label/mdc-floating-label.scss";
+@import "@material/notched-outline/mdc-notched-outline.scss";
+@import "@material/line-ripple/mdc-line-ripple.scss";
 
 // Button
 @import "@material/button/mdc-button.scss";
 
 // Linear Progress
-@import '@material/linear-progress/mdc-linear-progress.scss';
+@import "@material/linear-progress/mdc-linear-progress.scss";
 
+// Top App Bar
+@import "@material/top-app-bar/mdc-top-app-bar.scss";
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   font-family: Roboto, sans-serif;
   padding: 0;
   margin: 0;
   background: $mdc-theme-background;
-  color: #f5f5f5;
+  color: #fafafa;
 }
 
 #root {
+  --input-width: 100%;
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
 
-  a { 
-    color: $mdc-theme-secondary;
+
+  >nav:not([role="progressbar"]) {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    
+    button {
+      margin-right: 15px;
+    }
+  } 
+} 
+
+.wizard-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .heading {
+    padding: 0 20px;
+  }
+
+  .wizard {
+    flex: 1 1 auto;
+    overflow: hidden;
+    display: flex;
+    
+    .steps {
+      min-width: 230px;
+      padding: 0 15px;
+      ul {
+        list-style-type: none;
+        padding: 0;
+        >li {
+          position: relative;
+          padding: 15px 0 15px 0;
+          display: flex;
+          align-items: center;
+
+          cursor: not-allowed;
+          &:not(.disabled) {
+            cursor: pointer;
+          }
+
+          &::before {
+           line-height: 30px;
+           text-align: center;
+            color: #FFFFFF;
+            content: "1";
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            background: #000;
+            border-radius: 50%;
+            margin-right: 15px;
+          }
+
+          &.active {
+            color: $mdc-theme-primary;
+
+            &::before {
+              background: $mdc-theme-primary;
+            }
+          }
+
+          &.disabled {
+            color: #ccc;
+
+            &::before {
+              background: #ccc  ;
+            }
+          }
+
+          @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+              &::before {
+                content: "#{$i}."
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      flex: 1 1 auto;
+      overflow: auto;
+      >*:first-child {
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 }
-

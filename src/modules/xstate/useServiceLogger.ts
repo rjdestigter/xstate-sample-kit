@@ -1,10 +1,26 @@
-import { useEffect } from "react";
+/**
+ * @packageDocumentation
+ * @module xstate
+ */
+
+ import { useEffect } from "react";
 import { Interpreter, StateSchema, EventObject, Typestate } from "xstate";
 
 /**
- *
+ * ```hs
+ * useServiceLogger :: Interpreter ctx schema event typeState ->  string -> void
+ * ```
+ * 
+ * React hook for logging interpreted state machines.
+ * 
+ * @typeparam TContext The state machine's context state type
+ * @typeparam TStateSchema Schema type, defaults to `any`
+ * @typeparam TEvent The types of events that the machine dispatches, defaults to `any`
+ * @typeparam TTypeState The typed contextual state of a machine, defaults to `any`
+ * @param service The interpreted state machine's service
+ * @param name A name used to label the logged group.
  */
-export default <
+export const useServiceLogger = <
   TContext,
   TStateSchema extends StateSchema = any,
   TEvent extends EventObject = EventObject,
@@ -34,3 +50,5 @@ export default <
       };
     });
   }, [service, name]);
+
+  export default useServiceLogger

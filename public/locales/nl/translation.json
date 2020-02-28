@@ -1,4 +1,9 @@
 {
-  "welcome": "Welcome!",
-  "title of show": "titel van de voorstelling"
+  "welcome": "Welkom",
+  "title of show": "title van de voorstelling",
+  "E-mail": "E-mail",
+  "First name": "Voornaam",
+  "Last name": "Achternaam",
+  "Sign-up": "Registreren",
+  "Phone": "Phone"
 }

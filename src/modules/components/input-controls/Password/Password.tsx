@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Icon } from '@rmwc/icon'
+import { Icon } from "@rmwc/icon";
 
 import Input from "../Input";
 import passwordLabel from "../../labels/passwordLabel";
@@ -10,6 +10,7 @@ type InputProps = PropsOf<typeof Input>;
 
 export interface PropsPassword {
   value: string;
+  onEnter: InputProps["onEnter"];
   onChange: InputProps["onChange"];
   onFocus: InputProps["onFocus"];
   onBlur: InputProps["onBlur"];
@@ -33,21 +34,18 @@ export const PasswordInput = (props: PropsPassword) => (
         placeholder="Password"
         type="password"
         required
-        invalid={props.invalid}
+        data-status={props.invalid ? "error" : undefined}
         disabled={props.disabled}
+        onEnter={props.onEnter}
         onChange={props.onChange}
         onFocus={props.onFocus}
         onBlur={props.onBlur}
         style={Object.assign({}, props.style, styles.block)}
+        icon={<Icon icon={props.focused ? 'lock_open' : 'lock'} theme={props.focused  ? 'primary' : undefined} />}
         helpText={{
-          children: props.invalid ? (
-            <span>{"A password is required!"}</span>
-          ) : (
-            ""
-          ),
-          validationMsg: true
+          children: props.invalid ? <span>{"A password is required!"}</span> : <br />,
+          validationMsg: true,        
         }}
-        icon={<Icon icon={props.focused ? "lock_open" : "lock"} theme={props.focused ? 'primary': '' as any} />}
       />
     </div>
   </>
