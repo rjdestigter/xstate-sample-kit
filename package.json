@@ -44,7 +44,9 @@
     "e2e": "jest -c jest.config.js",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "typedoc": "npx typedoc"
+    "typedoc": "npx typedoc --tsconfig ./tsconfig.json",
+    "predeploy": "npm run build && npm run typedoc",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -31,7 +31,7 @@
       "./src/modules"
     ],
     "mode": "modules",
-    "out": "docs",
+    "out": "build/docs",
     "ignoreCompilerErrors": true
   }
 }
