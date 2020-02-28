@@ -2,6 +2,6 @@
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    readonly E2E?: 'on' | 'off';
+    readonly REACT_APP_E2E?: 'on' | 'off';
   }
 }

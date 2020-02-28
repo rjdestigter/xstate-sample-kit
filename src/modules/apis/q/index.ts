@@ -2,6 +2,7 @@ import * as t from "io-ts";
 import * as E from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import { randomInt } from "fp-ts/lib/Random";
+import delay from '../../utils/delay'
 
 import { constant, identity } from "fp-ts/lib/function";
 
@@ -39,7 +40,7 @@ export const isApiFailure = isFailureReason("api");
 export const isDecodeFailure = isFailureReason("decode");
 export const isErrorFailure = isFailureReason("error");
 
-if (process.env.NODE_ENV === "development" && process.env.E2E !== "on") {
+if (process.env.NODE_ENV === "development" && process.env.REACT_APP_E2E !== "on") {
   var shuffle = [1, 2, 3, 4];
 }
 
@@ -55,11 +56,13 @@ export const q = <T>(
 ): ((promiser: () => Promise<Response>) => Promise<QResponse<T>>) => async (
   promiser: () => Promise<Response>
 ): Promise<QResponse<T>> => {
+  await delay(2000)
+  
   try {
     const response = await promiser();
     let json = await response.json();
     console.log(JSON.stringify(json, null, 2));
-    if (process.env.NODE_ENV === "development" && process.env.E2E !== "on") {
+    if (process.env.NODE_ENV === "development" && process.env.REACT_APP_E2E !== "on") {
       // Iterate through all possible failure cases in development mode
       const i = shuffle.shift();
       i != null && shuffle.push(i);

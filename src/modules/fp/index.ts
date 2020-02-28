@@ -39,3 +39,6 @@ export const foldValue = <T>(base: T) => (maybe: Option<T>) => pipe(
 )
 
 export const foldString = foldValue("")
+
+export const dot = getter
+export const dot2 = getter2

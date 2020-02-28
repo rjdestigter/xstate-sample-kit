@@ -16,8 +16,8 @@ export interface PropsLoginForm {
 const LoginForm = (props: PropsLoginForm) => {
   return (
     <CLoginForm
-      usernameInput={<UsernameInput disabled={props.isSubmitting} />}
-      passwordInput={<PasswordInput disabled={props.isSubmitting} />}
+      usernameInput={<UsernameInput disabled={props.isSubmitting} onEnter={props.onLogin} />}
+      passwordInput={<PasswordInput disabled={props.isSubmitting} onEnter={props.onLogin} />}
       loginButton={
         <LoginButton disabled={props.canNotSubmit} onClick={props.onLogin} />
       }

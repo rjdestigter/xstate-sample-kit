@@ -15,12 +15,12 @@ import LoginForm from "./LoginForm";
 
 // Modules
 import { fetchUser } from "../../../modules/apis/login-api";
-import { useServiceLogger } from "../../../modules/xstate";
+import { useServiceLogger, isDoneInvokeEvent } from "../../../modules/xstate";
 import { foldString } from "../../../modules/fp";
 // import { machine as loginMachine, api } from "../../../modules/machines/login";
 
 import configuration, {
-  createMachine, EventType
+  createMachine, EventType, StateType
 } from "../../../modules/machines/operator";
 
 // Text
@@ -28,33 +28,62 @@ import text from "./text.json";
 import { User } from "../../../modules/models/users";
 import { Failure } from "../../../modules/apis/q";
 
+// Streams
+import { reset, reset$ } from '../../../modules/streams/reset'
 import { isValid$ as usernameIsValid$ } from "./UsernameInput";
 import { isValid$ as passwordIsValid$ } from "./PasswordInput";
-import { merge, map, startWith } from "rxjs/operators";
+import { map, mapTo } from "rxjs/operators";
 import { combineLatest } from "rxjs";
 import { useObservableState } from "observable-hooks";
 
-import { loginOperation$, anonymousUser$ } from '../../../modules/streams/authentication'
+import { loginOperation$, getAnonymousUser } from '../../../modules/streams/authentication'
+import { assign, spawn, State } from "xstate";
 
 const isValid$ = combineLatest(usernameIsValid$, passwordIsValid$).pipe(
   map(([a, b]) => a && b),
 );
 
-const machine = createMachine<Failure, User>();
+const canReset$ = combineLatest(usernameIsValid$, passwordIsValid$).pipe(
+  map(([a, b]) => a || b),
+);
+
+const machine = createMachine<Failure, User>(config => {
+  return {
+    ...config,
+    states: {
+      ...config.states,
+      [StateType.Done]: {
+        entry:  'assignDone'
+      }
+    },
+    context: {
+      reset$Ref: null
+    },
+    entry: assign({
+      reset$Ref: () => spawn(reset$.pipe(mapTo({ type: EventType.Reset}))),
+      isValid$Ref: () => spawn(isValid$.pipe(map(isValid => ({ type: isValid ? EventType.Valid : EventType.InValid}))))
+    })
+  }
+}).withConfig({
+  actions: {
+    assignDone: (_, evt) => isDoneInvokeEvent(evt) && loginOperation$.next(O.some(evt.data))
+  }
+});
 
 // Exports
 const LoginApp = () => {
   // Hooks
   const [operatorState, send, service] = useMachine(machine);
   const isValid = useObservableState(isValid$, false)
+  const canReset = useObservableState(canReset$, false)
   const loginOperation = useObservableState(loginOperation$, O.none)
  
   useServiceLogger(service, "login");
 
   // Derived information
-  const isInProgress = operatorState.matches("inProgress");
+  const isInProgress = operatorState.matches(StateType.InProgress);
   const isNotInProgress = !isInProgress;
-  const isSubmitting = operatorState.matches("submitting");
+  const isSubmitting = operatorState.matches(StateType.Submitting);
 
   const canNotSubmit =
     isNotInProgress || !isValid
@@ -74,13 +103,7 @@ const LoginApp = () => {
     ? text["Logout"]
     : text["Try again"];
 
-  const reset = () => {
-    send({ type: EventType.Reset})
-    anonymousUser$.next({ username: "", password: ""})
-    loginOperation$.next(O.none)
-  }
-
-  const resetButton = <ResetButton onClick={reset}>{resetText}</ResetButton>;
+  const resetButton = <ResetButton disabled={!canReset} onClick={reset} takeFocus={operatorState.matches(StateType.Done)}>{resetText}</ResetButton>;
 
   const form = (
     <LoginForm
@@ -90,9 +113,10 @@ const LoginApp = () => {
         send({
           type: EventType.Submit,
           promiser: async () => {
-            const response = await fetchUser(anonymousUser$.getValue())
+            const response = await fetchUser(getAnonymousUser())
 
-            loginOperation$.next(O.some(response))
+            // loginOperation$.next(O.some(response))
+
 
             return response
           }

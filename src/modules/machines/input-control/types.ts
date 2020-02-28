@@ -1,7 +1,9 @@
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,
-  StateSchema as XStateStateSchema
+  StateSchema as XStateStateSchema,
+  State as XState,
+  Typestate
 } from "xstate";
 
 export const StateTypePristine = "pristine" as const;
@@ -56,16 +58,16 @@ export type Event<T> =
 
 
   export type ChangeEvent<T> = Extract<Event<T>, { type: typeof EventType.Change }>;
-  export type FocusEvent<T> = Extract<Event<T>, { type: typeof EventType.Focus }>;
-  export type BlurEvent<T> = Extract<Event<T>, { type: typeof EventType.Blur }>;
-  export type ResetEvent<T> = Extract<Event<T>, { type: typeof EventType.Reset }>;
+  export type FocusEvent= Extract<Event<any>, { type: typeof EventType.Focus }>;
+  export type BlurEvent= Extract<Event<any>, { type: typeof EventType.Blur }>;
+  export type ResetEvent= Extract<Event<any>, { type: typeof EventType.Reset }>;
 
 /**
  * Possible states for the input control machine.
  *
  * @typeparam T See [[Context.value]]
  */
-export interface State<T> {
+export interface TypeState<T> {
   /** The input contorl state's context type */
   context: any;
   /** The input contorl state's value */
@@ -80,7 +82,7 @@ export interface State<T> {
   };
 }
 
-export interface StateSchema<T> extends XStateStateSchema<any> {
+export interface StateSchema extends XStateStateSchema<any> {
   context: {};
   states: {
     [StateType.Pristine]: {
@@ -121,5 +123,6 @@ export type MachineOptions<T> = Partial<
 
 export type MachineConfig<
   T,
-> = XStateMachineConfig<any, StateSchema<T>, Event<T>>;
+> = XStateMachineConfig<any, StateSchema, Event<T>>;
 
+export type State<T> = XState<any, Event<T>, StateSchema, TypeState<T>>

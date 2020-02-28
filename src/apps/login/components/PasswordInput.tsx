@@ -1,80 +1,115 @@
 import * as React from "react";
 
+import { assign, spawn } from "xstate";
+import { useMachine } from "@xstate/react";
+import { BehaviorSubject, merge } from "rxjs";
 import { useObservableState } from "observable-hooks";
+import { pipe } from "fp-ts/lib/pipeable";
+import * as R from "fp-ts/lib/Reader";
+import * as O from "fp-ts/lib/Option";
 
 import PasswordInput, {
   PropsPassword
 } from "../../../modules/components/input-controls/Password";
 
 import createMachine, {
-  EventType
+  State,
+  change,
+  reset,
+  focus,
+  blur
 } from "../../../modules/machines/input-control";
 
 import {
-  anonymousUser$,
-  initialAnonymousUser
+  password$,
+  passwordValue$,
+  setPassword,
+  dotValue,
+  isRobot,
 } from "../../../modules/streams/authentication";
-import { useMachine } from "@xstate/react";
-import { getter2 } from "../../../modules/fp";
-import { pipe } from "fp-ts/lib/pipeable";
-import * as R from "fp-ts/lib/Reader";
-import { Interpreter } from "xstate";
-import { BehaviorSubject } from "rxjs";
+
+import { getEventCurrentTargetValue } from "../../../modules/utils/getters";
+import { isTruthy } from "../../../modules/utils/assert";
+import { InputEvent } from "../../../modules/types";
+import { voidward } from "../../../modules/utils";
+import { map, tap, filter, ignoreElements, mapTo, scan } from "rxjs/operators";
+import { constant, identity, flow } from "fp-ts/lib/function";
+import { reset$ } from "../../../modules/streams/reset";
+import { useServiceLogger } from "../../../modules/xstate";
+import { useSubject } from "../../../modules/hooks";
 
 const machine = createMachine<string>({
-  isValid: password => (password ? !!password.trim() : false)
+  isValid: isTruthy,
+  withConfig: config => {
+    return {
+      ...config,
+      context: {
+        reset$Ref: null
+      },
+      entry: assign({
+        reset$Ref: () => spawn(reset$.pipe(mapTo(reset()))),
+        change$Ref: () => spawn(password$.pipe(map(value => change(dotValue(value), isRobot(value)))))
+      })
+    };
+  }
 });
 
-type Event = React.FormEvent<HTMLInputElement>;
+const inputEventIdentity = (event: InputEvent) => event;
 
-const identity = (event: Event) => event;
+const getEventValue = R.map<InputEvent, string>(getEventCurrentTargetValue);
 
-const getEventValue = R.map<Event, string>(getter2("currentTarget", "value"));
+const streamPassword = R.chain<InputEvent, string, string>(password => () =>
+  setPassword(password)
+);
 
-const streamPassword = (username: string) =>
-  R.chain<Event, string, string>(password => () => {
-    anonymousUser$.next({
-      password,
-      username
-    });
+export const state$ = new BehaviorSubject<O.Option<State<string>>>(O.none);
 
-    return password;
-  });
+export const isValid$ = state$.pipe(
+  map(maybeState =>
+    pipe(
+      maybeState,
+      O.map(state => state.matches("valid.valid" as any)),
+      O.fold(constant(false), identity)
+    )
+  )
+);
 
-const dispatchChangeEvent = (send: Interpreter<any, any, any, any>["send"]) =>
-  R.map(value => {
-    send({ type: EventType.Change, value });
-  });
-
-export const isValid$ = new BehaviorSubject(false)
+const takeFocus$ = reset$.pipe(
+  mapTo(2),
+  scan(
+    (acc, next) => acc + next
+  )
+)
 
 const Password = (
-  props: Omit<PropsPassword, "value" | "onChange" | "onFocus" | "onBlur" | "invalid" | "focused">
+  props: Omit<
+    PropsPassword,
+    "value" | "onChange" | "onFocus" | "onBlur" | "invalid" | "focused"
+  >
 ) => {
-  const [state, send] = useMachine(machine);
+  const [state, send, service] = useMachine(machine);
 
-  const { password, username } = useObservableState(
-    anonymousUser$,
-    initialAnonymousUser
-  );
+  useServiceLogger(service, "password");
+  useSubject(state$, state);
+  const password = useObservableState(passwordValue$, "");
 
   const onChange = pipe(
-    identity,
+    inputEventIdentity,
     getEventValue,
-    streamPassword(username),
-    dispatchChangeEvent(send),
-    R.chain(_ => () => isValid$.next(state.matches('valid.valid')))
+    streamPassword
   );
 
   return (
     <PasswordInput
       {...props}
       value={password}
-      invalid={state.matches('touched.touched') && state.matches("valid.invalid")}
+      invalid={
+        state.matches("touched.touched") && state.matches("valid.invalid")
+      }
       focused={state.matches("focused.focused")}
       onChange={onChange}
-      onFocus={() => send({ type: EventType.Focus })}
-      onBlur={() => send({ type: EventType.Blur })}
+      onFocus={flow(focus, send)}
+      onBlur={flow(blur, send)}
     />
   );
 };

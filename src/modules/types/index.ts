@@ -5,3 +5,5 @@ export type DropFirstInTuple<T extends any[]> = ((...args: T) => any) extends (a
 export type PropsOf<C extends React.ComponentType<any>> = C extends React.ComponentType<infer P>
   ? P
   : never;
+
+export type InputEvent = React.FormEvent<HTMLInputElement>;
