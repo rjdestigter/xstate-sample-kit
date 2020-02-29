@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module user
+ * @module models/user
  */
 import * as t from 'io-ts'
 

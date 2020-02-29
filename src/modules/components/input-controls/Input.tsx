@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module components
+ * 
+ */
 import * as React from "react";
 
 import { TextField } from "@rmwc/textfield";

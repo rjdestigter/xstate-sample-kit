@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-login
+ * 
+ */
+
 import * as React from "react";
 
 import Button from "../../../modules/components/input-controls/Button";

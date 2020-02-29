@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,15 +18,21 @@
     "useDefineForClassFields": false,
     "baseUrl": "."
   },
-  "include": [
-    "src",
-  ],
+  "include": ["src"],
   "typedocOptions": {
-    "inputFiles": [
-      "./src/apps",
-      "./src/modules"
-    ],
+    "inputFiles": ["./src/apps", "./src/modules"],
     "mode": "modules",
+    "exclude": [
+      "**/*.json",
+      "./src/apps/**/index.ts",
+      "./src/apps/**/index.tsx",
+      "./src/modules/**/index.ts",
+      "./src/modules/**/index.tsx",
+      "**/*.e2e.ts",
+      "**/*.e2e.tsx",
+      "**/*.stories.ts",
+      "**/*.stories.tsx"
+    ],
     "out": "build/docs",
     "ignoreCompilerErrors": true
   }

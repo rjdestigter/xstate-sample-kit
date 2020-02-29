@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module machines/input-control
+ * 
+ */
 import {
   createMachine as createXStateMachine,
   MachineConfig,

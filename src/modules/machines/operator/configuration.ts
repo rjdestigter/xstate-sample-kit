@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module machines/operator
+ * 
+ */
 import { createMachine as createXStateMachine, MachineConfig } from "xstate";
 
 import { StateType, EventType, Event } from "./types";

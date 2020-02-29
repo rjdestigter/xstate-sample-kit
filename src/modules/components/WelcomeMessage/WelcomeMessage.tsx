@@ -1,6 +1,11 @@
+/**
+ * @packageDocumentation
+ * @module components
+ * 
+ */
 import * as React from "react";
 
-import { User, getUsername } from "../../models/users";
+import { User, getUsername } from "../../models/users/getters";
 
 import { format } from "../../utils";
 

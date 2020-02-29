@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-login
+ * 
+ */
 import * as React from "react";
 
 import CFailureMessage from "../../../modules/components/FailureMessage";

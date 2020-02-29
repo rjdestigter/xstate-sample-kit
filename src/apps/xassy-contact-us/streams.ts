@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-contact-us
+ * 
+ */
+
 import { BehaviorSubject, combineLatest } from "rxjs";
 import * as O from "fp-ts/lib/Option";
 import * as E from "fp-ts/lib/Either";

@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-contact-us
+ * 
+ */
+
 import { assign, spawn } from "xstate";
 import { mapTo, map } from "rxjs/operators";
 import * as O from "fp-ts/lib/Option";

@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-router
+ * 
+ */
 import { createMachine } from "xstate";
 
 export type GOTO = "GOTO";

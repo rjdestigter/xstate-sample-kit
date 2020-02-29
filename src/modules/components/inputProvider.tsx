@@ -1,13 +1,27 @@
-// Libs
+/**
+ * ### inputProvider
+ * 
+ * Create a state machine controlled text input element with it's corresponding observable stream.
+ * 
+ * @packageDocumentation
+ * @module modules/inputProvider
+ * @preferred
+ * 
+ */
+
+// React
 import * as React from "react";
 
+// RxJS
 import { BehaviorSubject, Observable } from "rxjs";
 import { map, mapTo, tap } from "rxjs/operators";
 import { useObservableState } from "observable-hooks";
 
+// XState
 import { assign, spawn } from "xstate";
 import { useMachine } from "@xstate/react";
 
+// fp-ts
 import { pipe } from "fp-ts/lib/pipeable";
 import * as R from "fp-ts/lib/Reader";
 import * as O from "fp-ts/lib/Option";
@@ -40,10 +54,19 @@ import { trim, pick } from "../utils";
 import { reset$ } from "../streams/reset";
 import { makeHumanValue } from "../streams/authentication";
 
+/**
+ * Identify function of [[InputEvent]]. Only used for type information.
+ */
 const inputEventIdentity = (event: InputEvent) => event;
 
+/**
+ * Map a function of (InputEvent -> a) to (string -> a)
+ */
 const getEventValue = R.map<InputEvent, string>(getEventCurrentTargetValue);
 
+/**
+ * 
+ */
 export interface RenderProps {
   value: string;
   invalid: boolean;
@@ -53,14 +76,26 @@ export interface RenderProps {
   onBlur: () => void;
 }
 
+/**
+ * Function arguments for [[inputProvider]]
+ */
 export interface InputProviderArgs {
+  /** Unique name for the controlled input */
   name: string;
+  /** Validates the input  */
   isValid?: (value?: string) => boolean;
+  /** Callback for overriding the state machine configuration */
   withConfig?: (config: MachineConfig<string>) => MachineConfig<string>;
+  /** Observable stream that provides the value */
   value$: Observable<Value<string>>;
+  /** Updater function that reeives the next value */
   update: (next: string) => void;
 }
 
+/**
+ * 
+ * @param param0 
+ */
 export const inputProvider = ({
   name,
   isValid = constant(true),
@@ -68,6 +103,10 @@ export const inputProvider = ({
   value$,
   update
 }: InputProviderArgs) => {
+  //
+  /**
+   * Default state machine configuration.
+   */
   const defaultWithConfig = (
     config: MachineConfig<string>
   ): MachineConfig<string> => {
@@ -89,13 +128,14 @@ export const inputProvider = ({
       entry: [
         ...entry,
         assign<any, any>({
+          // On entry, spawn the reset$ observable and map it to
+          // the RESET event that will reset the state machine.
           reset$Ref: () => spawn(reset$.pipe(mapTo(reset()))),
+          // On entry, spawn the value$ observable and map it to
+          // the CHANGE event
           change$Ref: () =>
             spawn(
               value$.pipe(
-                tap(value => {
-                  // debugger;
-                }),
                 map(value => change(dotValue(value), isRobot(value)))
               )
             )
@@ -104,22 +144,24 @@ export const inputProvider = ({
     };
   };
 
+  // Create the state machien controlling the text input element
   const machine = createMachine<string>({
     isValid,
     withConfig: flow(defaultWithConfig, withConfig || identity)
   });
 
-  const streamUsername = R.chain<InputEvent, string, string>(
+  // Create an observable used to stream the machines state
+  const state$ = new BehaviorSubject<O.Option<State<string>>>(O.none);
+
+  const streamNextValue = R.chain<InputEvent, string, string>(
     flow(returnLast(update, identity), constant)
   );
 
-  const state$ = new BehaviorSubject<O.Option<State<string>>>(O.none);
-
   const stateIsValid = (state: State<string>) =>
     state.matches("valid.valid" as any);
+
   const mapStateIsValid = O.map(stateIsValid);
 
-  // @ts-ignore
   const isValid$ = state$.pipe(
     map(maybeState =>
       pipe(maybeState, mapStateIsValid, O.fold(constant(false), identity))
@@ -138,7 +180,7 @@ export const inputProvider = ({
     useSubject(state$, state);
     const username = useObservableState(value$.pipe(map(dotValue)), "");
 
-    const onChange = pipe(inputEventIdentity, getEventValue, streamUsername);
+    const onChange = pipe(inputEventIdentity, getEventValue, streamNextValue);
     const onFocus = flow(focus, send, voidFn);
     const onBlur = flow(blur, send, voidFn);
 
@@ -161,7 +203,11 @@ export const inputProvider = ({
 };
 
 export default inputProvider;
-
+/**
+ * 
+ * @param name 
+ * @param options 
+ */
 export const stringInputProvider = (
   name: string,
   options: {

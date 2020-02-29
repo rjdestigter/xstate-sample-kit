@@ -1,3 +1,11 @@
+/**
+ * App: Xassy: Router - Example application that implements a basic routing solution combining XState, history, and VanillaTS
+ * @packageDocumentation
+ * @module app/xassy-router
+ * @preferred
+ * 
+ */
+
 import * as React from "react";
 
 import history from "history/browser";

@@ -34,7 +34,7 @@
  * ```
  *
  * @packageDocumentation
- * @module q
+ * @module module/q
  * @preferred
  */
 
@@ -42,7 +42,7 @@ import * as t from "io-ts";
 import * as E from "fp-ts/lib/Either";
 import { pipe } from "fp-ts/lib/pipeable";
 import { randomInt } from "fp-ts/lib/Random";
-import delay from "../../utils/delay";
+import delay from "../utils/delay";
 
 import { constant, identity } from "fp-ts/lib/function";
 

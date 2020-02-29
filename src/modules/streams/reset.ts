@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module streams/reset
+ * @module modules/streams/reset
  */
 import { Subject } from 'rxjs'
 

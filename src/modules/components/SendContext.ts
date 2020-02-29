@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module SendContext
+ * 
+ */
 import { Interpreter, State } from 'xstate'
 import { createContext } from 'react'
 

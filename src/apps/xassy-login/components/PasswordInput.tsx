@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-login
+ * 
+ */
+
 // Libs
 import * as React from "react";
 

@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-login
+ * 
+ */
+
 import React from "react";
 
 import CLoginForm from "../../../modules/components/LoginForm";

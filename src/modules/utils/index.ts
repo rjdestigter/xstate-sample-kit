@@ -27,6 +27,7 @@
  * #### Strings
  * 
  * - [[trim]]
+ * - [[format]]
  * 
  * #### Booleans
  * 
@@ -40,8 +41,6 @@
  * #### Other
  * 
  * - [[delay]]
- * - [[prefixer]]
- * - [[format]]
  * 
  * @packageDocumentation
  * @module utils
@@ -56,19 +55,4 @@ export * from './functions'
 export * from './strings'
 export * from './booleans'
 export * from './objects'
-export { default as prefixer } from './prefixer'
 export { default as delay } from './delay'
-
-/**
- * format
- * @param str 
- * @param args 
- */
-export const format = (str: string, ...args: any[]) => {
-  return str.replace(/%(\d+)/g, (match, number) => { 
-    return typeof args[number] != 'undefined'
-      ? args[number]
-      : match
-    ;
-  });
-};

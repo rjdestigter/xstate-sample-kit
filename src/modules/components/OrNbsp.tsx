@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module components
+ * 
+ */
 import * as React from 'react'
 
 const OrNbsp = (props: { predicate: boolean, children: React.ReactNode }) => (

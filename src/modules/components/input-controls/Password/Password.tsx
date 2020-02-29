@@ -1,9 +1,13 @@
+/**
+ * @packageDocumentation
+ * @module components
+ *
+ */
 import * as React from "react";
 
 import { Icon } from "@rmwc/icon";
 
 import Input from "../Input";
-import passwordLabel from "../../labels/passwordLabel";
 import { PropsOf } from "../../../types";
 
 type InputProps = PropsOf<typeof Input>;
@@ -18,37 +22,43 @@ export interface PropsPassword {
   disabled: boolean;
   invalid: boolean;
   focused: boolean;
+  label?: string;
 }
 
 const styles = {
-  block: { display: "block" }
+  input: { width: "100%" }
 };
 
 export const PasswordInput = (props: PropsPassword) => (
-  <>
-    <div>{passwordLabel}</div>
-    <div>
-      <Input
-        data-test="input-password"
-        value={props.value}
-        placeholder="Password"
-        type="password"
-        required
-        data-status={props.invalid ? "error" : undefined}
-        disabled={props.disabled}
-        onEnter={props.onEnter}
-        onChange={props.onChange}
-        onFocus={props.onFocus}
-        onBlur={props.onBlur}
-        style={Object.assign({}, props.style, styles.block)}
-        icon={<Icon icon={props.focused ? 'lock_open' : 'lock'} theme={props.focused  ? 'primary' : undefined} />}
-        helpText={{
-          children: props.invalid ? <span>{"A password is required!"}</span> : <br />,
-          validationMsg: true,        
-        }}
+  <Input
+    label={props.label || "Password"}
+    data-test="input-password"
+    value={props.value}
+    type="password"
+    outlined
+    required
+    data-status={props.invalid ? "error" : undefined}
+    disabled={props.disabled}
+    onEnter={props.onEnter}
+    onChange={props.onChange}
+    onFocus={props.onFocus}
+    onBlur={props.onBlur}
+    style={Object.assign({}, props.style, styles.input)}
+    icon={
+      <Icon
+        icon={props.focused ? "lock_open" : "lock"}
+        theme={props.focused ? "primary" : undefined}
       />
-    </div>
-  </>
+    }
+    helpText={{
+      children: props.invalid ? (
+        <span>{"A password is required!"}</span>
+      ) : (
+        <br />
+      ),
+      validationMsg: true
+    }}
+  />
 );
 
 export default PasswordInput;

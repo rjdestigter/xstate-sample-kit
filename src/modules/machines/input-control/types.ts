@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module machines/input-control
+ * 
+ */
 import {
   MachineOptions as XStateMachineOptions,
   MachineConfig as XStateMachineConfig,

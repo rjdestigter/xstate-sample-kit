@@ -1,3 +1,9 @@
+/**
+ * @packageDocumentation
+ * @module app/xassy-login
+ * 
+ */
+
 // Libs
 import React from "react";
 import { useMachine } from "@xstate/react";
@@ -24,7 +30,7 @@ import configuration, {
 
 // Text
 import text from "./text.json";
-import { User } from "../../../modules/models/users";
+import { User } from "../../../modules/models/users/getters";
 import { Failure } from "../../../modules/apis/q";
 
 // Streams

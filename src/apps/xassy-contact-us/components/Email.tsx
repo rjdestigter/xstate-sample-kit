@@ -1,4 +1,10 @@
-// Boilerplate
+/**
+ * @packageDocumentation
+ * @module app/xassy-contact-us
+ * 
+ */
+
+ // Boilerplate
 import { stringInputProvider } from "../../../modules/components/inputProvider";
 import { isEmail } from "../../../modules/utils";
 

@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module machines/operator
+ * 
+ */
 import { Either } from "fp-ts/lib/Either";
 
 import {
