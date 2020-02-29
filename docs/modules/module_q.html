@@ -1,0 +1,875 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>module/q | xstate-sample-architecture</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">xstate-sample-architecture</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="module_q.html">module/q</a>
+				</li>
+			</ul>
+			<h1>External module module/q</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#q" id="q" style="color: inherit; text-decoration: none;">
+							<h2>q</h2>
+						</a>
+					</div>
+					<p>Wrapper around <code>fetch</code> for type safe network requests
+					using <code>io-ts</code> and <code>fp-ts</code> utilities and types.</p>
+					<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+						<h3>Example</h3>
+					</a>
+					<pre><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> t <span class="hljs-keyword">from</span> <span class="hljs-string">'io-ts'</span>
+
+<span class="hljs-keyword">const</span> User = t.type({
+  id: t.number,
+  name: t.string,
+  username: t.string,
+  email: t.string,
+}, <span class="hljs-string">'User'</span>)
+
+
+<span class="hljs-keyword">const</span> requestUserById = (id: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">Promise</span>&lt;Response&gt; =&gt; fetch(<span class="hljs-string">'http://www.example.com/api/v1/user/'</span> + id)
+
+<span class="hljs-keyword">const</span> fetchUserById= (id: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">Promise</span>&lt;Either&lt;Failure, User&gt;&gt;
+   =&gt; q(User)(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> requestUserById(id))
+
+<span class="hljs-keyword">const</span> result: Either&lt;Failure, User&gt; = <span class="hljs-keyword">await</span> fetchUserById(<span class="hljs-number">334</span>)</code></pre>
+					<p>The <a href="module_q.html#failure">Failure</a> type describes three possible ways a network request can fail:</p>
+					<ul>
+						<li>Reason: &quot;api&quot;, The response shape matched some pre-determined protocol for communicating error messages.</li>
+						<li>Reason: &quot;decode&quot;, The decoder was unable to parse the response indicating bad data.</li>
+						<li>Reason: &quot;error&quot;, Something went really wrong, bug in the code, network down, etc.</li>
+					</ul>
+					<pre><code>
+<span class="hljs-variable">@packageDocumentation</span>
+<span class="hljs-variable">@module</span> module/q
+<span class="hljs-variable">@preferred</span></code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#apifailure" class="tsd-kind-icon">Api<wbr>Failure</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#failure" class="tsd-kind-icon">Failure</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#q" class="tsd-kind-icon">Q</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="module_q.html#qfetch" class="tsd-kind-icon">QFetch</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="module_q.html#qresponse" class="tsd-kind-icon">QResponse</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#reason" class="tsd-kind-icon">Reason</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#reasonapi" class="tsd-kind-icon">Reason<wbr>Api</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#reasondecode" class="tsd-kind-icon">Reason<wbr>Decode</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="module_q.html#reasonerror" class="tsd-kind-icon">Reason<wbr>Error</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#apifailure-1" class="tsd-kind-icon">Api<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#reasonapi-1" class="tsd-kind-icon">Reason<wbr>Api</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#reasondecode-1" class="tsd-kind-icon">Reason<wbr>Decode</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#reasonerror-1" class="tsd-kind-icon">Reason<wbr>Error</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#createapifailure" class="tsd-kind-icon">create<wbr>Api<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#createdecodefailure" class="tsd-kind-icon">create<wbr>Decode<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#createerrorfailure" class="tsd-kind-icon">create<wbr>Error<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#isapifailure" class="tsd-kind-icon">is<wbr>Api<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#isdecodefailure" class="tsd-kind-icon">is<wbr>Decode<wbr>Failure</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="module_q.html#iserrorfailure" class="tsd-kind-icon">is<wbr>Error<wbr>Failure</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported"><a href="module_q.html#isfailurereason" class="tsd-kind-icon">is<wbr>Failure<wbr>Reason</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported"><a href="module_q.html#makecreatefailure" class="tsd-kind-icon">make<wbr>Create<wbr>Failure</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="module_q.html#q-1" class="tsd-kind-icon">q</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="apifailure" class="tsd-anchor"></a>
+					<h3>Api<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">Api<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">t.TypeOf</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="module_q.html#apifailure-1" class="tsd-signature-type">ApiFailure</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L67">src/modules/apis/q.ts:67</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p> Describes a standarized API failure reponse.</p>
+						</div>
+						<pre><code class="language-ts"><span class="hljs-keyword">type</span> ApiFailure = {
+  code: <span class="hljs-built_in">number</span>
+  error: <span class="hljs-built_in">string</span>
+}</code></pre>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="failure" class="tsd-anchor"></a>
+					<h3>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><a href="module_q.html#apifailure" class="tsd-signature-type">ApiFailure</a><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasonapi" class="tsd-signature-type">ReasonApi</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Errors</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasondecode" class="tsd-signature-type">ReasonDecode</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasonerror" class="tsd-signature-type">ReasonError</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L130">src/modules/apis/q.ts:130</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A network request can fail due to:</p>
+						</div>
+						<a href="#reason-quotapiquot" id="reason-quotapiquot" style="color: inherit; text-decoration: none;">
+							<h4>Reason: &quot;api&quot;</h4>
+						</a>
+						<p>This type of failure describes an API response with
+							failure information following a specific protocol. For
+							example a bad username or password or maybe  the database
+						connection failed.</p>
+						<p><code>t.Errors</code> is the error response provided by <code>io-ts</code></p>
+						<pre><code class="language-ts">{ reason: <span class="hljs-string">"api"</span>; error: t.Errors }</code></pre>
+						<a href="#reason-quoterrorquot" id="reason-quoterrorquot" style="color: inherit; text-decoration: none;">
+							<h4>Reason: &quot;error&quot;</h4>
+						</a>
+						<p>An error type for all other cases. Usually when a there is
+						a bug in the code or the network is down.</p>
+						<pre><code class="language-ts">{ reason: <span class="hljs-string">"error"</span>; error: <span class="hljs-built_in">Error</span> }</code></pre>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="q" class="tsd-anchor"></a>
+					<h3>Q</h3>
+					<div class="tsd-signature tsd-kind-icon">Q<span class="tsd-signature-symbol">:</span> &lt;TModel&gt;<span class="tsd-signature-symbol">(</span>decoder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Type</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="module_q.html#qfetch" class="tsd-signature-type">QFetch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L202">src/modules/apis/q.ts:202</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;TModel&gt;<span class="tsd-signature-symbol">(</span>decoder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Type</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="module_q.html#qfetch" class="tsd-signature-type">QFetch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>TModel</h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>decoder: <span class="tsd-signature-type">Type</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="module_q.html#qfetch" class="tsd-signature-type">QFetch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="qfetch" class="tsd-anchor"></a>
+					<h3>QFetch</h3>
+					<div class="tsd-signature tsd-kind-icon">QFetch&lt;TModel&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>promiser<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="module_q.html#qresponse" class="tsd-signature-type">QResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L195">src/modules/apis/q.ts:195</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Functon that takes a lazy promise of a network response and returns
+							a promise of a <a href="module_q.html#qresponse">QResponse</a></p>
+						</div>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TModel</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>promiser<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="module_q.html#qresponse" class="tsd-signature-type">QResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>promiser: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter-siganture">
+														<ul class="tsd-signatures tsd-kind-type-literal">
+															<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="module_q.html#qresponse" class="tsd-signature-type">QResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="qresponse" class="tsd-anchor"></a>
+					<h3>QResponse</h3>
+					<div class="tsd-signature tsd-kind-icon">QResponse&lt;TModel&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E.Either</span><span class="tsd-signature-symbol">&lt;</span><a href="module_q.html#failure" class="tsd-signature-type">Failure</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L142">src/modules/apis/q.ts:142</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The reponse type for this module. It is either
+							a &quot;Right&quot; response of TModel or a &quot;Left&quot; of some type of <a href="module_q.html#failure">Failure</a></p>
+						</div>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TModel</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="reason" class="tsd-anchor"></a>
+					<h3>Reason</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<span class="tsd-signature-symbol">:</span> <a href="module_q.html#reasonapi" class="tsd-signature-type">ReasonApi</a><span class="tsd-signature-symbol"> | </span><a href="module_q.html#reasondecode" class="tsd-signature-type">ReasonDecode</a><span class="tsd-signature-symbol"> | </span><a href="module_q.html#reasonerror" class="tsd-signature-type">ReasonError</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L102">src/modules/apis/q.ts:102</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Union of type literals describing the reasons a netowrk request may fail with.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="reasonapi" class="tsd-anchor"></a>
+					<h3>Reason<wbr>Api</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"api"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L72">src/modules/apis/q.ts:72</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type literal describing the reason of a network request failure.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="reasondecode" class="tsd-anchor"></a>
+					<h3>Reason<wbr>Decode</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Decode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"decode"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L82">src/modules/apis/q.ts:82</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type literal describing the reason of a network request failure.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="reasonerror" class="tsd-anchor"></a>
+					<h3>Reason<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"error"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L92">src/modules/apis/q.ts:92</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type literal describing the reason of a network request failure.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="apifailure-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Api<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">Api<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TypeC</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NumberC</span><span class="tsd-signature-symbol">; </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StringC</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = t.type({code: t.number,error: t.string})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L52">src/modules/apis/q.ts:52</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Runtime type decoder for parsing API failure responses.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="reasonapi-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Reason<wbr>Api</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Api<span class="tsd-signature-symbol">:</span> <a href="module_q.html#reasonapi" class="tsd-signature-type">ReasonApi</a><span class="tsd-signature-symbol"> = &quot;api&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L77">src/modules/apis/q.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Constant of the type literal with the same name. See <a href="module_q.html#reasonapi">ReasonApi</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="reasondecode-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Reason<wbr>Decode</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Decode<span class="tsd-signature-symbol">:</span> <a href="module_q.html#reasondecode" class="tsd-signature-type">ReasonDecode</a><span class="tsd-signature-symbol"> = &quot;decode&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L87">src/modules/apis/q.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Constant of the type literal with the same name. See <a href="module_q.html#reasondecode">ReasonDecode</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="reasonerror-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Reason<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<wbr>Error<span class="tsd-signature-symbol">:</span> <a href="module_q.html#reasonerror" class="tsd-signature-type">ReasonError</a><span class="tsd-signature-symbol"> = &quot;error&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L97">src/modules/apis/q.ts:97</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Constant of the type literal with the same name. See <a href="module_q.html#reasonerror">ReasonError</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="createapifailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Api<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Api<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = makeCreateFailure(ReasonApi)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L166">src/modules/apis/q.ts:166</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Create a <a href="module_q.html#failure">Failure</a> object with reason: &quot;api&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="createdecodefailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Decode<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Decode<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = makeCreateFailure(ReasonDecode)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L170">src/modules/apis/q.ts:170</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Create a <a href="module_q.html#failure">Failure</a> object with reason: &quot;decode&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="createerrorfailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Error<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Error<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = makeCreateFailure(ReasonError)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L174">src/modules/apis/q.ts:174</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Create a <a href="module_q.html#failure">Failure</a> object with reason: &quot;error&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="isapifailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Api<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Api<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = isFailureReason(ReasonApi)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L179">src/modules/apis/q.ts:179</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Asserts that a given <a href="module_q.html#failure">Failure</a> object is of reason: &quot;api&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="isdecodefailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Decode<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Decode<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = isFailureReason(ReasonDecode)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L184">src/modules/apis/q.ts:184</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Asserts that a given <a href="module_q.html#failure">Failure</a> object is of reason: &quot;decode&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="iserrorfailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Error<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Error<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = isFailureReason(ReasonError)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L189">src/modules/apis/q.ts:189</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Asserts that a given <a href="module_q.html#failure">Failure</a> object is of reason: &quot;error&quot;</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="isfailurereason" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Failure<wbr>Reason</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Failure<wbr>Reason&lt;R&gt;<span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L149">src/modules/apis/q.ts:149</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Asserts a <a href="module_q.html#failure">Failure</a> value of a specific reason type.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>R<span class="tsd-signature-symbol">: </span><a href="module_q.html#reason" class="tsd-signature-type">Reason</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reason: <span class="tsd-signature-type">R</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>&quot;api&quot;, &quot;decode&quot;, or &quot;failure&quot;</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+					<a name="makecreatefailure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> make<wbr>Create<wbr>Failure</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Create<wbr>Failure&lt;R&gt;<span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L159">src/modules/apis/q.ts:159</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Make a function for creating failure objects of type <a href="module_q.html#failure">Failure</a> of speicifc reason.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>R<span class="tsd-signature-symbol">: </span><a href="module_q.html#reason" class="tsd-signature-type">Reason</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reason: <span class="tsd-signature-type">R</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>&quot;api&quot;, &quot;decode&quot;, or &quot;failure&quot;</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="q-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> q</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">q&lt;TModel&gt;<span class="tsd-signature-symbol">(</span>decoder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Type</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="module_q.html#qfetch" class="tsd-signature-type">QFetch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/apis/q.ts#L210">src/modules/apis/q.ts:210</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrapper for making type safe promise based network requests that can fail.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TModel</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>decoder: <span class="tsd-signature-type">Type</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>JSON response decoder created using io-ts</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="module_q.html#qfetch" class="tsd-signature-type">QFetch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TModel</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A function that takes a function that returns a promise and returns a response.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_sendcontext_.html">&quot;modules/<wbr>Send<wbr>Context&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_components_loginform_loginform_.html">&quot;modules/components/<wbr>Login<wbr>Form/<wbr>Login<wbr>Form&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_hooks_.html">&quot;modules/hooks&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="sendcontext.html">Send<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy.html">app/xassy</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_contact_us.html">app/xassy-<wbr>contact-<wbr>us</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_login.html">app/xassy-<wbr>login</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_router.html">app/xassy-<wbr>router</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components.html">components</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components_content.html">components/<wbr>Content</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components_failuremessage.html">components/<wbr>Failure<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="machines_input_control.html">machines/input-<wbr>control</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="machines_operator.html">machines/operator</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="models_user.html">models/user</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="module_q.html">module/q</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_api_login.html">modules/api/login</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_inputprovider.html">modules/input<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_streams_authentication.html">modules/streams/authentication</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_streams_reset.html">modules/streams/reset</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="router.html">router</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="user.html">user</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="utils.html">utils</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="xstate.html">xstate</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#apifailure" class="tsd-kind-icon">Api<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#failure" class="tsd-kind-icon">Failure</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#q" class="tsd-kind-icon">Q</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="module_q.html#qfetch" class="tsd-kind-icon">QFetch</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="module_q.html#qresponse" class="tsd-kind-icon">QResponse</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#reason" class="tsd-kind-icon">Reason</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#reasonapi" class="tsd-kind-icon">Reason<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#reasondecode" class="tsd-kind-icon">Reason<wbr>Decode</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="module_q.html#reasonerror" class="tsd-kind-icon">Reason<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#apifailure-1" class="tsd-kind-icon">Api<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#reasonapi-1" class="tsd-kind-icon">Reason<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#reasondecode-1" class="tsd-kind-icon">Reason<wbr>Decode</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#reasonerror-1" class="tsd-kind-icon">Reason<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#createapifailure" class="tsd-kind-icon">create<wbr>Api<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#createdecodefailure" class="tsd-kind-icon">create<wbr>Decode<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#createerrorfailure" class="tsd-kind-icon">create<wbr>Error<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#isapifailure" class="tsd-kind-icon">is<wbr>Api<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#isdecodefailure" class="tsd-kind-icon">is<wbr>Decode<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="module_q.html#iserrorfailure" class="tsd-kind-icon">is<wbr>Error<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="module_q.html#isfailurereason" class="tsd-kind-icon">is<wbr>Failure<wbr>Reason</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="module_q.html#makecreatefailure" class="tsd-kind-icon">make<wbr>Create<wbr>Failure</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="module_q.html#q-1" class="tsd-kind-icon">q</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>user | xstate-sample-architecture</title>
+	<title>PropsFailureMessage | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,142 +56,51 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="user.html">user</a>
+					<a href="../modules/app_xassy_login.html">app/xassy-login</a>
+				</li>
+				<li>
+					<a href="app_xassy_login.propsfailuremessage.html">PropsFailureMessage</a>
 				</li>
 			</ul>
-			<h1>External module user</h1>
+			<h1>Interface PropsFailureMessage</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Model: User</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PropsFailureMessage</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>References</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="user.html#user-1" class="tsd-kind-icon">User</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="user.html#getid" class="tsd-kind-icon">get<wbr>Id</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="user.html#getusername" class="tsd-kind-icon">get<wbr>Username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="app_xassy_login.propsfailuremessage.html#failure" class="tsd-kind-icon">failure</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>References</h2>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="user-1" class="tsd-anchor"></a>
-					<h3>User</h3>
-					Re-exports <a href="models_user.html#user-1">User</a>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="getid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Id<span class="tsd-signature-symbol">:</span> &lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = getter(&#x27;id&#x27;)</span></div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="failure" class="tsd-anchor"></a>
+					<h3>failure</h3>
+					<div class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">:</span> <a href="../modules/module_q.html#failure" class="tsd-signature-type">Failure</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/models/users/getters.ts#L15">src/modules/models/users/getters.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/apps/xassy-login/components/FailureMessage.tsx#L14">src/apps/xassy-login/components/FailureMessage.tsx:14</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Given a <a href="user.html#user-1">User</a> returns it&#39;s id</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
-									<li class="tsd-signature tsd-kind-icon">&lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-type-parameters-title">Type parameters</h4>
-										<ul class="tsd-type-parameters">
-											<li>
-												<h4>TValue</h4>
-											</li>
-											<li>
-												<h4>TObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
-											</li>
-										</ul>
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>o: <span class="tsd-signature-type">TObject</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="getusername" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Username</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Username<span class="tsd-signature-symbol">:</span> &lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = getter(&#x27;username&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/models/users/getters.ts#L21">src/modules/models/users/getters.ts:21</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Given a <a href="user.html#user-1">User</a> returns it&#39;s username</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
-									<li class="tsd-signature tsd-kind-icon">&lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-type-parameters-title">Type parameters</h4>
-										<ul class="tsd-type-parameters">
-											<li>
-												<h4>TValue</h4>
-											</li>
-											<li>
-												<h4>TObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
-											</li>
-										</ul>
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>o: <span class="tsd-signature-type">TObject</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -202,86 +111,155 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_modules_sendcontext_.html">&quot;modules/<wbr>Send<wbr>Context&quot;</a>
+						<a href="../modules/_modules_sendcontext_.html">&quot;modules/<wbr>Send<wbr>Context&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_modules_components_loginform_loginform_.html">&quot;modules/components/<wbr>Login<wbr>Form/<wbr>Login<wbr>Form&quot;</a>
+						<a href="../modules/_modules_components_loginform_loginform_.html">&quot;modules/components/<wbr>Login<wbr>Form/<wbr>Login<wbr>Form&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_modules_hooks_.html">&quot;modules/hooks&quot;</a>
+						<a href="../modules/_modules_hooks_.html">&quot;modules/hooks&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="sendcontext.html">Send<wbr>Context</a>
+						<a href="../modules/sendcontext.html">Send<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="app_xassy.html">app/xassy</a>
+						<a href="../modules/app_xassy.html">app/xassy</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="app_xassy_contact_us.html">app/xassy-<wbr>contact-<wbr>us</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="app_xassy_login.html">app/xassy-<wbr>login</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="app_xassy_router.html">app/xassy-<wbr>router</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="components.html">components</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="components_content.html">components/<wbr>Content</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="components_failuremessage.html">components/<wbr>Failure<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="machines_input_control.html">machines/input-<wbr>control</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="machines_operator.html">machines/operator</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="models_user.html">models/user</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="module_q.html">module/q</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules_api_login.html">modules/api/login</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules_inputprovider.html">modules/input<wbr>Provider</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules_streams_authentication.html">modules/streams/authentication</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules_streams_reset.html">modules/streams/reset</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="router.html">router</a>
+						<a href="../modules/app_xassy_contact_us.html">app/xassy-<wbr>contact-<wbr>us</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="user.html">user</a>
+						<a href="../modules/app_xassy_login.html">app/xassy-<wbr>login</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="utils.html">utils</a>
+						<a href="../modules/app_xassy_router.html">app/xassy-<wbr>router</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="xstate.html">xstate</a>
+						<a href="../modules/components.html">components</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/components_content.html">components/<wbr>Content</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/components_failuremessage.html">components/<wbr>Failure<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/machines_input_control.html">machines/input-<wbr>control</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/machines_operator.html">machines/operator</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/models_user.html">models/user</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/module_q.html">module/q</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/modules_api_login.html">modules/api/login</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/modules_inputprovider.html">modules/input<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html">modules/streams/authentication</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/modules_streams_reset.html">modules/streams/reset</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/router.html">router</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/user.html">user</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/utils.html">utils</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/xstate.html">xstate</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-reference tsd-parent-kind-external-module">
-						<a href="user.html#user-1" class="tsd-kind-icon">User</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="app_xassy_login.propsfailuremessage.html" class="tsd-kind-icon">Props<wbr>Failure<wbr>Message</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="app_xassy_login.propsfailuremessage.html#failure" class="tsd-kind-icon">failure</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="app_xassy_login.propsloginbutton.html" class="tsd-kind-icon">Props<wbr>Login<wbr>Button</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="app_xassy_login.propsloginform.html" class="tsd-kind-icon">Props<wbr>Login<wbr>Form</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="app_xassy_login.propsresetbutton.html" class="tsd-kind-icon">Props<wbr>Reset<wbr>Button</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="user.html#getid" class="tsd-kind-icon">get<wbr>Id</a>
+						<a href="../modules/app_xassy_login.html#inputprovider" class="tsd-kind-icon">Input<wbr>Provider</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="user.html#getusername" class="tsd-kind-icon">get<wbr>Username</a>
+						<a href="../modules/app_xassy_login.html#inputprovider-1" class="tsd-kind-icon">Input<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#canreset_" class="tsd-kind-icon">can<wbr>Reset$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#i" class="tsd-kind-icon">i</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#isvalid_" class="tsd-kind-icon">is<wbr>Valid$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#isvalid_-1" class="tsd-kind-icon">is<wbr>Valid$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#isvalid_-2" class="tsd-kind-icon">is<wbr>Valid$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#machine" class="tsd-kind-icon">machine</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#p" class="tsd-kind-icon">p</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#state_" class="tsd-kind-icon">state$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#state_-1" class="tsd-kind-icon">state$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#takefocus_" class="tsd-kind-icon">take<wbr>Focus$</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#failuremessage" class="tsd-kind-icon">Failure<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#loginapp" class="tsd-kind-icon">Login<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#loginbutton" class="tsd-kind-icon">Login<wbr>Button</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/app_xassy_login.html#loginform" class="tsd-kind-icon">Login<wbr>Form</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#password" class="tsd-kind-icon">Password</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#resetbutton" class="tsd-kind-icon">Reset<wbr>Button</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/app_xassy_login.html#username" class="tsd-kind-icon">Username</a>
 					</li>
 				</ul>
 			</nav>

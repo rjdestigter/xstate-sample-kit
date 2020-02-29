@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PropsLink | xstate-sample-architecture</title>
+	<title>StateSchema | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,31 +56,37 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/router.html">router</a>
+					<a href="../modules/machines_operator.html">machines/operator</a>
 				</li>
 				<li>
-					<a href="router.propslink.html">PropsLink</a>
+					<a href="machines_operator.stateschema.html">StateSchema</a>
 				</li>
 			</ul>
-			<h1>Interface PropsLink</h1>
+			<h1>Interface StateSchema&lt;TC&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>React props type for the  <a href="../modules/router.html#link">Link</a> component.</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>TC</h4>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PropsLink</span>
+						<span class="tsd-signature-type">StateSchema</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">StateSchema</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +97,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#params" class="tsd-kind-icon">params</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#to" class="tsd-kind-icon">to</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="machines_operator.stateschema.html#context" class="tsd-kind-icon">context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="machines_operator.stateschema.html#meta" class="tsd-kind-icon">meta</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="machines_operator.stateschema.html#states" class="tsd-kind-icon">states</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,87 +107,52 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Element</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="context" class="tsd-anchor"></a>
+					<h3>context</h3>
+					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides StateSchema.context</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L18">src/modules/router/components/Link.tsx:18</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/machines/operator/types.ts#L68">src/modules/machines/operator/types.ts:68</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Link text or label</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>renderProps: <span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>on<wbr>Click<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-														<ul class="tsd-parameters">
-															<li class="tsd-parameter-siganture">
-																<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
-																	<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-																</ul>
-																<ul class="tsd-descriptions">
-																	<li class="tsd-description">
-																		<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-																	</li>
-																</ul>
-															</li>
-														</ul>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
-									</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="meta" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> meta</h3>
+					<div class="tsd-signature tsd-kind-icon">meta<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="machines_input_control.stateschema.html">StateSchema</a>.<a href="machines_input_control.stateschema.html#meta">meta</a></p>
+						<ul>
+							<li>Defined in node_modules/xstate/lib/types.d.ts:677</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="states" class="tsd-anchor"></a>
+					<h3>states</h3>
+					<div class="tsd-signature tsd-kind-icon">states<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>__computed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<p>Overrides StateSchema.states</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/machines/operator/types.ts#L69">src/modules/machines/operator/types.ts:69</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>__computed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h5>
+								<ul class="tsd-parameters">
 								</ul>
 							</li>
 						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="params" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> params</h3>
-					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L16">src/modules/router/components/Link.tsx:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Object, additional data dispatched with the <a href="../modules/app_xassy_router.html#goto">GOTO</a> event when the user clicks the link.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="to" class="tsd-anchor"></a>
-					<h3>to</h3>
-					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L14">src/modules/router/components/Link.tsx:14</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Path or url to link to</p>
-						</div>
 					</div>
 				</section>
 			</section>
@@ -228,7 +199,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/machines_input_control.html">machines/input-<wbr>control</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/machines_operator.html">machines/operator</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -249,7 +220,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_streams_reset.html">modules/streams/reset</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/router.html">router</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -267,36 +238,84 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propslink.html" class="tsd-kind-icon">Props<wbr>Link</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="machines_operator.stateschema.html" class="tsd-kind-icon">State<wbr>Schema</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#children" class="tsd-kind-icon">children</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="machines_operator.stateschema.html#context" class="tsd-kind-icon">context</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#params" class="tsd-kind-icon">params</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="machines_operator.stateschema.html#meta" class="tsd-kind-icon">meta</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#to" class="tsd-kind-icon">to</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="machines_operator.stateschema.html#states" class="tsd-kind-icon">states</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propsredirect.html" class="tsd-kind-icon">Props<wbr>Redirect</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/machines_operator.html#event" class="tsd-kind-icon">Event</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#link" class="tsd-kind-icon">Link</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/machines_operator.html#machineconfig" class="tsd-kind-icon">Machine<wbr>Config</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirect" class="tsd-kind-icon">Redirect</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/machines_operator.html#machineoptions" class="tsd-kind-icon">Machine<wbr>Options</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirectwithsend" class="tsd-kind-icon">Redirect<wbr>With<wbr>Send</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/machines_operator.html#state" class="tsd-kind-icon">State</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#uselocation" class="tsd-kind-icon">use<wbr>Location</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#typestate" class="tsd-kind-icon">Type<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#eventtypeinvalid" class="tsd-kind-icon">Event<wbr>Type<wbr>InValid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#eventtypereset" class="tsd-kind-icon">Event<wbr>Type<wbr>Reset</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#eventtypesubmit" class="tsd-kind-icon">Event<wbr>Type<wbr>Submit</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#eventtypevalid" class="tsd-kind-icon">Event<wbr>Type<wbr>Valid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetypedone" class="tsd-kind-icon">State<wbr>Type<wbr>Done</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetypeinprogress" class="tsd-kind-icon">State<wbr>Type<wbr>InProgress</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetypeinvalid" class="tsd-kind-icon">State<wbr>Type<wbr>InValid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetypesubmitting" class="tsd-kind-icon">State<wbr>Type<wbr>Submitting</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetypevalid" class="tsd-kind-icon">State<wbr>Type<wbr>Valid</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#issubmitevent" class="tsd-kind-icon">is<wbr>Submit<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/machines_operator.html#createmachine" class="tsd-kind-icon">create<wbr>Machine</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/machines_operator.html#isevent" class="tsd-kind-icon">is<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#eventtype" class="tsd-kind-icon">Event<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#statetype" class="tsd-kind-icon">State<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#configuration" class="tsd-kind-icon">configuration</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/machines_operator.html#services" class="tsd-kind-icon">services</a>
 					</li>
 				</ul>
 			</nav>

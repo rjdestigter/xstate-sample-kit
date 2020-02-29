@@ -1,0 +1,1239 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>modules/streams/authentication | xstate-sample-architecture</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">xstate-sample-architecture</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="modules_streams_authentication.html">modules/streams/authentication</a>
+				</li>
+			</ul>
+			<h1>External module modules/streams/authentication</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#streams-authentication" id="streams-authentication" style="color: inherit; text-decoration: none;">
+							<h3>Streams: Authentication</h3>
+						</a>
+					</div>
+					<p>This module provides a set of streams to manage anonymous- and authenticated user data.</p>
+					<p>Login forms can use these streams to store username and password and API responses to
+					authentication requests.</p>
+					<a href="#types" id="types" style="color: inherit; text-decoration: none;">
+						<h4>Types</h4>
+					</a>
+					<ul>
+						<li><a href="../interfaces/modules_streams_authentication.anonymoususer.html">AnonymousUser</a></li>
+						<li><a href="modules_streams_authentication.html#loginoutcome">LoginOutcome</a></li>
+						<li><a href="modules_streams_authentication.html#loginoperation">LoginOperation</a></li>
+						<li><a href="modules_streams_authentication.html#value">Value</a></li>
+					</ul>
+					<a href="#functions" id="functions" style="color: inherit; text-decoration: none;">
+						<h4>Functions</h4>
+					</a>
+					<ul>
+						<li><a href="modules_streams_authentication.html#dotvalue">dotValue</a></li>
+						<li><a href="modules_streams_authentication.html#isrobot">isRobot</a></li>
+						<li><a href="modules_streams_authentication.html#ishuman">isHuman</a></li>
+						<li><a href="modules_streams_authentication.html#makevalue">makeValue</a></li>
+						<li><a href="modules_streams_authentication.html#makehumanvalue">makeHumanValue</a></li>
+						<li><a href="modules_streams_authentication.html#makerobotovalue">makeRobotoValue</a></li>
+					</ul>
+					<a href="#streams" id="streams" style="color: inherit; text-decoration: none;">
+						<h4>Streams</h4>
+					</a>
+					<ul>
+						<li><a href="modules_streams_authentication.html#loginoperation_">loginOperation$</a></li>
+						<li><a href="modules_streams_authentication.html#isauthenticated_">isAuthenticated$</a></li>
+						<li><a href="modules_streams_authentication.html#username_">username$</a></li>
+						<li><a href="modules_streams_authentication.html#password_">password$</a></li>
+						<li><a href="modules_streams_authentication.html#usernamevalue_">usernameValue$</a></li>
+						<li><a href="modules_streams_authentication.html#passwordvalue_">passwordValue$</a></li>
+						<li><a href="modules_streams_authentication.html#anonymoususer_">anonymousUser$</a></li>
+						<li><a href="modules_streams_authentication.html#user_">user$</a></li>
+					</ul>
+					<a href="#stream-readers" id="stream-readers" style="color: inherit; text-decoration: none;">
+						<h4>Stream Readers</h4>
+					</a>
+					<ul>
+						<li><a href="modules_streams_authentication.html#getloginoperation">getLoginOperation</a></li>
+						<li><a href="modules_streams_authentication.html#getusername">getUsername</a></li>
+						<li><a href="modules_streams_authentication.html#getpassword">getPassword</a></li>
+						<li><a href="modules_streams_authentication.html#getanonymoususer">getAnonymousUser</a></li>
+					</ul>
+					<a href="#stream-updaters" id="stream-updaters" style="color: inherit; text-decoration: none;">
+						<h4>Stream Updaters</h4>
+					</a>
+					<ul>
+						<li><a href="modules_streams_authentication.html#setloginoperation">setLoginOperation</a></li>
+						<li><a href="modules_streams_authentication.html#resetloginoperation">resetLoginOperation</a></li>
+						<li><a href="modules_streams_authentication.html#setusername">setUsername</a></li>
+						<li><a href="modules_streams_authentication.html#setpassword">setPassword</a></li>
+						<li><a href="modules_streams_authentication.html#resetusername">resetUsername</a></li>
+						<li><a href="modules_streams_authentication.html#resetpassword">resetPassword</a></li>
+						<li><a href="modules_streams_authentication.html#resetanonymoususer">resetAnonymousUser</a></li>
+					</ul>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/modules_streams_authentication.anonymoususer.html" class="tsd-kind-icon">Anonymous<wbr>User</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#loginoperation" class="tsd-kind-icon">Login<wbr>Operation</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#loginoutcome" class="tsd-kind-icon">Login<wbr>Outcome</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="modules_streams_authentication.html#value" class="tsd-kind-icon">Value</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#anonymoususer_" class="tsd-kind-icon">anonymous<wbr>User$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#dotvalue" class="tsd-kind-icon">dot<wbr>Value</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#getloginoperation" class="tsd-kind-icon">get<wbr>Login<wbr>Operation</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#getpassword" class="tsd-kind-icon">get<wbr>Password</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#getusername" class="tsd-kind-icon">get<wbr>Username</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#isauthenticated_" class="tsd-kind-icon">is<wbr>Authenticated$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#ishuman" class="tsd-kind-icon">is<wbr>Human</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#isrobot" class="tsd-kind-icon">is<wbr>Robot</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#loginoperation_" class="tsd-kind-icon">login<wbr>Operation$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#makehumanvalue" class="tsd-kind-icon">make<wbr>Human<wbr>Value</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#makerobotovalue" class="tsd-kind-icon">make<wbr>Roboto<wbr>Value</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#password_" class="tsd-kind-icon">password$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#passwordvalue_" class="tsd-kind-icon">password<wbr>Value$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#resetanonymoususer" class="tsd-kind-icon">reset<wbr>Anonymous<wbr>User</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#resetloginoperation" class="tsd-kind-icon">reset<wbr>Login<wbr>Operation</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#resetpassword" class="tsd-kind-icon">reset<wbr>Password</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#resetusername" class="tsd-kind-icon">reset<wbr>Username</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#setloginoperation" class="tsd-kind-icon">set<wbr>Login<wbr>Operation</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#setpassword" class="tsd-kind-icon">set<wbr>Password</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#setusername" class="tsd-kind-icon">set<wbr>Username</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#user_" class="tsd-kind-icon">user$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#username_" class="tsd-kind-icon">username$</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#usernamevalue_" class="tsd-kind-icon">username<wbr>Value$</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#getanonymoususer" class="tsd-kind-icon">get<wbr>Anonymous<wbr>User</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="modules_streams_authentication.html#makevalue" class="tsd-kind-icon">make<wbr>Value</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="loginoperation" class="tsd-anchor"></a>
+					<h3>Login<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">Login<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">O.Option</span><span class="tsd-signature-symbol">&lt;</span><a href="modules_streams_authentication.html#loginoutcome" class="tsd-signature-type">LoginOutcome</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L84">src/modules/streams/authentication.ts:84</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An authentication operation may or may not be available.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="loginoutcome" class="tsd-anchor"></a>
+					<h3>Login<wbr>Outcome</h3>
+					<div class="tsd-signature tsd-kind-icon">Login<wbr>Outcome<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E.Either</span><span class="tsd-signature-symbol">&lt;</span><a href="module_q.html#failure" class="tsd-signature-type">Failure</a><span class="tsd-signature-symbol">, </span><a href="models_user.html#user-1" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L79">src/modules/streams/authentication.ts:79</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An authentication request can succeed with a <a href="models_user.html#user-1">User</a> or
+							fail with a <a href="module_q.html#failure">Failure</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">Value&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>robot<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L91">src/modules/streams/authentication.ts:91</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Value wrapper for change events. Updates to form values
+								such as the username or password are from the user or
+							by the system itself (reset, initial value, etc.)</p>
+						</div>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>robot<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="anonymoususer_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> anonymous<wbr>User$</h3>
+					<div class="tsd-signature tsd-kind-icon">anonymous<wbr>User$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/modules_streams_authentication.anonymoususer.html" class="tsd-signature-type">AnonymousUser</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = combineLatest(usernameValue$,passwordValue$).pipe(map(([username, password]): AnonymousUser &#x3D;&gt; ({ username, password })))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L156">src/modules/streams/authentication.ts:156</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream combining <a href="modules_streams_authentication.html#usernamevalue_">usernameValue$</a> and <a href="modules_streams_authentication.html#passwordvalue_">passwordValue$</a> and mapping it to <a href="../interfaces/modules_streams_authentication.anonymoususer.html">AnonymousUser</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="dotvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> dot<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">dot<wbr>Value<span class="tsd-signature-symbol">:</span> &lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = dot(&quot;value&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L96">src/modules/streams/authentication.ts:96</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Getter function for reading the <code>.value</code> property of a <a href="modules_streams_authentication.html#value">Value</a>.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>TValue</h4>
+											</li>
+											<li>
+												<h4>TObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>o: <span class="tsd-signature-type">TObject</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="getloginoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Login<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Login<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">getValue</span><span class="tsd-signature-symbol"> = loginOperation$.getValue.bind(loginOperation$)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L165">src/modules/streams/authentication.ts:165</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get the current value of the [[]loginOperation$] stram.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="getpassword" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Password</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol"> = flow(password$.getValue.bind(password$), dotValue)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L175">src/modules/streams/authentication.ts:175</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get the current value of the <a href="modules_streams_authentication.html#password_">password$</a> stram. Maps to the streams <a href="modules_streams_authentication.html#value">Value</a> <code>.value</code> property.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">C</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>a: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">C</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="getusername" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Username</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol"> = flow(username$.getValue.bind(username$), dotValue)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L170">src/modules/streams/authentication.ts:170</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get the current value of the <a href="modules_streams_authentication.html#username_">username$</a> stram. Maps to the streams <a href="modules_streams_authentication.html#value">Value</a> <code>.value</code> property.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">C</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>a: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">C</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="isauthenticated_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Authenticated$</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Authenticated$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = loginOperation$.pipe(map(maybeResponse &#x3D;&gt;pipe(maybeResponse,O.map(response &#x3D;&gt; pipe(response, E.fold(constant(false), constant(true)))),O.fold(constant(false), constant(true)))),filter(isNotNull))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L116">src/modules/streams/authentication.ts:116</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream that operates over <a href="modules_streams_authentication.html#loginoperation_">loginOperation$</a> and maps it to a boolean flag if the operation was successful.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="ishuman" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Human</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Human<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> = negate(isRobot)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L106">src/modules/streams/authentication.ts:106</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Getter function for reading the <code>.robot</code> property of a <a href="modules_streams_authentication.html#value">Value</a> and negating it.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="isrobot" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Robot</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Robot<span class="tsd-signature-symbol">:</span> &lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = dot(&quot;robot&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L101">src/modules/streams/authentication.ts:101</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Getter function for reading the <code>.robot</code> property of a <a href="modules_streams_authentication.html#value">Value</a>.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;TValue, TObject&gt;<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>TValue</h4>
+											</li>
+											<li>
+												<h4>TObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>o: <span class="tsd-signature-type">TObject</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TObject</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKey</span><span class="tsd-signature-symbol">]</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="loginoperation_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> login<wbr>Operation$</h3>
+					<div class="tsd-signature tsd-kind-icon">login<wbr>Operation$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">None</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Some</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Left</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><a href="module_q.html#apifailure-1" class="tsd-signature-type">ApiFailure</a><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasonapi" class="tsd-signature-type">ReasonApi</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Errors</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasondecode" class="tsd-signature-type">ReasonDecode</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="module_q.html#reasonerror" class="tsd-signature-type">ReasonError</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Right</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new BehaviorSubject&lt;LoginOperation&gt;(O.none)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L111">src/modules/streams/authentication.ts:111</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream for authentication operations.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="makehumanvalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> make<wbr>Human<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">make<wbr>Human<wbr>Value<span class="tsd-signature-symbol">:</span> &lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = makeValue(false)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L213">src/modules/streams/authentication.ts:213</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wrap a value in a <a href="modules_streams_authentication.html#value">Value</a> object where <code>.robot</code> is <code>false</code>
+							indicating the value was produced by the user.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>T</h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>value: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="makerobotovalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> make<wbr>Roboto<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">make<wbr>Roboto<wbr>Value<span class="tsd-signature-symbol">:</span> &lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = makeValue(true)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L219">src/modules/streams/authentication.ts:219</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Wrap a value in a <a href="modules_streams_authentication.html#value">Value</a> object where <code>.robot</code> is <code>true</code>
+							indicating the value was produced programatically.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-has-type-parameter">
+									<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-type-parameters-title">Type parameters</h4>
+										<ul class="tsd-type-parameters">
+											<li>
+												<h4>T</h4>
+											</li>
+										</ul>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>value: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="password_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> password$</h3>
+					<div class="tsd-signature tsd-kind-icon">password$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>robot<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new BehaviorSubject&lt;Value&lt;string&gt;&gt;({value: &quot;&quot;,robot: true})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L138">src/modules/streams/authentication.ts:138</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream containing a <a href="modules_streams_authentication.html#value">Value</a> for a password.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="passwordvalue_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> password<wbr>Value$</h3>
+					<div class="tsd-signature tsd-kind-icon">password<wbr>Value$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = password$.pipe(map(dotValue))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L151">src/modules/streams/authentication.ts:151</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream operating over <a href="modules_streams_authentication.html#password_">password$</a> and mapping to it&#39;s <code>.value</code> property.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="resetanonymoususer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reset<wbr>Anonymous<wbr>User</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Anonymous<wbr>User<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">C</span><span class="tsd-signature-symbol"> = flow(resetUsername, resetPassword)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L267">src/modules/streams/authentication.ts:267</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reset the value of the <a href="modules_streams_authentication.html#username_">username$</a> and  <a href="modules_streams_authentication.html#password_">password$</a> stream to an empty string
+							and indicate the value was updated programatically.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">C</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>a: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">C</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="resetloginoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reset<wbr>Login<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Login<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol"> = setLoginOperation.bind(null, O.none)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L196">src/modules/streams/authentication.ts:196</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reset the value of the  <a href="modules_streams_authentication.html#loginoperation_">loginOperation$</a> stream.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="resetpassword" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reset<wbr>Password</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol"> = flow(trim,makeRobotoValue,forward(password$.next.bind(password$)),dotValue).bind(null, &quot;&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L256">src/modules/streams/authentication.ts:256</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reset the value of the [[passsword$]] stream to an empty string
+							and indicate the value was updated programatically.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="resetusername" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reset<wbr>Username</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol"> = flow(trim,makeRobotoValue,forward(username$.next.bind(username$)),dotValue).bind(null, &quot;&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L245">src/modules/streams/authentication.ts:245</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reset the value of the <a href="modules_streams_authentication.html#username_">username$</a> stream to an empty string
+							and indicate the value was updated programatically.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="setloginoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Login<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Login<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = forward(loginOperation$.next.bind(loginOperation$))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L189">src/modules/streams/authentication.ts:189</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update the value of the <a href="modules_streams_authentication.html#loginoperation_">loginOperation$</a> stream.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>value: <span class="tsd-signature-type">T</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="setpassword" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Password</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol"> = flow(trim,makeHumanValue,forward(password$.next.bind(password$)),dotValue)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L234">src/modules/streams/authentication.ts:234</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update the value of the <a href="modules_streams_authentication.html#password_">password$</a> stream.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>a: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="setusername" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Username</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol"> = flow(trim,makeHumanValue,forward(username$.next.bind(username$)),dotValue)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L224">src/modules/streams/authentication.ts:224</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update the value of the <a href="modules_streams_authentication.html#username_">username$</a> stream.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>a: <span class="tsd-signature-type">A</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="user_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> user$</h3>
+					<div class="tsd-signature tsd-kind-icon">user$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = loginOperation$.pipe(map(maybeResponse &#x3D;&gt;pipe(maybeResponse,O.map(response &#x3D;&gt; pipe(response, E.fold(constant(null), identity))),O.fold(constant(null), identity))),filter(isNotNull))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L273">src/modules/streams/authentication.ts:273</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Streams the authenticated user. <code>None</code>, <code>Left</code>, and <code>null</code> values
+							are filtered meaning this stream does not have an initial value.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="username_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> username$</h3>
+					<div class="tsd-signature tsd-kind-icon">username$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BehaviorSubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>robot<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new BehaviorSubject&lt;Value&lt;string&gt;&gt;({value: &quot;&quot;,robot: true})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L130">src/modules/streams/authentication.ts:130</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream containing a <a href="modules_streams_authentication.html#value">Value</a> for a username.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="usernamevalue_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> username<wbr>Value$</h3>
+					<div class="tsd-signature tsd-kind-icon">username<wbr>Value$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = username$.pipe(map(dotValue))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L146">src/modules/streams/authentication.ts:146</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream operating over <a href="modules_streams_authentication.html#username_">username$</a> and mapping to it&#39;s <code>.value</code> property.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="getanonymoususer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Anonymous<wbr>User</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Anonymous<wbr>User<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/modules_streams_authentication.anonymoususer.html" class="tsd-signature-type">AnonymousUser</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L180">src/modules/streams/authentication.ts:180</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the current value of the <a href="modules_streams_authentication.html#username_">username$</a> and <a href="modules_streams_authentication.html#password_">password$</a> streams as an <a href="../interfaces/modules_streams_authentication.anonymoususer.html">AnonymousUser</a></p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/modules_streams_authentication.anonymoususer.html" class="tsd-signature-type">AnonymousUser</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="makevalue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> make<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Value<span class="tsd-signature-symbol">(</span>robot<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span>&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L204">src/modules/streams/authentication.ts:204</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap a value in a <a href="modules_streams_authentication.html#value">Value</a> object.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>robot: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Flag indicating the &quot;author&quot; of the value. This could be the
+												visitor or user, or a programmatically produced value. E.g. resetting a stream
+											with an empty value.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns &lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter">
+										<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-type-parameters-title">Type parameters</h4>
+											<ul class="tsd-type-parameters">
+												<li>
+													<h4>T</h4>
+												</li>
+											</ul>
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>value: <span class="tsd-signature-type">T</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <a href="modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_sendcontext_.html">&quot;modules/<wbr>Send<wbr>Context&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_components_loginform_loginform_.html">&quot;modules/components/<wbr>Login<wbr>Form/<wbr>Login<wbr>Form&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_modules_hooks_.html">&quot;modules/hooks&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="sendcontext.html">Send<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy.html">app/xassy</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_contact_us.html">app/xassy-<wbr>contact-<wbr>us</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_login.html">app/xassy-<wbr>login</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="app_xassy_router.html">app/xassy-<wbr>router</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components.html">components</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components_content.html">components/<wbr>Content</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="components_failuremessage.html">components/<wbr>Failure<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="machines_input_control.html">machines/input-<wbr>control</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="machines_operator.html">machines/operator</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="models_user.html">models/user</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="module_q.html">module/q</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_api_login.html">modules/api/login</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_inputprovider.html">modules/input<wbr>Provider</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="modules_streams_authentication.html">modules/streams/authentication</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules_streams_reset.html">modules/streams/reset</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="router.html">router</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="user.html">user</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="utils.html">utils</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="xstate.html">xstate</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/modules_streams_authentication.anonymoususer.html" class="tsd-kind-icon">Anonymous<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#loginoperation" class="tsd-kind-icon">Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#loginoutcome" class="tsd-kind-icon">Login<wbr>Outcome</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="modules_streams_authentication.html#value" class="tsd-kind-icon">Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#anonymoususer_" class="tsd-kind-icon">anonymous<wbr>User$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#dotvalue" class="tsd-kind-icon">dot<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#getloginoperation" class="tsd-kind-icon">get<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#getpassword" class="tsd-kind-icon">get<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#getusername" class="tsd-kind-icon">get<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#isauthenticated_" class="tsd-kind-icon">is<wbr>Authenticated$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#ishuman" class="tsd-kind-icon">is<wbr>Human</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#isrobot" class="tsd-kind-icon">is<wbr>Robot</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#loginoperation_" class="tsd-kind-icon">login<wbr>Operation$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#makehumanvalue" class="tsd-kind-icon">make<wbr>Human<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#makerobotovalue" class="tsd-kind-icon">make<wbr>Roboto<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#password_" class="tsd-kind-icon">password$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#passwordvalue_" class="tsd-kind-icon">password<wbr>Value$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#resetanonymoususer" class="tsd-kind-icon">reset<wbr>Anonymous<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#resetloginoperation" class="tsd-kind-icon">reset<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#resetpassword" class="tsd-kind-icon">reset<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#resetusername" class="tsd-kind-icon">reset<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#setloginoperation" class="tsd-kind-icon">set<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#setpassword" class="tsd-kind-icon">set<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#setusername" class="tsd-kind-icon">set<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#user_" class="tsd-kind-icon">user$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#username_" class="tsd-kind-icon">username$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#usernamevalue_" class="tsd-kind-icon">username<wbr>Value$</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#getanonymoususer" class="tsd-kind-icon">get<wbr>Anonymous<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="modules_streams_authentication.html#makevalue" class="tsd-kind-icon">make<wbr>Value</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

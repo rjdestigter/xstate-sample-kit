@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>xstate | xstate-sample-architecture</title>
+	<title>components/FailureMessage | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="xstate.html">xstate</a>
+					<a href="components_failuremessage.html">components/FailureMessage</a>
 				</li>
 			</ul>
-			<h1>External module xstate</h1>
+			<h1>External module components/FailureMessage</h1>
 		</div>
 	</div>
 </header>
@@ -71,10 +71,15 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/components_failuremessage.propsfailuremessage.html" class="tsd-kind-icon">Props<wbr>Failure<wbr>Message</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="xstate.html#useservicelogger" class="tsd-kind-icon">use<wbr>Service<wbr>Logger</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="xstate.html#withcontext" class="tsd-kind-icon">with<wbr>Context</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="components_failuremessage.html#failuremessage" class="tsd-kind-icon">Failure<wbr>Message</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,135 +87,31 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="useservicelogger" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> use<wbr>Service<wbr>Logger</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">use<wbr>Service<wbr>Logger&lt;TContext, TStateSchema, TEvent, TTypestate&gt;<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Interpreter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TStateSchema</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TEvent</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TTypestate</span><span class="tsd-signature-symbol">&gt;</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="failuremessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Failure<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">Failure<wbr>Message<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/components_failuremessage.propsfailuremessage.html" class="tsd-signature-type">PropsFailureMessage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/xstate/useServiceLogger.ts#L23">src/modules/xstate/useServiceLogger.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/FailureMessage/FailureMessage.tsx#L30">src/modules/components/FailureMessage/FailureMessage.tsx:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<pre><code class="language-hs"><span class="hljs-title">useServiceLogger</span> :: <span class="hljs-type">Interpreter</span> ctx schema event typeState -&gt;  string -&gt; void</code></pre>
+									<p>React component for displaying API failure messages.</p>
 								</div>
-								<p>React hook for logging interpreted state machines.</p>
-								<dl class="tsd-comment-tags">
-									<dt>typeparam</dt>
-									<dd><p>The typed contextual state of a machine, defaults to <code>any</code></p>
-									</dd>
-								</dl>
 							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>TContext</h4>
-									<div class="tsd-comment tsd-typography">
-										<p>The state machine&#39;s context state type</p>
-									</div>
-								</li>
-								<li>
-									<h4>TStateSchema<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StateSchema</span></h4>
-									<div class="tsd-comment tsd-typography">
-										<p>Schema type, defaults to <code>any</code></p>
-									</div>
-								</li>
-								<li>
-									<h4>TEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventObject</span></h4>
-									<div class="tsd-comment tsd-typography">
-										<p>The types of events that the machine dispatches, defaults to <code>any</code></p>
-									</div>
-								</li>
-								<li>
-									<h4>TTypestate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Typestate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								</li>
-							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>service: <span class="tsd-signature-type">Interpreter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TStateSchema</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TEvent</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TTypestate</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The interpreted state machine&#39;s service</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> name: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>A name used to label the logged group.</p>
-										</div>
-									</div>
+									<h5>props: <a href="../interfaces/components_failuremessage.propsfailuremessage.html" class="tsd-signature-type">PropsFailureMessage</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-					<a name="withcontext" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> with<wbr>Context</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>Context&lt;TContext, TEvent, TTypestate&gt;<span class="tsd-signature-symbol">(</span>machine<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StateMachine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TEvent</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TTypestate</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/xstate/withContext.ts#L19">src/modules/xstate/withContext.ts:19</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Wrapper around XState&#39;s [[StateMachine[&#39;withContext&#39;]]]. The only reason
-										to use this version is to maintain type information as XState&#39;s version
-									causes you to loose some.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>typeparam</dt>
-									<dd><p>Schema type, defaults to <code>any</code></p>
-									</dd>
-									<dt>typeparam</dt>
-									<dd><p>The typed contextual state of a machine, defaults to <code>any</code></p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>TContext</h4>
-									<div class="tsd-comment tsd-typography">
-										<p>The state machine&#39;s context state type</p>
-									</div>
-								</li>
-								<li>
-									<h4>TEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EventObject</span></h4>
-									<div class="tsd-comment tsd-typography">
-										<p>The types of events that the machine dispatches, defaults to <code>any</code></p>
-									</div>
-								</li>
-								<li>
-									<h4>TTypestate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Typestate</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">&gt;</span></h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>machine: <span class="tsd-signature-type">StateMachine</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContext</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TEvent</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TTypestate</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The state machine to add context to.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -252,7 +153,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="components_content.html">components/<wbr>Content</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="components_failuremessage.html">components/<wbr>Failure<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -288,18 +189,18 @@
 					<li class=" tsd-kind-external-module">
 						<a href="utils.html">utils</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="xstate.html">xstate</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="xstate.html#useservicelogger" class="tsd-kind-icon">use<wbr>Service<wbr>Logger</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/components_failuremessage.propsfailuremessage.html" class="tsd-kind-icon">Props<wbr>Failure<wbr>Message</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="xstate.html#withcontext" class="tsd-kind-icon">with<wbr>Context</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="components_failuremessage.html#failuremessage" class="tsd-kind-icon">Failure<wbr>Message</a>
 					</li>
 				</ul>
 			</nav>

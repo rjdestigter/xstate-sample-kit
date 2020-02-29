@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PropsLink | xstate-sample-architecture</title>
+	<title>InputProviderArgs | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/router.html">router</a>
+					<a href="../modules/modules_inputprovider.html">modules/inputProvider</a>
 				</li>
 				<li>
-					<a href="router.propslink.html">PropsLink</a>
+					<a href="modules_inputprovider.inputproviderargs.html">InputProviderArgs</a>
 				</li>
 			</ul>
-			<h1>Interface PropsLink</h1>
+			<h1>Interface InputProviderArgs</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>React props type for the  <a href="../modules/router.html#link">Link</a> component.</p>
+						<p>Function arguments for <a href="../modules/modules_inputprovider.html#inputprovider">inputProvider</a></p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PropsLink</span>
+						<span class="target">InputProviderArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +91,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#params" class="tsd-kind-icon">params</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#to" class="tsd-kind-icon">to</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_inputprovider.inputproviderargs.html#isvalid" class="tsd-kind-icon">is<wbr>Valid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_inputprovider.inputproviderargs.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_inputprovider.inputproviderargs.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_inputprovider.inputproviderargs.html#value_" class="tsd-kind-icon">value$</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_inputprovider.inputproviderargs.html#withconfig" class="tsd-kind-icon">with<wbr>Config</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,17 +104,47 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Element</span></div>
+					<a name="isvalid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Valid</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L18">src/modules/router/components/Link.tsx:18</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/inputProvider.tsx#L86">src/modules/components/inputProvider.tsx:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Link text or label</p>
+							<p>Validates the input</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/inputProvider.tsx#L84">src/modules/components/inputProvider.tsx:84</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Unique name for the controlled input</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/inputProvider.tsx#L92">src/modules/components/inputProvider.tsx:92</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Updater function that reeives the next value</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -120,34 +152,17 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>renderProps: <span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>on<wbr>Click<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-														<ul class="tsd-parameters">
-															<li class="tsd-parameter-siganture">
-																<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
-																	<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-																</ul>
-																<ul class="tsd-descriptions">
-																	<li class="tsd-description">
-																		<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-																	</li>
-																</ul>
-															</li>
-														</ul>
-													</li>
-												</ul>
+												<h5>next: <span class="tsd-signature-type">string</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -155,32 +170,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="params" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> params</h3>
-					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="value_" class="tsd-anchor"></a>
+					<h3>value$</h3>
+					<div class="tsd-signature tsd-kind-icon">value$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/modules_streams_authentication.html#value" class="tsd-signature-type">Value</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L16">src/modules/router/components/Link.tsx:16</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/inputProvider.tsx#L90">src/modules/components/inputProvider.tsx:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Object, additional data dispatched with the <a href="../modules/app_xassy_router.html#goto">GOTO</a> event when the user clicks the link.</p>
+							<p>Observable stream that provides the value</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="to" class="tsd-anchor"></a>
-					<h3>to</h3>
-					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="withconfig" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> with<wbr>Config</h3>
+					<div class="tsd-signature tsd-kind-icon">with<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MachineConfig</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">MachineConfig</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L14">src/modules/router/components/Link.tsx:14</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/inputProvider.tsx#L88">src/modules/components/inputProvider.tsx:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Path or url to link to</p>
+							<p>Callback for overriding the state machine configuration</p>
 						</div>
 					</div>
 				</section>
@@ -240,7 +255,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_api_login.html">modules/api/login</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/modules_inputprovider.html">modules/input<wbr>Provider</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -249,7 +264,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_streams_reset.html">modules/streams/reset</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/router.html">router</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -268,35 +283,41 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propslink.html" class="tsd-kind-icon">Props<wbr>Link</a>
+						<a href="modules_inputprovider.inputproviderargs.html" class="tsd-kind-icon">Input<wbr>Provider<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#children" class="tsd-kind-icon">children</a>
+								<a href="modules_inputprovider.inputproviderargs.html#isvalid" class="tsd-kind-icon">is<wbr>Valid</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#params" class="tsd-kind-icon">params</a>
+								<a href="modules_inputprovider.inputproviderargs.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#to" class="tsd-kind-icon">to</a>
+								<a href="modules_inputprovider.inputproviderargs.html#update" class="tsd-kind-icon">update</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="modules_inputprovider.inputproviderargs.html#value_" class="tsd-kind-icon">value$</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="modules_inputprovider.inputproviderargs.html#withconfig" class="tsd-kind-icon">with<wbr>Config</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propsredirect.html" class="tsd-kind-icon">Props<wbr>Redirect</a>
+						<a href="modules_inputprovider.renderprops.html" class="tsd-kind-icon">Render<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/modules_inputprovider.html#geteventvalue" class="tsd-kind-icon">get<wbr>Event<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/modules_inputprovider.html#inputeventidentity" class="tsd-kind-icon">input<wbr>Event<wbr>Identity</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#link" class="tsd-kind-icon">Link</a>
+						<a href="../modules/modules_inputprovider.html#inputprovider" class="tsd-kind-icon">input<wbr>Provider</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirect" class="tsd-kind-icon">Redirect</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirectwithsend" class="tsd-kind-icon">Redirect<wbr>With<wbr>Send</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#uselocation" class="tsd-kind-icon">use<wbr>Location</a>
+						<a href="../modules/modules_inputprovider.html#stringinputprovider" class="tsd-kind-icon">string<wbr>Input<wbr>Provider</a>
 					</li>
 				</ul>
 			</nav>

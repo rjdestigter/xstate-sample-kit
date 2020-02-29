@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PropsLink | xstate-sample-architecture</title>
+	<title>PropsUsername | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,31 +56,24 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/router.html">router</a>
+					<a href="../modules/components.html">components</a>
 				</li>
 				<li>
-					<a href="router.propslink.html">PropsLink</a>
+					<a href="components.propsusername.html">PropsUsername</a>
 				</li>
 			</ul>
-			<h1>Interface PropsLink</h1>
+			<h1>Interface PropsUsername</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>React props type for the  <a href="../modules/router.html#link">Link</a> component.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PropsLink</span>
+						<span class="target">PropsUsername</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +84,16 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#params" class="tsd-kind-icon">params</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#to" class="tsd-kind-icon">to</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#disabled" class="tsd-kind-icon">disabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#focused" class="tsd-kind-icon">focused</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#invalid" class="tsd-kind-icon">invalid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#onblur" class="tsd-kind-icon">on<wbr>Blur</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#onchange" class="tsd-kind-icon">on<wbr>Change</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#onenter" class="tsd-kind-icon">on<wbr>Enter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#onfocus" class="tsd-kind-icon">on<wbr>Focus</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#style" class="tsd-kind-icon">style</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#takefocus" class="tsd-kind-icon">take<wbr>Focus</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="components.propsusername.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,87 +102,104 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Element</span></div>
+					<a name="disabled" class="tsd-anchor"></a>
+					<h3>disabled</h3>
+					<div class="tsd-signature tsd-kind-icon">disabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L18">src/modules/router/components/Link.tsx:18</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L23">src/modules/components/input-controls/Username/Username.tsx:23</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Link text or label</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>renderProps: <span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>on<wbr>Click<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-														<ul class="tsd-parameters">
-															<li class="tsd-parameter-siganture">
-																<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
-																	<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-																</ul>
-																<ul class="tsd-descriptions">
-																	<li class="tsd-description">
-																		<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-																	</li>
-																</ul>
-															</li>
-														</ul>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="params" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> params</h3>
-					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="focused" class="tsd-anchor"></a>
+					<h3>focused</h3>
+					<div class="tsd-signature tsd-kind-icon">focused<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L16">src/modules/router/components/Link.tsx:16</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L25">src/modules/components/input-controls/Username/Username.tsx:25</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Object, additional data dispatched with the <a href="../modules/app_xassy_router.html#goto">GOTO</a> event when the user clicks the link.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="to" class="tsd-anchor"></a>
-					<h3>to</h3>
-					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="invalid" class="tsd-anchor"></a>
+					<h3>invalid</h3>
+					<div class="tsd-signature tsd-kind-icon">invalid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L14">src/modules/router/components/Link.tsx:14</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L24">src/modules/components/input-controls/Username/Username.tsx:24</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Path or url to link to</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onblur" class="tsd-anchor"></a>
+					<h3>on<wbr>Blur</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Blur<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">InputProps</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"onBlur"</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L21">src/modules/components/input-controls/Username/Username.tsx:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onchange" class="tsd-anchor"></a>
+					<h3>on<wbr>Change</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Change<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">InputProps</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"onChange"</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L19">src/modules/components/input-controls/Username/Username.tsx:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onenter" class="tsd-anchor"></a>
+					<h3>on<wbr>Enter</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Enter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">InputProps</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"onEnter"</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L18">src/modules/components/input-controls/Username/Username.tsx:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onfocus" class="tsd-anchor"></a>
+					<h3>on<wbr>Focus</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Focus<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">InputProps</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"onFocus"</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L20">src/modules/components/input-controls/Username/Username.tsx:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="style" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> style</h3>
+					<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">React.CSSProperties</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L22">src/modules/components/input-controls/Username/Username.tsx:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takefocus" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> take<wbr>Focus</h3>
+					<div class="tsd-signature tsd-kind-icon">take<wbr>Focus<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L26">src/modules/components/input-controls/Username/Username.tsx:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/components/input-controls/Username/Username.tsx#L17">src/modules/components/input-controls/Username/Username.tsx:17</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -216,7 +233,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/app_xassy_router.html">app/xassy-<wbr>router</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/components.html">components</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -249,7 +266,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_streams_reset.html">modules/streams/reset</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/router.html">router</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -268,36 +285,42 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propslink.html" class="tsd-kind-icon">Props<wbr>Link</a>
+						<a href="components.propsusername.html" class="tsd-kind-icon">Props<wbr>Username</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#children" class="tsd-kind-icon">children</a>
+								<a href="components.propsusername.html#disabled" class="tsd-kind-icon">disabled</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#params" class="tsd-kind-icon">params</a>
+								<a href="components.propsusername.html#focused" class="tsd-kind-icon">focused</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#to" class="tsd-kind-icon">to</a>
+								<a href="components.propsusername.html#invalid" class="tsd-kind-icon">invalid</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#onblur" class="tsd-kind-icon">on<wbr>Blur</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#onchange" class="tsd-kind-icon">on<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#onenter" class="tsd-kind-icon">on<wbr>Enter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#onfocus" class="tsd-kind-icon">on<wbr>Focus</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#style" class="tsd-kind-icon">style</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#takefocus" class="tsd-kind-icon">take<wbr>Focus</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="components.propsusername.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propsredirect.html" class="tsd-kind-icon">Props<wbr>Redirect</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#link" class="tsd-kind-icon">Link</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirect" class="tsd-kind-icon">Redirect</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirectwithsend" class="tsd-kind-icon">Redirect<wbr>With<wbr>Send</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#uselocation" class="tsd-kind-icon">use<wbr>Location</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

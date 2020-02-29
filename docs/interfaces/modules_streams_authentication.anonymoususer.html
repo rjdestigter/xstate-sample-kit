@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PropsLink | xstate-sample-architecture</title>
+	<title>AnonymousUser | xstate-sample-architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/router.html">router</a>
+					<a href="../modules/modules_streams_authentication.html">modules/streams/authentication</a>
 				</li>
 				<li>
-					<a href="router.propslink.html">PropsLink</a>
+					<a href="modules_streams_authentication.anonymoususer.html">AnonymousUser</a>
 				</li>
 			</ul>
-			<h1>Interface PropsLink</h1>
+			<h1>Interface AnonymousUser</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>React props type for the  <a href="../modules/router.html#link">Link</a> component.</p>
+						<p>Type representation of the the fields of a login form.</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PropsLink</span>
+						<span class="target">AnonymousUser</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +91,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#params" class="tsd-kind-icon">params</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="router.propslink.html#to" class="tsd-kind-icon">to</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_streams_authentication.anonymoususer.html#password" class="tsd-kind-icon">password</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="modules_streams_authentication.anonymoususer.html#username" class="tsd-kind-icon">username</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,85 +101,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="children" class="tsd-anchor"></a>
-					<h3>children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Element</span></div>
+					<a name="password" class="tsd-anchor"></a>
+					<h3>password</h3>
+					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L18">src/modules/router/components/Link.tsx:18</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L72">src/modules/streams/authentication.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Link text or label</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>renderProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>renderProps: <span class="tsd-signature-symbol">{ </span>onClick<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>on<wbr>Click<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-														<ul class="tsd-parameters">
-															<li class="tsd-parameter-siganture">
-																<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
-																	<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-																</ul>
-																<ul class="tsd-descriptions">
-																	<li class="tsd-description">
-																		<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-																	</li>
-																</ul>
-															</li>
-														</ul>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="params" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> params</h3>
-					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L16">src/modules/router/components/Link.tsx:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Object, additional data dispatched with the <a href="../modules/app_xassy_router.html#goto">GOTO</a> event when the user clicks the link.</p>
+							<p>The password</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="to" class="tsd-anchor"></a>
-					<h3>to</h3>
-					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="username" class="tsd-anchor"></a>
+					<h3>username</h3>
+					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/router/components/Link.tsx#L14">src/modules/router/components/Link.tsx:14</a></li>
+							<li>Defined in <a href="https://github.com/rjdestigter/xstate-sample-kit/blob/aeaeb8d/src/modules/streams/authentication.ts#L70">src/modules/streams/authentication.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Path or url to link to</p>
+							<p>The username</p>
 						</div>
 					</div>
 				</section>
@@ -243,13 +189,13 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_inputprovider.html">modules/input<wbr>Provider</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/modules_streams_authentication.html">modules/streams/authentication</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/modules_streams_reset.html">modules/streams/reset</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/router.html">router</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -268,35 +214,101 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propslink.html" class="tsd-kind-icon">Props<wbr>Link</a>
+						<a href="modules_streams_authentication.anonymoususer.html" class="tsd-kind-icon">Anonymous<wbr>User</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#children" class="tsd-kind-icon">children</a>
+								<a href="modules_streams_authentication.anonymoususer.html#password" class="tsd-kind-icon">password</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#params" class="tsd-kind-icon">params</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="router.propslink.html#to" class="tsd-kind-icon">to</a>
+								<a href="modules_streams_authentication.anonymoususer.html#username" class="tsd-kind-icon">username</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="router.propsredirect.html" class="tsd-kind-icon">Props<wbr>Redirect</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#loginoperation" class="tsd-kind-icon">Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#loginoutcome" class="tsd-kind-icon">Login<wbr>Outcome</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/modules_streams_authentication.html#value" class="tsd-kind-icon">Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#anonymoususer_" class="tsd-kind-icon">anonymous<wbr>User$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#dotvalue" class="tsd-kind-icon">dot<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#getloginoperation" class="tsd-kind-icon">get<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#getpassword" class="tsd-kind-icon">get<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#getusername" class="tsd-kind-icon">get<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#isauthenticated_" class="tsd-kind-icon">is<wbr>Authenticated$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#ishuman" class="tsd-kind-icon">is<wbr>Human</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#isrobot" class="tsd-kind-icon">is<wbr>Robot</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#loginoperation_" class="tsd-kind-icon">login<wbr>Operation$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#makehumanvalue" class="tsd-kind-icon">make<wbr>Human<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#makerobotovalue" class="tsd-kind-icon">make<wbr>Roboto<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#password_" class="tsd-kind-icon">password$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#passwordvalue_" class="tsd-kind-icon">password<wbr>Value$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#resetanonymoususer" class="tsd-kind-icon">reset<wbr>Anonymous<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#resetloginoperation" class="tsd-kind-icon">reset<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#resetpassword" class="tsd-kind-icon">reset<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#resetusername" class="tsd-kind-icon">reset<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#setloginoperation" class="tsd-kind-icon">set<wbr>Login<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#setpassword" class="tsd-kind-icon">set<wbr>Password</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#setusername" class="tsd-kind-icon">set<wbr>Username</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#user_" class="tsd-kind-icon">user$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#username_" class="tsd-kind-icon">username$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/modules_streams_authentication.html#usernamevalue_" class="tsd-kind-icon">username<wbr>Value$</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#link" class="tsd-kind-icon">Link</a>
+						<a href="../modules/modules_streams_authentication.html#getanonymoususer" class="tsd-kind-icon">get<wbr>Anonymous<wbr>User</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirect" class="tsd-kind-icon">Redirect</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#redirectwithsend" class="tsd-kind-icon">Redirect<wbr>With<wbr>Send</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/router.html#uselocation" class="tsd-kind-icon">use<wbr>Location</a>
+						<a href="../modules/modules_streams_authentication.html#makevalue" class="tsd-kind-icon">make<wbr>Value</a>
 					</li>
 				</ul>
 			</nav>
