@@ -74,11 +74,11 @@ export const returnSecond = <T>(_: any, t: T, ...rest: any[]) => t;
  * It takes nothing. It does nothing. It's useless.
  * 
  */
-export const voidFn = () => {};
+export const voidFn = (...args: any[]) => {};
 
 /**
  * ```hs
- * returnLast :: (a -> b) -> (a -> c) -> a -> c
+ * tapFirstReturnSecond :: (a -> b) -> (a -> c) -> a -> c
  * ```
  * 
  * Takes 2 functions that both accept the same argument and 
@@ -93,7 +93,7 @@ export const voidFn = () => {};
  * 
  * declare const update: (value: string) => void
  * 
- * const updateAndReturn = returnLast(update, identity)
+ * const updateAndReturn = tapFirstReturnSecond(update, identity)
  * ```
  * 
  * @param f1 The first function that is called.
@@ -102,7 +102,7 @@ export const voidFn = () => {};
  * @typeparam B The return type of the second function.
  * @returns A function that takes argument `A` and returns the result of the second function.
  */
-export const returnLast = <A, B>(f1: (a: A) => any, f2: (a: A) => B): (a: A) => B => (
+export const tapFirstReturnSecond = <A, B>(f1: (a: A) => any, f2: (a: A) => B): (a: A) => B => (
   a: A
 ) => {
   f1(a);

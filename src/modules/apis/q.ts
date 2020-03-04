@@ -40,6 +40,7 @@
 
 import * as t from "io-ts";
 import * as E from "fp-ts/lib/Either";
+import * as T from "fp-ts/lib/Task";
 import { pipe } from "fp-ts/lib/pipeable";
 import { randomInt } from "fp-ts/lib/Random";
 import delay from "../utils/delay";
@@ -193,7 +194,7 @@ export const isErrorFailure = isFailureReason(ReasonError);
  * a promise of a [[QResponse]]
  */
 export type QFetch<TModel> = (
-  promiser: () => Promise<Response>
+  promiser: T.Task<Response> // () => Promise<Response>
 ) => Promise<QResponse<TModel>>;
 
 /**

@@ -46,7 +46,7 @@ export const isNotNull = <T>(value: T | null): value is T => value != null
 /**
  * Regular expression for testing e-mail addresses
  */
-export const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+export const emailPattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 /**
  * ```hs

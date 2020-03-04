@@ -22,7 +22,7 @@
  * - [[forward]]
  * - [[returnSecond]]
  * - [[voidFn]]
- * - [[returnLast]]
+ * - [[tapFirstReturnSecond]]
  * 
  * #### Strings
  * 
@@ -55,4 +55,5 @@ export * from './functions'
 export * from './strings'
 export * from './booleans'
 export * from './objects'
+export * from './semigroups'
 export { default as delay } from './delay'
